@@ -1,0 +1,162 @@
+# 聯發科_20260311
+**這份檔案由 AlphaMemo.ai 製作，歡迎到網站了解更多：https://alphamemo.ai。**
+
+**警語：此 Memo 和逐字稿為 AI 生成，可能因為音檔品質導致轉錄逐字稿有誤，或是 AI 曲解原意／幻覺導致 Memo 內容有誤，請以原始音檔為準。**
+
+## Memo
+
+### 亮點
+- MediaTek 在 2025 年全年創下營收新高，主要受惠於 2025 年第四季 Dimensity 9500 智慧型手機系統單晶片（SoC）的成功量產，該季度營收較前一季成長 5.7%。 [(00:00:13) Jessie Wang]
+- MediaTek 2026 年目標 ASIC 營收超過 10 億美元，並預期 2027 年將成長至數十億美元。公司已確保足夠產能以達成 2026 年目標。 [(00:04:14) Jessie Wang]
+- MediaTek 的 Smart Edge 平台持續成長，營收來源多元，涵蓋電信、消費性電子、汽車及運算業務。公司預期即使不計 ASIC 潛在成長，2026 年仍將持續成長。 [(00:03:12) Jessie Wang]
+- MediaTek 正積極投資汽車與運算領域，包括與 NVIDIA 合作開發用於 AI 平台的 GB10 晶片，該晶片將於 2026 年持續出貨，並預計有四年生產週期。 [(00:08:49) Jessie Wang]
+
+### 地緣政治
+- 多家中國客戶尋求中國以外的成長機會，將 MediaTek 的 Dimensity 9000 SoC 推向西亞、印度及歐洲，擴大公司全球市場版圖。 [(00:05:56) Jessie Wang]
+
+### 產業循環週期
+- 2026 年手機業務面臨記憶體成本上升的逆風，預期將影響業務並對整體出貨量造成壓力。 [(00:01:55) Jessie Wang]
+
+### 產業供需
+- ASIC 生產的前段與後段產能均受限。MediaTek 與客戶及供應商密切合作，已確保 2026 年足夠產能，並因應強勁客戶需求持續爭取 2027 年產能。 [(00:07:23) Jessie Wang]
+
+### 產業狀況
+- 消費性電子部門，包括智慧型手機與個人電腦，將面臨與手機業務類似的挑戰，但 MediaTek 目標開拓資料中心與汽車等新領域以促進成長。 [(00:05:01) Jessie Wang]
+
+### 獲利
+- 本季毛利率預計維持相對穩定，中點約為 46%，上下浮動 1.5 個百分點。營運費用比率指引為 35%，上下浮動 2 個百分點。 [(00:00:58) Jessie Wang]
+
+### 公司展望、未來成長動能
+- 儘管短期面臨逆風，MediaTek 仍看好手機業務長期機會，持續保持領先地位並推出旗艦級領先解決方案。 [(00:02:31) Jessie Wang]
+- Smart Edge 平台預計在 2026 年持續成長，營收來源多元且具韌性，涵蓋電信、消費性電子、汽車及運算業務。 [(00:03:12) Jessie Wang]
+- MediaTek 正積極投資汽車與運算領域，汽車新設計案預計於 2026 年進入量產，並持續與 NVIDIA 合作開發資料中心用 AI 晶片。 [(00:08:49) Jessie Wang]
+- MediaTek 認為 AI 時代將帶來豐富機會，憑藉其在邊緣 AI、連接技術及資料中心技術的領導地位。 [(00:10:35) Jessie Wang]
+
+### 市場競爭策略
+- MediaTek 在旗艦智慧型手機市場持續擴大市佔率，尤其在中國國內市場，並正拓展至西亞、印度及歐洲。 [(00:05:49) Jessie Wang]
+
+### 營收
+- MediaTek 於 2025 年第四季營收較前季成長 5.7%（根據語音日期推斷），2025 年全年營收創歷史新高。 [(00:00:23) Jessie Wang]
+- 2026 年第一季（根據 2026-03-11 推估），MediaTek 預期營收將持平或較前季下滑最多 6%。 [(00:00:48) Jessie Wang]
+
+### 訂單
+- MediaTek 在汽車領域已建立穩健且健康的設計管線，去年取得的多項設計案預計於 2026 年進入量產。 [(00:09:07) Jessie Wang]
+
+### 產品組合
+- 2025 年第四季（根據語音日期推斷），手機業務佔總營收 59%，Smart Edge 平台佔 37%，電源管理 IC 佔 5%。 [(00:01:41) Jessie Wang]
+
+### 營收地區
+- MediaTek 的旗艦智慧型手機 SoC，特別是 Dimensity 9000，正從中國擴展至西亞、印度及歐洲，顯示區域多元化趨勢。 [(00:06:03) Jessie Wang]
+
+### 上游廠商
+- MediaTek 與供應商密切合作，確保 ASIC 生產的前段與後段產能，以應對供應緊張狀況。 [(00:07:23) Jessie Wang]
+
+### 下游客戶
+- 客戶因應記憶體成本上升，轉向高階產品，藉此較易將成本轉嫁給消費者，但整體出貨量承受壓力。 [(00:02:12) Jessie Wang]
+- MediaTek 與客戶密切合作，共同應對市場挑戰，特別是在手機業務領域。 [(00:02:57) Jessie Wang]
+
+### 稼動率
+- MediaTek 已確保 2026 年 ASIC 營收目標所需產能，現有產能亦可支撐 2027 年強勁成長，公司持續與供應鏈合作以爭取額外產能。 [(00:07:47) Jessie Wang]
+
+### 新產品／新技術
+- MediaTek 正在 Smart Edge 平台下開發多項新計畫，包括資料中心與汽車的新技術解決方案。公司去年亦宣佈推出 ADAS 晶片，為汽車業務注入動能。 [(00:03:12) Jessie Wang]
+- MediaTek 與 NVIDIA 合作開發 GB10 晶片，該晶片用於 NVIDIA 的 AI 平台 DGX Spark，2026 年持續出貨，預計有四年生產週期。 [(00:09:44) Jessie Wang]
+
+### 產品價格
+- 智慧型手機零售價格將因記憶體成本上升而調整，客戶轉向高階產品以較有效將成本轉嫁給消費者。 [(00:02:17) Jessie Wang]
+
+### 成本毛利
+- 本季毛利率預計維持相對穩定，中點約為 46%，上下浮動 1.5 個百分點。 [(00:00:58) Jessie Wang]
+
+### 原物料／關鍵零組件
+- 記憶體成本上升為 2026 年手機業務的逆風，影響 MediaTek 及其客戶。 [(00:01:55) Jessie Wang]
+
+### 銷售／管理／研發費用
+- 本季營運費用比率指引為 35%，上下浮動 2 個百分點。 [(00:01:10) Jessie Wang]
+
+### 擴廠規劃
+- MediaTek 正積極與客戶洽談未來 ASIC 專案，若一切順利，預計 2028 年開始貢獻營收。 [(00:04:36) Jessie Wang]
+
+## Transcript
+
+### Presentation
+
+**Jason Wang - MediaTek, Investor Relation**
+(00:00:00) We're very pleased to have Jessie Wang, MediaTek's Investor Relations manager, with us today. She will provide an overview of MediaTek's results and offer some guidance for the future. Thank you.
+(00:00:00) 我們非常高興今天能夠邀請到 MediaTek 的投資關係經理 Jessie Wang。她將提供 MediaTek 的業績概述並對未來提供一些指導。謝謝。
+
+**Jessie Wang - MediaTek, Investor Relation**
+(00:00:12) Okay. Thank you, Jason. As this slide shows, in Q4 last year, we achieved a 5.7% sequential growth in revenue. During that quarter, we successfully ramped up our Smartphone SoC Dimensity 9500. This was a major driver of the revenue increase. We concluded 2025 with record revenue for the full year. Overall, this represents remarkable progress in our smartphone business. For the current quarter, we are guiding quarterly revenues to be flat to down 6% sequentially. Gross margin is expected to remain relatively flat at the midpoint, around 46%, plus or minus 1.5 percentage points.
+(00:00:12) 好的。謝謝你，Jason。如這張幻燈片所示，在去年的第四季度，我們實現了5.7% 的季度收入增長。在那個季度，我們成功地提升了我們的智能手機 SoC Dimensity 9500 的產量。這是收入增長的主要驅動因素。我們以創紀錄的全年收入結束了 2025 年。總體而言，這代表了我們智能手機業務的顯著進展。對於當前季度，我們預測季度收入將持平或較上季度下降 6%。預計毛利率將在中點保持相對平穩，約為 46%，上下浮動 1.5 個百分點。
+
+(00:01:10) Operating expenses ratio is guided at 35%, plus or minus 2 percentage points. As we approach March, we are already in March. So far, the first quarter is progressing pretty much on track. There is no change to the first quarter guidance. Now, let's look at our three revenue groups. We categorize our revenues into three groups. The first is mobile phones. It accounted for a significant 59% of total revenue last quarter. The Smart Edge platform contributed 37%, and Power IC accounted for 5% of quarterly revenue.
+(00:01:10) 營運費用比率預測為 35%，上下浮動 2 個百分點。隨著三月的到來，我們已經進入三月。到目前為止，第一季度的進展基本上是按計劃進行的。第一季度的指導沒有變化。現在，讓我們來看看我們的三個收入組別。我們將收入分為三個組別。第一個是手機。上一季度它佔總收入的 59%。Smart Edge 平台貢獻了 37%，而電源 IC 佔季度收入的 5%。
+
+(00:01:55) Looking ahead to 2026, as everyone knows, the mobile phone business faces headwinds due to higher memory costs. We anticipate some impact on the business from this. Customers are responding by trying to... shift more towards higher-end products where they believe they can better pass on the increased costs to consumers. Inevitably, this will put some pressure on overall unit volumes. However, we still maintain strong leadership and proper follow-through, continuing to launch leading solutions across tiers, especially in the flagship segment.
+(00:01:55) 展望 2026 年，眾所周知，手機業務面臨由於記憶體成本上升而帶來的逆風。我們預計這將對業務產生一些影響。客戶正在回應，試圖...更加轉向高端產品，他們相信可以更好地將增加的成本轉嫁給消費者。不可避免地，這將對整體單位銷量施加一些壓力。然而，我們仍然保持強大的領導地位和適當的跟進，繼續推出各個層級的領先解決方案，特別是在旗艦市場。
+
+(00:02:46) Structurally, we believe this remains a good long-term opportunity. It continues to be a very stable and strong business portfolio for us, particularly this year. We will collaborate closely with our customers to navigate the current situation. The second segment is the Smart Edge platform, which has many exciting new opportunities. We are developing several new initiatives under the Smart Edge platform business. Even excluding potential upside from ASIC revenue, our core Smart Edge platform business is expected to continue growing in 2026.
+(00:02:46) 從結構上看，我們認為這仍然是一個良好的長期機會。這對我們來說仍然是一個非常穩定和強大的業務組合，特別是在今年。我們將與客戶密切合作，以應對當前的情況。第二個部分是 Smart Edge 平台，這裡有許多令人興奮的新機會。我們正在 Smart Edge 平台業務下開發幾個新舉措。即使不考慮 ASIC 收入的潛在上行，我們的核心 Smart Edge 平台業務預計在 2026 年將繼續增長。
+
+(00:03:32) Growth will mainly come from our global market share in telecom operators, tier-one consumer electronics players, automotive customers, and some compute business. We now have a very diversified and resilient platform within our Smart Edge business. Additionally, ASIC is an exciting area for development. We are now prepared for product mass production. for our customers. We target more than one billion US dollars in revenue from ASIC in 2026, as guided in the earnings call. This target remains unchanged.
+(00:03:32) 增長主要來自我們在電信運營商、第一級消費電子廠商、汽車客戶和一些計算業務中的全球市場份額。我們現在在 Smart Edge 業務中擁有一個非常多元化和有韌性的平台。此外，ASIC 是一個令人興奮的發展領域。我們現在已經為產品量產做好準備。以便為我們的客戶提供服務。我們的目標是在 2026 年從 ASIC 中實現超過十億美元的收入，這在財報電話會議中已經指導過。這一目標保持不變。
+
+(00:04:25) We also forecast that in 2027, this project will generate multiple billions in revenue. We are still working on that. That outlook also remains unchanged. We are actively engaging with customers for upcoming projects. If all goes well, revenue should start in 2028. We are the team focused on execution, aiming to capture more opportunities in the ASIC business. The third area is Power IC. We group them together because our Power IC solutions are quite diversified. The consumer electronics segment, including smartphones and PCs, as we discussed, will also face similar challenges.
+(00:04:25) 我們還預測在 2027 年，這個項目將產生數十億的收入。我們仍在努力推進。這一展望也保持不變。我們正在積極與客戶接洽以便為即將到來的項目做準備。如果一切順利，收入應該會在 2028 年開始。我們是專注於執行的團隊，旨在捕捉更多的 ASIC 業務機會。第三個領域是電源 IC。我們將它們歸在一起，因為我們的電源 IC 解決方案相當多樣化。消費電子領域，包括智能手機和個人電腦，正如我們所討論的，也將面臨類似的挑戰。
+
+(00:05:09) However, we have new technology solutions targeting new areas such as data centers and automotive, where we believe we still have strengths and continue to gain market share. So, this is a brief update on our business. I'll see if you have any other questions.
+(00:05:09) 不過，我們有新技術解決方案針對數據中心和汽車等新領域，我們相信我們仍然擁有優勢，並持續獲得市場份額。所以，這是我們業務的簡要更新。我會看看你們是否有其他問題。
+
+**Jason Wang - MediaTek, Investor Relation**
+(00:05:25) Okay. Thank you very much, Jessie Wang. That was very clear.
+(00:05:25) 好的。非常感謝，Jessie Wang。這非常清楚。
+
+### Q&A
+
+**Jason Wang - MediaTek, Investor Relation**
+(00:05:27) Starting with smartphones, our core business, could you share if there are any opportunities to gain market share, particularly in the flagship segment? I believe that is a key growth area in your core business, correct? Could you provide more details on that?
+(00:05:27) 從智能手機開始，我們的核心業務，您能否分享是否有機會獲得市場份額，特別是在旗艦領域？我相信這是您核心業務中的一個關鍵增長領域，對嗎？您能否提供更多細節？
+
+**Jessie Wang - MediaTek, Investor Relation**
+(00:05:48) Certainly. We have been gaining market share in this space over the past few years, mainly in the domestic Chinese market. We have noticed that several of our Chinese customers are now seeking growth opportunities outside China. They are bringing our Dimensity 9000 SoCs to regions beyond China, including Western Asia, India, and even Europe. So, we are seeing a larger market now. We believe that with some expansion, we can gain market share globally in the flagship segment. However, as mentioned in the opening remarks, memory issues remain a key topic for them.
+(00:05:48) 當然。在過去幾年中，我們在這個領域獲得了市場份額，主要是在中國國內市場。我們注意到幾位中國客戶現在正在尋求中國以外的增長機會。他們將我們的 Dimensity 9000 SoC 帶到中國以外的地區，包括西亞、印度，甚至歐洲。所以，我們現在看到一個更大的市場。我們相信，隨著一些擴張，我們可以在旗艦領域全球獲得市場份額。不過，正如開場白中提到的，記憶體問題仍然是他們的關鍵話題。
+
+(00:06:44) Retail prices will respond accordingly. We also believe smartphones remain a very important device in everyone's life. Therefore, there should be fundamental demand, although inevitably there will be some impact this year.
+(00:06:44) 零售價格將相應調整。我們也相信智能手機仍然是每個人生活中非常重要的設備。因此，應該會有基本需求，儘管今年不可避免地會有一些影響。
+
+**Jason Wang - MediaTek, Investor Relation**
+(00:07:00) Understood. Got it. All right. Moving on to another exciting topic: the ASIC segment. Could you also discuss concerns many have about securing capacity? Could you explain how you secure capacity and share your outlook for this segment?
+(00:07:00) 明白了。知道了。好的。接下來談談另一個令人興奮的主題：ASIC 領域。您能否也討論一下許多人對確保產能的擔憂？您能否解釋一下您如何確保產能並分享您對這個領域的展望？
+
+**Jessie Wang - MediaTek, Investor Relation**
+(00:07:20) Sure. Right. Supply is tight. Yes. Both front-end and back-end capacities are constrained. This is one of the value-added services we provide. We work closely with customers and vendors to secure capacity. For 2026, as I mentioned, we target over $1 billion in revenue. We have already secured sufficient capacity to achieve that target for 2026. For 2027, the current capacity can support strong growth. However, we aim for more because our customers are experiencing very strong demand. We will continue working with customers and the supply chain to secure additional capacity.
+(00:07:20) 當然。對。供應緊張。是的。前端和後端的產能都受到限制。這是我們提供的增值服務之一。我們與客戶和供應商密切合作以確保產能。對於 2026 年，正如我提到的，我們的目標是超過 10 億美元的收入。我們已經確保了足夠的產能來實現 2026 年的目標。對於 2027 年，目前的產能可以支持強勁增長。不過，我們的目標是更多，因為我們的客戶正在經歷非常強勁的需求。我們將繼續與客戶和供應鏈合作以確保額外的產能。
+
+**Jason Wang - MediaTek, Investor Relation**
+(00:08:19) Understood. That is very clear. Looking ahead, besides the promising ASIC segment, do you see potential in other areas? Are there opportunities to gain market share or increase orders beyond ASIC and smartphones?
+(00:08:19) 明白了。這非常清楚。展望未來，除了前景看好的 ASIC 領域，您是否看到其他領域的潛力？在 ASIC 和智能手機之外，是否有機會獲得市場份額或增加訂單？
+
+**Jessie Wang - MediaTek, Investor Relation**
+(00:08:45) Certainly. We are investing in several areas. Apart from the exciting ASIC opportunity, we are also heavily investing in automotive, for example. Our corporate solutions have been gaining strong traction, especially with several China OEMs. As a result, we have secured a robust and healthy design pipeline. Many of these designs were secured last year and will gradually enter mass production this year. This is one of the reasons why we expect business growth this year. We also announced an ADAS chip, as highlighted in our press release last year.
+(00:08:45) 當然。我們正在多個領域進行投資。除了令人興奮的 ASIC 機會外，我們也在汽車領域進行大量投資，例如。我們的企業解決方案在中國幾家 OEM 中獲得了強勁的市場反響。因此，我們已經確保了一個穩健且健康的設計管道。其中許多設計是在去年確保的，並將在今年逐步進入量產。這是我們預期今年業務增長的原因之一。我們還宣佈了一款 ADAS 晶片，如去年新聞稿中所強調的。
+
+(00:09:32) This development is adding momentum to our mobile automotive business growth. Additionally, we discussed compute, which is relatively new to us. I would characterize it as a new business area for MediaTek. Last year, we collaborated with NVIDIA on the GB10 chip. This chip is used in NVIDIA's AI platform, DGX Spark, and shipments will continue this year. I believe this is part of a four-year production cycle. Therefore, we anticipate some new revenue contributions to our business. This will add new revenue streams for us.
+(00:09:32) 這一發展為我們的移動汽車業務增長增添了動力。此外，我們還討論了計算，這對我們來說相對較新。我會將其視為 MediaTek 的一個新業務領域。去年，我們與 NVIDIA 合作開發了 GB10 晶片。此晶片用於 NVIDIA 的 AI 平台 DGX Spark，並將在今年繼續出貨。我相信這是四年生產週期的一部分。因此，我們預期會有一些新的收入貢獻到我們的業務中。這將為我們增加新的收入來源。
+
+(00:10:09) On the compute side, we believe the AI era will present more opportunities for exploration. We will keep you updated if we have any new plans to share.
+(00:10:09) 在計算方面，我們相信 AI 時代將為探索提供更多機會。如果我們有任何新的計劃要分享，會隨時更新您。
+
+**Jason Wang - MediaTek, Investor Relation**
+(00:10:21) That's excellent, truly impressive. We are very excited about these developments. I think that covers most of the topics we wanted to discuss. Is there anything else you would like to highlight for investors or the market?
+(00:10:21) 這真是太棒了，令人印象深刻。我們對這些發展感到非常興奮。我想這涵蓋了我們想要討論的大部分主題。還有其他您想要強調的事項嗎？
+
+**Jessie Wang - MediaTek, Investor Relation**
+(00:10:35) I want to reiterate that MediaTek has very strong technology in this era, not only at the edge. We have leadership here, enabling more than 2 billion devices every year. We own all the key technologies: low-power processors, multimedia, connectivity, and more. So, in edge AI, we hold a very strong position. We have also discussed the data center opportunity extensively. We possess key technologies and the capability to help customers build efficient solutions. So, We also have critical connectivity technology to link the edge and the cloud.
+(00:10:35) 我想重申，MediaTek 在這個時代擁有非常強大的技術，不僅僅是在邊緣。我們在這方面具有領導地位，每年使超過 20 億個設備運行。我們擁有所有關鍵技術：低功耗處理器、多媒體、連接性等。因此，在邊緣 AI 方面，我們佔據了非常強的位置。我們也廣泛討論了數據中心的機會。我們擁有關鍵技術和能力，幫助客戶構建高效的解決方案。所以，我們還擁有關鍵的連接技術，將邊緣和雲端連接起來。
+
+(00:11:21) We believe that in the AI era, there will be abundant opportunities for us to explore.
+(00:11:21) 我們相信在 AI 時代，將有豐富的機會供我們探索。
+
+**Jason Wang - MediaTek, Investor Relation**
+(00:11:28) Wonderful, truly wonderful. We are very excited about your future updates. All right. Thank you, Jessie. Thank you very much. Thank you.
+(00:11:28) 太棒了，真的太棒了。我們對您未來的更新感到非常興奮。好的。謝謝你，Jessie。非常感謝。謝謝。
