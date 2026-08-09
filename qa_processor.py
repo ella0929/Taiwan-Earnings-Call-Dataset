@@ -4,137 +4,111 @@ import asyncio
 import aiomysql
 from dotenv import load_dotenv
 
-# 載入 .env 檔案中的隱藏變數
 load_dotenv()
 
 def parse_txt_file(file_path: str):
     """
-    1. 讀取 .txt 文字檔
-    2. 自動抓取 Q&A 開始點
-    3. 將文字切割成 speech_segments 所需的結構
+    通用型逐字稿解析器：相容台積電、聯發科等不同公司的中英文法說會逐字稿格式
     """
-    # 從檔名取得 call_id (例: "2454_2026Q2.txt" -> "2454_2026Q2")
     file_name = os.path.basename(file_path)
     call_id = os.path.splitext(file_name)[0]
 
-    # 讀取文字檔內容
     with open(file_path, "r", encoding="utf-8") as f:
         transcript_text = f.read()
 
-    # 定義 Q&A 的開頭關鍵字
-    qa_keywords = [r"Q&A", r"q&a", r"問答", r"提問", r"問與答", r"開放提問", r"現場提問"]
+    # 1. 中英文 Q&A 區段開頭關鍵字（擴充相容性）
+    qa_keywords = [
+        r"Question-and-Answer Session", r"Questions and Answers", r"Q&A", r"q&a", 
+        r"Q and A", r"問答", r"提問", r"問與答", r"開放提問", r"現場提問"
+    ]
     qa_start_pos = -1
 
     for kw in qa_keywords:
-        match = re.search(kw, transcript_text)
+        match = re.search(kw, transcript_text, re.IGNORECASE)
         if match:
             qa_start_pos = match.start()
             break
 
     segments = []
 
-    # 切割簡報 (presentation) 與 Q&A 區段
+    # 2. 拆分簡報與 Q&A
     if qa_start_pos != -1:
         pres_text = transcript_text[:qa_start_pos].strip()
         qa_text = transcript_text[qa_start_pos:].strip()
 
-        # 寫入簡報區段
-        segments.append({
-            "segment_id": f"{call_id}_pres_01",
-            "call_id": call_id,
-            "section_type": "presentation",
-            "question_id": None,
-            "transcript_text": pres_text,
-            "word_count": len(pres_text)
-        })
+        if pres_text:
+            segments.append({
+                "segment_id": f"{call_id}_pres_01",
+                "call_id": call_id,
+                "section_type": "presentation",
+                "question_id": None,
+                "transcript_text": pres_text,
+                "word_count": len(pres_text)
+            })
     else:
         qa_text = transcript_text.strip()
 
-    # 解析 Q&A 區段中的每一組問答
+    # 3. 解析 Speaker Turn（擴充萬用講者切換標頭）
     if qa_text:
-        # 尋找常見的問答分界點 (例: Q1:, A:, 提問:, 回答:, 法人:)
-        blocks = re.split(r'(\n(?:Q\d*|A\d*|提問|回答|法人|分析師|公司回應)[：:]?)', qa_text)
+        # 強大模式：支援 **人名**、英文名字 (C.C. Wei:)、中文姓名職務 (魏哲家總裁：)、Q1/A1、Operator 等
+        speaker_pattern = r'(\n(?:\*\*[^*]+\*\*|[A-Z][a-zA-Z\.\s]+[：:]|[\u4e00-\u9fa5]{2,4}(?:董事長|總裁|副總|分析師|提問)?[\s：:]|Q\d*|A\d*|Operator|提問|回答)[：:]?)'
+        
+        raw_blocks = re.split(speaker_pattern, qa_text)
 
-        q_count = 0
-        current_q = ""
-        current_a = ""
-        is_question = True
+        turn_count = 0
+        current_header = ""
+        current_text = ""
 
-        for block in blocks:
+        for block in raw_blocks:
             text = block.strip()
             if not text:
                 continue
 
-            # 判斷是否為「問題」標頭
-            if re.match(r'^(Q\d*|提問|法人|分析師)[：:]?$', text, re.IGNORECASE):
-                if current_q or current_a:
-                    q_count += 1
-                    qid = f"Q{q_count}"
-                    if current_q:
-                        segments.append({
-                            "segment_id": f"{call_id}_{qid}_Q",
-                            "call_id": call_id,
-                            "section_type": "qa",
-                            "question_id": qid,
-                            "transcript_text": current_q.strip(),
-                            "word_count": len(current_q.strip())
-                        })
-                    if current_a:
-                        segments.append({
-                            "segment_id": f"{call_id}_{qid}_A",
-                            "call_id": call_id,
-                            "section_type": "qa",
-                            "question_id": qid,
-                            "transcript_text": current_a.strip(),
-                            "word_count": len(current_a.strip())
-                        })
-                    current_q, current_a = "", ""
-                is_question = True
+            # 驗證此區塊是否為講者標頭
+            is_header = re.match(r'^(\*\*[^*]+\*\*|[A-Z][a-zA-Z\.\s]+[：:]?|[\u4e00-\u9fa5]{2,4}(?:董事長|總裁|副總|分析師|提問)?[\s：:]?|Q\d*|A\d*|Operator|提問|回答)[：:]?$', text, re.IGNORECASE)
 
-            # 判斷是否為「回答」標頭
-            elif re.match(r'^(A\d*|回答|公司回應)[：:]?$', text, re.IGNORECASE):
-                is_question = False
+            if is_header:
+                if current_text.strip():
+                    turn_count += 1
+                    seg_id = f"{call_id}_turn_{turn_count:02d}"
+                    segments.append({
+                        "segment_id": seg_id,
+                        "call_id": call_id,
+                        "section_type": "qa",
+                        "question_id": f"Q_{turn_count:02d}",
+                        "transcript_text": f"{current_header} {current_text}".strip(),
+                        "word_count": len(current_text.strip())
+                    })
+                    current_text = ""
+
+                current_header = text
             else:
-                if is_question:
-                    current_q += " " + text
-                else:
-                    current_a += " " + text
+                current_text += " " + text
 
-        # 處理最後一組 Q&A
-        if current_q or current_a:
-            q_count += 1
-            qid = f"Q{q_count}"
-            if current_q:
-                segments.append({
-                    "segment_id": f"{call_id}_{qid}_Q",
-                    "call_id": call_id,
-                    "section_type": "qa",
-                    "question_id": qid,
-                    "transcript_text": current_q.strip(),
-                    "word_count": len(current_q.strip())
-                })
-            if current_a:
-                segments.append({
-                    "segment_id": f"{call_id}_{qid}_A",
-                    "call_id": call_id,
-                    "section_type": "qa",
-                    "question_id": qid,
-                    "transcript_text": current_a.strip(),
-                    "word_count": len(current_a.strip())
-                })
+        # 處理最後一筆發言
+        if current_text.strip():
+            turn_count += 1
+            seg_id = f"{call_id}_turn_{turn_count:02d}"
+            segments.append({
+                "segment_id": seg_id,
+                "call_id": call_id,
+                "section_type": "qa",
+                "question_id": f"Q_{turn_count:02d}",
+                "transcript_text": f"{current_header} {current_text}".strip(),
+                "word_count": len(current_text.strip())
+            })
 
     return segments
 
 
 async def save_segments_to_db(segments: list):
     """
-    連接 MySQL 資料庫，並將處理好的 Q&A 切割結果寫入 `speech_segments` 資料表
+    通用型寫入 MySQL 資料庫
     """
     if not segments:
         print("⚠️ 沒有可寫入的片段資料。")
         return
 
-    # 取得當前處理的 call_id (如 "2454_2026Q2")
     call_id = segments[0]["call_id"]
     parts = call_id.split("_")
     company_code = parts[0] if len(parts) > 0 else "UNKNOWN"
@@ -151,7 +125,7 @@ async def save_segments_to_db(segments: list):
 
         async with pool.acquire() as conn:
             async with conn.cursor() as cur:
-                # 1. 補全父表 earnings_calls (如果不存在就自動建立基本紀錄，解決外鍵報錯)
+                # 自動判斷公司代號與名稱
                 sql_call = """
                     INSERT INTO earnings_calls 
                     (call_id, company_code, company_name, fiscal_year, call_date)
@@ -159,14 +133,9 @@ async def save_segments_to_db(segments: list):
                     ON DUPLICATE KEY UPDATE updated_at=CURRENT_TIMESTAMP
                 """
                 await cur.execute(sql_call, (
-                    call_id,
-                    company_code,
-                    f"公司_{company_code}",  # 預設名稱，後續可由負責人改掉
-                    2026,                  # 預設年份
-                    "2026-01-01"           # 預設日期
+                    call_id, company_code, f"公司_{company_code}", 2026, "2026-01-01"
                 ))
 
-                # 2. 寫入 speech_segments 子表
                 sql_segment = """
                     INSERT INTO speech_segments 
                     (segment_id, call_id, section_type, question_id, start_time_sec, end_time_sec, transcript_text, word_count)
@@ -183,13 +152,13 @@ async def save_segments_to_db(segments: list):
                         seg["call_id"],
                         seg["section_type"],
                         seg["question_id"],
-                        0.0,  # 預留給處理聲音/時間軸的同學填入
-                        0.0,  # 預留給處理聲音/時間軸的同學填入
+                        0.0,
+                        0.0,
                         seg["transcript_text"],
                         seg["word_count"]
                     ))
 
-                print(f"✅ 成功將 {len(segments)} 筆資料寫入/更新至 `speech_segments` 表！")
+                print(f"✅ 成功將 [{call_id}] 的 {len(segments)} 個 Speaker Turn 寫入/更新至 `speech_segments` 表！")
 
         pool.close()
         await pool.wait_closed()
