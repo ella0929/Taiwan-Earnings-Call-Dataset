@@ -16,7 +16,7 @@ def parse_txt_file(file_path: str):
     with open(file_path, "r", encoding="utf-8") as f:
         transcript_text = f.read()
 
-    # 1. 中英文 Q&A 區段開頭關鍵字（擴充相容性）
+    # 1. 中英文 Q&A 區段開頭關鍵字
     qa_keywords = [
         r"Question-and-Answer Session", r"Questions and Answers", r"Q&A", r"q&a", 
         r"Q and A", r"問答", r"提問", r"問與答", r"開放提問", r"現場提問"
@@ -48,9 +48,8 @@ def parse_txt_file(file_path: str):
     else:
         qa_text = transcript_text.strip()
 
-    # 3. 解析 Speaker Turn（擴充萬用講者切換標頭）
+    # 3. 解析 Speaker Turn（過濾純標題/垃圾資料）
     if qa_text:
-        # 強大模式：支援 **人名**、英文名字 (C.C. Wei:)、中文姓名職務 (魏哲家總裁：)、Q1/A1、Operator 等
         speaker_pattern = r'(\n(?:\*\*[^*]+\*\*|[A-Z][a-zA-Z\.\s]+[：:]|[\u4e00-\u9fa5]{2,4}(?:董事長|總裁|副總|分析師|提問)?[\s：:]|Q\d*|A\d*|Operator|提問|回答)[：:]?)'
         
         raw_blocks = re.split(speaker_pattern, qa_text)
@@ -58,6 +57,9 @@ def parse_txt_file(file_path: str):
         turn_count = 0
         current_header = ""
         current_text = ""
+
+        # 用來比對是否為無意義標題的清單
+        junk_keywords = ["q&a", "question-and-answer session", "問答", "提問", "問與答"]
 
         for block in raw_blocks:
             text = block.strip()
@@ -68,7 +70,9 @@ def parse_txt_file(file_path: str):
             is_header = re.match(r'^(\*\*[^*]+\*\*|[A-Z][a-zA-Z\.\s]+[：:]?|[\u4e00-\u9fa5]{2,4}(?:董事長|總裁|副總|分析師|提問)?[\s：:]?|Q\d*|A\d*|Operator|提問|回答)[：:]?$', text, re.IGNORECASE)
 
             if is_header:
-                if current_text.strip():
+                clean_body = current_text.strip()
+                # 判斷內容是否為有效發言（非純標題，且有實質內文）
+                if clean_body and clean_body.lower() not in junk_keywords and len(clean_body) > 2:
                     turn_count += 1
                     seg_id = f"{call_id}_turn_{turn_count:02d}"
                     segments.append({
@@ -76,17 +80,17 @@ def parse_txt_file(file_path: str):
                         "call_id": call_id,
                         "section_type": "qa",
                         "question_id": f"Q_{turn_count:02d}",
-                        "transcript_text": f"{current_header} {current_text}".strip(),
-                        "word_count": len(current_text.strip())
+                        "transcript_text": f"{current_header} {clean_body}".strip(),
+                        "word_count": len(clean_body)
                     })
-                    current_text = ""
-
+                current_text = ""
                 current_header = text
             else:
                 current_text += " " + text
 
-        # 處理最後一筆發言
-        if current_text.strip():
+        # 處理最後一筆，同樣過濾無效發言
+        clean_body = current_text.strip()
+        if clean_body and clean_body.lower() not in junk_keywords and len(clean_body) > 2:
             turn_count += 1
             seg_id = f"{call_id}_turn_{turn_count:02d}"
             segments.append({
@@ -94,8 +98,8 @@ def parse_txt_file(file_path: str):
                 "call_id": call_id,
                 "section_type": "qa",
                 "question_id": f"Q_{turn_count:02d}",
-                "transcript_text": f"{current_header} {current_text}".strip(),
-                "word_count": len(current_text.strip())
+                "transcript_text": f"{current_header} {clean_body}".strip(),
+                "word_count": len(clean_body)
             })
 
     return segments
@@ -103,7 +107,7 @@ def parse_txt_file(file_path: str):
 
 async def save_segments_to_db(segments: list):
     """
-    通用型寫入 MySQL 資料庫
+    通用型寫入 MySQL 資料庫（寫入前先清理舊的髒資料）
     """
     if not segments:
         print("⚠️ 沒有可寫入的片段資料。")
@@ -125,7 +129,7 @@ async def save_segments_to_db(segments: list):
 
         async with pool.acquire() as conn:
             async with conn.cursor() as cur:
-                # 自動判斷公司代號與名稱
+                # 1. 父表卡位
                 sql_call = """
                     INSERT INTO earnings_calls 
                     (call_id, company_code, company_name, fiscal_year, call_date)
@@ -136,14 +140,14 @@ async def save_segments_to_db(segments: list):
                     call_id, company_code, f"公司_{company_code}", 2026, "2026-01-01"
                 ))
 
+                # 2. 清理該 call_id 舊有的舊格式 segment，確保不會殘留 turn_01 純 Q&A 垃圾資料
+                await cur.execute("DELETE FROM speech_segments WHERE call_id = %s", (call_id,))
+
+                # 3. 寫入全新的乾淨 segments
                 sql_segment = """
                     INSERT INTO speech_segments 
                     (segment_id, call_id, section_type, question_id, start_time_sec, end_time_sec, transcript_text, word_count)
                     VALUES (%s, %s, %s, %s, %s, %s, %s, %s)
-                    ON DUPLICATE KEY UPDATE 
-                    section_type=VALUES(section_type), 
-                    question_id=VALUES(question_id), 
-                    transcript_text=VALUES(transcript_text)
                 """
 
                 for seg in segments:
@@ -158,7 +162,7 @@ async def save_segments_to_db(segments: list):
                         seg["word_count"]
                     ))
 
-                print(f"✅ 成功將 [{call_id}] 的 {len(segments)} 個 Speaker Turn 寫入/更新至 `speech_segments` 表！")
+                print(f"✅ 成功清理舊資料並寫入 [{call_id}] 的 {len(segments)} 個乾淨 Speaker Turn！")
 
         pool.close()
         await pool.wait_closed()
