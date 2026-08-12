@@ -1,0 +1,4 @@
+openai-whisper
+pandas
+aiomysql
+python-dotenv
