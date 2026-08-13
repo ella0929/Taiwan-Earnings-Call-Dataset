@@ -56,13 +56,12 @@ def transcribe_audio(wav_path: Path, raw_json_path: Path):
     result = model.transcribe(
         str(wav_path),
 
-        language="zh",
-
         task="transcribe",
 
         fp16=False,
 
         verbose=True,
+
 
         word_timestamps=True
     )

@@ -1,0 +1,181 @@
+[0.000 --> 3.080] We're really happy to have our Media Tech Investor Relations
+[3.720 --> 4.900] Manager, Jessie Wang here.
+[5.240 --> 8.360] She would like to have some overview on the result
+[8.360 --> 10.620] of Media Tech and also some guidance in the future.
+[11.620 --> 12.080] Thank you.
+[12.360 --> 12.560] OK.
+[12.840 --> 13.320] Thank you, Jason.
+[14.020 --> 19.620] So as this slide shows, in Q4 last year,
+[20.100 --> 25.960] we achieved 5.7 % sequential growth in the revenue.
+[26.600 --> 28.780] In that quarter, we ran successfully
+[28.780 --> 32.000] ran the smart phone associate MSU 9500.
+[32.440 --> 35.300] That was the major reason for the revenue ramp.
+[35.520 --> 38.480] And we conclude 2025 with the record
+[38.480 --> 39.820] revenue for the four years.
+[40.760 --> 45.400] So in general, I think that is a remarkable progress
+[46.200 --> 47.980] in our smartphone business.
+[49.360 --> 52.380] And for the first quarter, the current quarter,
+[53.020 --> 57.800] we are guiding quarterly revenue to be flat to down 6 %
+[57.800 --> 58.600] sequentially.
+[59.600 --> 63.980] And the course margin, we are getting a relatively flatish
+[65.020 --> 69.620] at the point, 46 % plus or minus 1.5 percentage point
+[70.580 --> 74.000] with a 35 % plus or minus 2 percentage point
+[74.000 --> 75.800] for operating expenses ratio.
+[76.300 --> 78.760] So far, I think we're approaching March.
+[79.080 --> 80.840] So I think we were already in March.
+[80.840 --> 84.380] So far, the first quarter, pretty much on track.
+[85.140 --> 88.240] There's no change in the first quarter guidance.
+[88.840 --> 94.020] And then let's look at our three revenue groups.
+[94.820 --> 97.900] For our business, we categorize our revenues
+[97.900 --> 98.980] into three groups.
+[99.420 --> 100.580] The first one is mobile phone.
+[101.560 --> 106.640] It was pretty high, 9 % of total revenue last quarter.
+[106.640 --> 113.280] Smart H -Path one, 37 % last quarter, and power IC5 %
+[113.280 --> 115.020] of the quarterly revenue.
+[115.540 --> 119.660] Then moving on to 2026, as everybody knows,
+[119.780 --> 121.060] I think for mobile phone business,
+[121.620 --> 125.480] there's no heavens around the higher memory cost.
+[126.440 --> 131.100] So we foresee that we have some impact on the business.
+[132.280 --> 134.540] Customers responding with no better.
+[135.120 --> 139.700] They try to do better, make shift to higher end,
+[139.800 --> 142.880] where they believe they are able to pass on the increasing
+[142.880 --> 144.480] cost to customers better.
+[145.460 --> 150.080] So being able to believe we think we'll pressure the overall unit
+[150.080 --> 150.760] a little bit.
+[151.080 --> 154.220] But in general, I would say, no worries,
+[154.360 --> 157.480] don't have very strong leadership in the proper follow.
+[158.120 --> 163.420] And we'll continue to launch the good leading solution
+[163.420 --> 166.360] across tiers, especially in flagship segments.
+[166.640 --> 168.420] So structurally, I think we've learned
+[168.420 --> 171.580] and we think that there's still a good opportunity for us.
+[171.700 --> 173.900] I think still a very stable and strong business
+[173.900 --> 176.100] portfolio for our business, especially
+[176.100 --> 178.700] shared, I think we wouldn't need to collaborate
+[178.700 --> 183.380] with our customers to navigate this current situation.
+[184.140 --> 185.960] The second part is smart Azure platform.
+[187.040 --> 192.440] A lot of people are excited about these new opportunities.
+[192.760 --> 195.880] We are developing several new opportunities
+[196.680 --> 198.500] under the smart Azure platform business.
+[199.100 --> 203.560] But even we exclude the potential upside,
+[203.800 --> 205.480] I mean the new revenue from ASIC.
+[206.020 --> 209.040] Even we exclude that our core business in smart Azure
+[209.040 --> 211.940] platform will continue to grow in 2026.
+[212.580 --> 215.160] So we mainly coming from our global market share
+[215.160 --> 221.120] again in global tail operators, tier one customer
+[221.120 --> 224.040] to turn this players, automotive customers,
+[224.700 --> 227.500] as well as some compute business.
+[228.760 --> 232.740] So we now have very diversified and resilient platform
+[233.460 --> 234.640] in our smart Azure platform.
+[235.500 --> 240.240] In addition to that, I think ASIC would be an exciting area.
+[241.440 --> 248.840] To develop, we are now in the stage
+[248.840 --> 251.740] that is prepared for the product mass production
+[252.640 --> 253.400] for our customer.
+[254.300 --> 258.460] We target to reach more than $1 billion
+[258.460 --> 261.820] of US dollar revenue in 2026 as we
+[261.820 --> 262.920] got it in the early school.
+[263.520 --> 264.640] So the target sound changed.
+[264.640 --> 269.000] And we also forecast that for 2027,
+[269.500 --> 272.700] that project will give us multiple billion of the revenue.
+[273.160 --> 274.360] I think we're still working on that.
+[274.540 --> 275.800] I think that's still also unchanged.
+[276.500 --> 278.240] And we are engaging with the customer
+[278.960 --> 281.320] where the following projects, if things go well,
+[281.580 --> 285.220] it should be revenue should start in starting in 2028.
+[285.620 --> 288.860] So we're the team now focus on execution
+[288.860 --> 293.260] and hopefully can grab more opportunities in ASIC business.
+[294.020 --> 296.060] The third one is PowerIC.
+[296.920 --> 301.380] They share it because our PowerIC solution is pretty diversified.
+[302.080 --> 305.300] So customer -made trans parts of smartphone PC, as we discussed,
+[305.620 --> 308.020] will also face the same situation.
+[308.840 --> 314.280] But we have no new solutions for new areas, data center,
+[314.680 --> 315.000] and automotive.
+[315.580 --> 317.500] I think those still have some strength
+[317.500 --> 319.020] that we continue to get market share there.
+[319.720 --> 322.320] So well, and this is a very quick update on our business.
+[322.320 --> 324.640] I'll see if you guys have other questions.
+[324.980 --> 326.620] OK, thank you very much, Asi.
+[326.960 --> 327.760] This is very clear.
+[327.880 --> 331.060] I think just starting from the smartphone or core business,
+[331.900 --> 335.120] could you share a little bit about if there's any opportunities
+[335.680 --> 337.680] that probably you can gain some shares?
+[338.900 --> 340.860] Probably in flagship part, right?
+[341.620 --> 346.240] I think that's kind of the growth areas in your core business,
+[346.380 --> 347.900] could you give us more color on that?
+[348.160 --> 348.780] Yeah, certainly.
+[349.520 --> 351.300] We've been getting market sharing in this space
+[351.300 --> 355.780] in the past few years, mainly in China, the Muslim market.
+[356.720 --> 363.720] We noticed that several Chinese customers now want to seek more growth elsewhere.
+[364.220 --> 369.520] So they're bringing our solutions, dimension 90,000 SOCs,
+[369.800 --> 375.580] to regions outside of China, including Western Asia, India, and even Europe.
+[376.220 --> 379.260] So we are seeing a bigger market now.
+[380.580 --> 383.560] We do believe that with some expansion,
+[383.820 --> 388.120] we are able to gain some share in the global space in that flagship segment.
+[388.940 --> 393.820] But again, like we just commented in the opening remark,
+[394.420 --> 398.280] I think those, I mean, the memory issue,
+[398.640 --> 400.680] I think we may want to give the key topic for them.
+[402.100 --> 408.640] According to, I think they will adjust their retail price to respond.
+[408.640 --> 414.560] And we also believe that smartphone is still a very important device in everybody's life.
+[414.920 --> 417.220] So there should be some funding and no demand out there,
+[417.260 --> 420.400] but just inevitably we'll have some non -impactly share.
+[420.980 --> 421.240] Gotcha.
+[421.800 --> 422.080] All right.
+[422.260 --> 426.500] Also, moving on to another pretty exciting topic is the ASIC part, right?
+[426.960 --> 430.440] Could you also give us, I think a lot of markets are actually worrying
+[430.440 --> 432.780] about the capacity secure part, right?
+[433.260 --> 436.060] Could you talk a little bit about how you secure those kind of capacity
+[436.060 --> 439.960] and what's your future outlook on this part?
+[440.320 --> 440.460] Sure.
+[441.140 --> 441.580] Right.
+[442.760 --> 444.460] Supply is tight.
+[444.780 --> 444.980] Yeah.
+[445.800 --> 448.240] Well, from the end and back end.
+[449.440 --> 454.460] So that's one of our value added.
+[454.780 --> 457.920] , help customers work with the customer closely and the vendor closely
+[458.940 --> 460.660] to get capacity.
+[460.660 --> 467.420] For 2026, as I mentioned, we target to reach this more than $1 billion revenue.
+[467.680 --> 473.540] I think for this number, 2026, we've already secured enough capacity to reach that number.
+[474.380 --> 482.280] For 2027, we believe that the capacity we now have also can support
+[482.280 --> 484.880] very strong growth already in 2027.
+[484.880 --> 491.000] However, we want more because our customers are seeing very good demand.
+[491.760 --> 498.620] So we'll continue to work with the customer and the supply chain to get more, a little bit more.
+[498.840 --> 499.280] Got it.
+[499.480 --> 500.140] That's very clear.
+[500.680 --> 505.840] But looking forward, besides the exciting topics in ASIC,
+[506.120 --> 511.280] do any other potentials for other business that you have just mentioned?
+[511.280 --> 517.400] Or if we have any opportunities to gain some share or get some more orders
+[518.000 --> 525.160] from other areas in the business, besides beyond the ASIC or beyond the smartphone?
+[525.780 --> 526.480] Yeah, certainly.
+[527.040 --> 529.040] We're investing in several areas.
+[530.180 --> 539.100] So apart from the exciting ASIC opportunity, we are also heavily investing automotive, for example.
+[539.740 --> 546.940] And our copy solution has been getting pretty good traction, especially with some China OEMs.
+[547.000 --> 552.560] So we've secured pretty good and healthy design wind pipeline last year.
+[553.060 --> 558.600] And a lot of them will gradually enter mass production stage this year.
+[559.200 --> 564.680] That is also one of the reasons why we're able to grow the business this year.
+[564.680 --> 571.960] And we also announced ASIC chip with the things that we made on press release last year.
+[572.320 --> 576.940] That's also adding momentum to our automotive business growth.
+[577.600 --> 578.580] So that is one.
+[578.840 --> 583.940] And we also talk about in computer, this is also relatively, I would say, a new business to us.
+[584.620 --> 590.200] Last year, we worked with the NVIDIA for this GP10 chip.
+[590.200 --> 595.300] It's used in NVIDIA's AI for computer digital spark.
+[596.160 --> 599.260] And they share, they will continue to ship.
+[599.660 --> 603.020] I think it's a four year production, should be.
+[603.560 --> 608.200] So I think we'll have some new revenue to our business.
+[609.420 --> 616.720] And on the computer side, we do believe in the AI era, there will be more opportunity for us to explore.
+[616.720 --> 621.000] So we will keep you guys posted if we have any other new plans.
+[621.140 --> 621.900] Gorgeous, gorgeous.
+[622.100 --> 623.620] We are really excited about this.
+[623.940 --> 628.880] OK, so I think that's kind of covered most of our topics that we want to ask.
+[629.220 --> 635.140] Is there anything else that you want to highlight in the meetings to the investors or the markets?
+[635.600 --> 643.340] I think I want to reiterate that I think media has a very strong technology in this era,
+[643.340 --> 652.100] not only in the edge, where we have leadership here, we are able to build devices every year.
+[652.600 --> 657.040] We own all the key technologies, low power processor, multimedia, connectivity, etc.
+[657.600 --> 660.140] So I think on the edge, AI, we have a very strong position.
+[661.160 --> 664.080] And we talk a lot about the data center opportunity.
+[664.360 --> 670.760] We also have the key technology, the ability to help customers to build a no efficient solution.
+[670.760 --> 680.660] So and then we have the very critical technology connectivity to connect between edge and the cloud.
+[681.080 --> 686.980] So we do believe that in the AI era, there will be plenty of opportunity for us to explore.
+[687.780 --> 688.700] Wonderful, wonderful.
+[689.000 --> 690.880] We are really excited for your updates in the future.
+[691.480 --> 692.300] All right. Thank you, Jesse.
+[692.540 --> 693.160] Thank you so much.
+[693.660 --> 694.000] Thank you.
