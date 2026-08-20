@@ -6,15 +6,13 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-def parse_txt_file(file_path: str):
+def parse_clean_text(transcript_text: str, call_id: str):
     """
     通用型逐字稿解析器：相容台積電、聯發科等不同公司的中英文法說會逐字稿格式
+    直接傳入隊友從 MySQL (transcript_segments) 清洗出的 clean_text
     """
-    file_name = os.path.basename(file_path)
-    call_id = os.path.splitext(file_name)[0]
-
-    with open(file_path, "r", encoding="utf-8") as f:
-        transcript_text = f.read()
+    if not transcript_text:
+        return []
 
     # 1. 中英文 Q&A 區段開頭關鍵字
     qa_keywords = [
@@ -48,7 +46,7 @@ def parse_txt_file(file_path: str):
     else:
         qa_text = transcript_text.strip()
 
-    # 3. 解析 Speaker Turn（過濾純標題/垃圾資料）
+    # 3. 解析 Speaker Turn（過濾純標題與無效內容）
     if qa_text:
         speaker_pattern = r'(\n(?:\*\*[^*]+\*\*|[A-Z][a-zA-Z\.\s]+[：:]|[\u4e00-\u9fa5]{2,4}(?:董事長|總裁|副總|分析師|提問)?[\s：:]|Q\d*|A\d*|Operator|提問|回答)[：:]?)'
         
@@ -105,31 +103,21 @@ def parse_txt_file(file_path: str):
     return segments
 
 
-async def save_segments_to_db(segments: list):
+async def save_segments_to_db(pool, call_id: str, segments: list):
     """
-    通用型寫入 MySQL 資料庫（寫入前先清理舊的髒資料）
+    寫入 MySQL 資料庫 speech_segments（寫入前先清理舊的髒資料）
     """
     if not segments:
-        print("⚠️ 沒有可寫入的片段資料。")
+        print(f"⚠️ [{call_id}] 沒有可寫入的片段資料。")
         return
 
-    call_id = segments[0]["call_id"]
     parts = call_id.split("_")
     company_code = parts[0] if len(parts) > 0 else "UNKNOWN"
     
     try:
-        pool = await aiomysql.create_pool(
-            host=os.getenv("DB_HOST"),
-            port=int(os.getenv("DB_PORT", 3306)),
-            user=os.getenv("DB_USER"),
-            password=os.getenv("DB_PASSWORD"),
-            db=os.getenv("DB_NAME"),
-            autocommit=True
-        )
-
         async with pool.acquire() as conn:
             async with conn.cursor() as cur:
-                # 1. 父表卡位
+                # 1. 父表卡位 (earnings_calls)
                 sql_call = """
                     INSERT INTO earnings_calls 
                     (call_id, company_code, company_name, fiscal_year, call_date)
@@ -140,7 +128,7 @@ async def save_segments_to_db(segments: list):
                     call_id, company_code, f"公司_{company_code}", 2026, "2026-01-01"
                 ))
 
-                # 2. 清理該 call_id 舊有的舊格式 segment，確保不會殘留 turn_01 純 Q&A 垃圾資料
+                # 2. 清理該 call_id 舊有的 speech_segments 資料
                 await cur.execute("DELETE FROM speech_segments WHERE call_id = %s", (call_id,))
 
                 # 3. 寫入全新的乾淨 segments
@@ -164,8 +152,5 @@ async def save_segments_to_db(segments: list):
 
                 print(f"✅ 成功清理舊資料並寫入 [{call_id}] 的 {len(segments)} 個乾淨 Speaker Turn！")
 
-        pool.close()
-        await pool.wait_closed()
-
     except Exception as e:
-        print(f"❌ 資料庫寫入失敗：{e}")
+        print(f"❌ 資料庫寫入失敗 [{call_id}]：{e}")
