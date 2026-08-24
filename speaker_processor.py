@@ -121,38 +121,24 @@ async def save_speaker_and_update_segment(
     cur,
     company_code,
     segment_id,
-    speaker_name,
-    speaker_role,
+    speaker_id,
     start_time_sec,
     end_time_sec
 ):
-    speaker_id = create_speaker_id(
-        company_code,
-        speaker_name
-    )
-
-    # 先確保 speaker 存在
+    # 先確保 speaker_id 存在 speakers
     sql_speaker = """
-        INSERT INTO speakers (
+        INSERT IGNORE INTO speakers (
             speaker_id,
-            company_code,
-            speaker_name,
-            speaker_role
+            company_code
         )
-        VALUES (%s, %s, %s, %s)
-
-        ON DUPLICATE KEY UPDATE
-            speaker_name = VALUES(speaker_name),
-            speaker_role = VALUES(speaker_role)
+        VALUES (%s, %s)
     """
 
     await cur.execute(
         sql_speaker,
         (
             speaker_id,
-            company_code,
-            speaker_name,
-            speaker_role
+            company_code
         )
     )
 
@@ -176,18 +162,43 @@ async def save_speaker_and_update_segment(
         )
     )
 
-    return speaker_id
-
-def create_speaker_id(company_code, speaker_name):
-    clean_name = re.sub(
-        r"[^A-Za-z0-9\u4e00-\u9fff]+",
-        "_",
-        speaker_name.strip()
+def create_anonymous_speaker_id(
+    company_code,
+    speaker_number
+):
+    return (
+        f"{company_code}_"
+        f"SPEAKER_{speaker_number:02d}"
     )
 
-    clean_name = clean_name.strip("_").upper()
+def assign_anonymous_speaker_ids(
+    results,
+    company_code
+):
+    speaker_map = {}
+    speaker_counter = 1
 
-    return f"{company_code}_{clean_name}"
+    for item in results:
+
+        # 真實 speaker 名稱只拿來當內部 matching key
+        speaker_key = item["speaker_name"]
+
+        if speaker_key not in speaker_map:
+
+            speaker_map[speaker_key] = (
+                create_anonymous_speaker_id(
+                    company_code,
+                    speaker_counter
+                )
+            )
+
+            speaker_counter += 1
+
+        item["speaker_id"] = (
+            speaker_map[speaker_key]
+        )
+
+    return results
 
 def get_wav_duration(file_path):
     with wave.open(file_path, "rb") as audio:
@@ -377,39 +388,159 @@ async def main():
 
     call_id = "2454_20260311"
 
+    # 從 call_id 取得公司代碼
+    # 2454_20260311 -> 2454
+    company_code = call_id.split("_")[0]
+
+    # 取得 speech_segments
     speech_rows = await get_segments(call_id)
+
+    # 取得 transcript_segments
     transcript_rows = await get_transcript_segments(call_id)
 
     print(f"speech_segments：{len(speech_rows)} 筆")
     print(f"transcript_segments：{len(transcript_rows)} 筆")
 
-    # 進行時間匹配
-    results = match_turns_sequentially(
-        speech_rows,
-        transcript_rows
+    # ==================================================
+    # 1. 從 speech_segments 找 Speaker + 開始時間
+    # ==================================================
+
+    results = []
+
+    for row in speech_rows:
+
+        segment_id = row[0]
+        transcript_text = row[1]
+
+        turns = extract_speaker_turns(
+            transcript_text
+        )
+
+        # 如果這筆沒有 speaker，就跳過
+        if len(turns) == 0:
+            print(
+                f"{segment_id} 找不到 speaker，跳過"
+            )
+            continue
+
+        # 現在一個 segment 應該只對應一個 speaker turn
+        turn = turns[0]
+
+        results.append({
+            "segment_id": segment_id,
+
+            # speaker_name 只在程式內部拿來判斷
+            # 是否為同一位 speaker
+            "speaker_name": turn["speaker_name"],
+
+            "start_time_sec": turn["start_time_sec"]
+        })
+
+    # ==================================================
+    # 2. 按時間排序
+    # ==================================================
+
+    results.sort(
+        key=lambda x: x["start_time_sec"]
     )
+
+    # ==================================================
+    # 3. 將真實 speaker 標記轉成匿名 speaker_id
+    #
+    # 例如：
+    # A -> 2454_SPEAKER_01
+    # B -> 2454_SPEAKER_02
+    # A -> 2454_SPEAKER_01
+    # ==================================================
+
+    results = assign_anonymous_speaker_ids(
+        results,
+        company_code
+    )
+
+    # ==================================================
+    # 4. 計算 end_time_sec
+    #
+    # 下一段 start = 前一段 end
+    # 最後一段 end = WAV 音檔總長度
+    # ==================================================
+
+    audio_path = f"{call_id}.wav"
+
+    if os.path.exists(audio_path):
+
+        audio_duration = round(
+            get_wav_duration(audio_path),
+            2
+        )
+
+        print(
+            f"音檔總長度：{audio_duration:.2f} 秒"
+        )
+
+    else:
+
+        audio_duration = None
+
+        print(
+            f"⚠️ 找不到音檔：{audio_path}"
+        )
+
+    for i in range(len(results)):
+
+        # 不是最後一筆
+        if i + 1 < len(results):
+
+            results[i]["end_time_sec"] = (
+                results[i + 1]["start_time_sec"]
+            )
+
+        # 最後一筆
+        else:
+
+            results[i]["end_time_sec"] = (
+                audio_duration
+            )
+
+    # ==================================================
+    # 5. 顯示 Matching 結果
+    # ==================================================
 
     print("\n=== Sequential Time Matching ===")
 
     for item in results:
+
         print(
             item["segment_id"],
+            "|",
+            item["speaker_id"],
             "| start:",
             item["start_time_sec"],
             "| end:",
             item["end_time_sec"]
         )
 
-    # 檢查是否有 transcript segment 沒有被任何 turn 涵蓋
+    # ==================================================
+    # 6. 檢查 transcript_segments
+    #    是否有沒有被 Speaker Turn 涵蓋的資料
+    # ==================================================
+
     uncovered = check_uncovered_segments(
         results,
         transcript_rows
     )
 
-    print("\n=== 沒有被任何 Speaker Turn 涵蓋的 transcript segments ===")
-    print(f"共 {len(uncovered)} 筆")
+    print(
+        "\n=== 沒有被任何 Speaker Turn 涵蓋的 "
+        "transcript segments ==="
+    )
+
+    print(
+        f"共 {len(uncovered)} 筆"
+    )
 
     for item in uncovered:
+
         print(
             item["segment_id"],
             "|",
@@ -420,10 +551,18 @@ async def main():
             item["clean_text"]
         )
 
-    # 將匹配完成的時間寫回 speech_segments
+    # ==================================================
+    # 7. 寫入資料庫
+    # ==================================================
+
     pool = await aiomysql.create_pool(
         host=os.getenv("DB_HOST"),
-        port=int(os.getenv("DB_PORT", 3306)),
+        port=int(
+            os.getenv(
+                "DB_PORT",
+                3306
+            )
+        ),
         user=os.getenv("DB_USER"),
         password=os.getenv("DB_PASSWORD"),
         db=os.getenv("DB_NAME"),
@@ -431,42 +570,61 @@ async def main():
     )
 
     try:
+
         async with pool.acquire() as conn:
+
             async with conn.cursor() as cur:
 
-                print("\n=== Update speech_segments Time ===")
+                print(
+                    "\n=== Update speech_segments ==="
+                )
 
                 for item in results:
 
+                    # 如果時間不完整就不寫
                     if (
                         item["start_time_sec"] is None
                         or item["end_time_sec"] is None
                     ):
+
                         print(
                             f'{item["segment_id"]} '
                             f'時間匹配失敗，跳過'
                         )
+
                         continue
 
-                    await update_segment_time(
-                        cur,
-                        item["segment_id"],
-                        item["start_time_sec"],
-                        item["end_time_sec"]
+                    await save_speaker_and_update_segment(
+                        cur=cur,
+                        company_code=company_code,
+                        segment_id=item["segment_id"],
+                        speaker_id=item["speaker_id"],
+                        start_time_sec=item[
+                            "start_time_sec"
+                        ],
+                        end_time_sec=item[
+                            "end_time_sec"
+                        ]
                     )
 
                     print(
                         f'{item["segment_id"]} '
                         f'更新成功：'
-                        f'{item["start_time_sec"]} → '
+                        f'{item["speaker_id"]} | '
+                        f'{item["start_time_sec"]} '
+                        f'→ '
                         f'{item["end_time_sec"]}'
                     )
 
     finally:
+
         pool.close()
         await pool.wait_closed()
 
-    print("\n✅ 所有可匹配的時間已更新完成")
+    print(
+        "\n✅ 所有可匹配的 Speaker "
+        "與時間已更新完成"
+    )
 
 
 if __name__ == "__main__":
