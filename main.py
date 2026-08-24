@@ -1,3 +1,4 @@
+import os
 import asyncio
 import aiomysql
 from qa_processor import parse_clean_text, save_segments_to_db
@@ -9,12 +10,11 @@ from qa_processor import parse_clean_text, save_segments_to_db
 
 # 雲端 Clever Cloud MySQL 資料庫設定
 DB_CONFIG = {
-    "host": "bz0brszlpyzt17u2p7pg-mysql.services.clever-cloud.com",
-    "port": 3306,
-    "user": "ubnvtjwgdicnkxoi",
-    "password": "aQkWesRWac3Zs5jVLLzI",
-    "db": "bz0brszlpyzt17u2p7pg",
-    "autocommit": True
+    "host": os.getenv("DB_HOST"),
+    "port": int(os.getenv("DB_PORT", 3306)),
+    "user": os.getenv("DB_USER"),
+    "password": os.getenv("DB_PASSWORD"),
+    "db": os.getenv("DB_NAME"),
 }
 
 async def main():
