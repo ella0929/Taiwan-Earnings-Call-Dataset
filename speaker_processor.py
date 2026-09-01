@@ -1,559 +1,647 @@
 import os
-import asyncio
-import aiomysql
-import re
+import sys
+import json
 import wave
-from dotenv import load_dotenv
+import asyncio
 
-load_dotenv()
+import aiomysql
+import numpy as np
+import torch
+
+from pathlib import Path
+from dotenv import load_dotenv
+from pyannote.audio import Pipeline
+
+
+BASE_DIR = Path(__file__).resolve().parent
+
+load_dotenv(
+    BASE_DIR / ".env",
+    override=True
+)
+
+HF_TOKEN = os.getenv("HF_TOKEN")
+
+
+def get_paths(call_id):
+
+    output_dir = (
+        BASE_DIR
+        / "output"
+        / call_id
+    )
+
+    audio_path = (
+        output_dir
+        / f"{call_id}.wav"
+    )
+
+    diarization_path = (
+        output_dir
+        / f"{call_id}_diarization.json"
+    )
+
+    matching_path = (
+        output_dir
+        / f"{call_id}_speaker_matching.json"
+    )
+
+    return (
+        output_dir,
+        audio_path,
+        diarization_path,
+        matching_path
+    )
+
+
+def load_wav(path):
+
+    with wave.open(str(path), "rb") as wav_file:
+
+        sample_rate = wav_file.getframerate()
+        channels = wav_file.getnchannels()
+        sample_width = wav_file.getsampwidth()
+
+        frames = wav_file.readframes(
+            wav_file.getnframes()
+        )
+
+    if sample_width == 2:
+
+        audio = np.frombuffer(
+            frames,
+            dtype=np.int16
+        ).astype(np.float32)
+
+        audio /= 32768.0
+
+    elif sample_width == 4:
+
+        audio = np.frombuffer(
+            frames,
+            dtype=np.int32
+        ).astype(np.float32)
+
+        audio /= 2147483648.0
+
+    else:
+
+        raise ValueError(
+            f"目前不支援 sample width: {sample_width}"
+        )
+
+    if channels > 1:
+
+        audio = audio.reshape(
+            -1,
+            channels
+        )
+
+        audio = audio.mean(axis=1)
+
+    waveform = (
+        torch
+        .from_numpy(audio)
+        .unsqueeze(0)
+    )
+
+    return waveform, sample_rate
+
+
 async def get_segments(call_id):
 
     pool = await aiomysql.create_pool(
         host=os.getenv("DB_HOST"),
-        port=int(os.getenv("DB_PORT", 3306)),
+        port=int(
+            os.getenv(
+                "DB_PORT",
+                3306
+            )
+        ),
         user=os.getenv("DB_USER"),
         password=os.getenv("DB_PASSWORD"),
-        db=os.getenv("DB_NAME")
+        db=os.getenv("DB_NAME"),
+        autocommit=True
     )
 
     try:
+
         async with pool.acquire() as conn:
+
             async with conn.cursor() as cur:
 
                 sql = """
                     SELECT
                         segment_id,
+                        start_time_sec,
+                        end_time_sec,
                         transcript_text
                     FROM speech_segments
                     WHERE call_id = %s
+                    ORDER BY start_time_sec
                 """
 
-                await cur.execute(sql, (call_id,))
+                await cur.execute(
+                    sql,
+                    (call_id,)
+                )
+
                 rows = await cur.fetchall()
 
-                return rows
+                return [
+                    {
+                        "segment_id": row[0],
+                        "start": (
+                            float(row[1])
+                            if row[1] is not None
+                            else None
+                        ),
+                        "end": (
+                            float(row[2])
+                            if row[2] is not None
+                            else None
+                        ),
+                        "text": row[3]
+                    }
+                    for row in rows
+                ]
 
     finally:
+
         pool.close()
         await pool.wait_closed()
 
-def extract_speaker_turns(transcript_text):
+def run_diarization(
+    audio_path
+):
 
-    speaker_pattern = re.compile(
-        r"\*\*(.+?)\s*-\s*(.+?)\*\*"
-    )
+    if not HF_TOKEN:
 
-    speaker_matches = list(
-        speaker_pattern.finditer(transcript_text)
-    )
-
-    turns = []
-
-    for i, match in enumerate(speaker_matches):
-
-        speaker_name = match.group(1).strip()
-        speaker_role = match.group(2).strip()
-
-        start_pos = match.end()
-
-        if i + 1 < len(speaker_matches):
-            end_pos = speaker_matches[i + 1].start()
-        else:
-            end_pos = len(transcript_text)
-
-        speaker_block = transcript_text[
-            start_pos:end_pos
-        ]
-
-        time_match = re.search(
-            r"\((\d{2}:\d{2}:\d{2})\)",
-            speaker_block
+        raise ValueError(
+            "找不到 HF_TOKEN，請檢查 .env"
         )
 
-        if time_match:
+    if not audio_path.exists():
 
-            start_time_sec = time_to_seconds(
-                time_match.group(1)
-            )
+        raise FileNotFoundError(
+            f"找不到音檔：{audio_path}"
+        )
 
-            turns.append({
-                "speaker_name": speaker_name,
-                "speaker_role": speaker_role,
-                "start_time_sec": start_time_sec
-            })
-
-    # 下一個人的開始時間
-    # = 前一個人的結束時間
-    for i in range(len(turns)):
-
-        if i + 1 < len(turns):
-            turns[i]["end_time_sec"] = (
-                turns[i + 1]["start_time_sec"]
-            )
-
-        else:
-            turns[i]["end_time_sec"] = None
-
-    return turns
-
-def create_speaker_id(company_code, speaker_name):
-
-    clean_name = re.sub(
-        r"[^A-Za-z0-9\u4e00-\u9fff]+",
-        "_",
-        speaker_name.strip()
+    print(
+        "音檔路徑：",
+        audio_path
     )
 
-    clean_name = clean_name.strip("_").upper()
+    waveform, sample_rate = (
+        load_wav(audio_path)
+    )
 
-    return f"{company_code}_{clean_name}"
+    print(
+        "Sample rate：",
+        sample_rate
+    )
 
-def time_to_seconds(time_string):
-    hours, minutes, seconds = time_string.split(":")
+    print(
+        "Waveform shape：",
+        waveform.shape
+    )
+
+    print(
+        "\n開始 Speaker Diarization..."
+    )
+
+    pipeline = Pipeline.from_pretrained(
+        "pyannote/speaker-diarization-community-1",
+        token=HF_TOKEN
+    )
+
+    output = pipeline({
+        "waveform": waveform,
+        "sample_rate": sample_rate
+    })
+
+    diarization_results = []
+
+    for (
+        turn,
+        speaker
+    ) in output.exclusive_speaker_diarization:
+
+        diarization_results.append({
+            "speaker": speaker,
+            "start": round(
+                turn.start,
+                2
+            ),
+            "end": round(
+                turn.end,
+                2
+            )
+        })
+
+    return diarization_results
+
+
+def get_diarization_results(
+    output_dir,
+    audio_path,
+    diarization_path
+):
+
+    output_dir.mkdir(
+        parents=True,
+        exist_ok=True
+    )
+
+    if diarization_path.exists():
+
+        print(
+            "\n找到既有 diarization JSON"
+        )
+
+        print(
+            "直接讀取：",
+            diarization_path
+        )
+
+        with open(
+            diarization_path,
+            "r",
+            encoding="utf-8"
+        ) as file:
+
+            return json.load(file)
+
+    diarization_results = (
+        run_diarization(
+            audio_path
+        )
+    )
+
+    with open(
+        diarization_path,
+        "w",
+        encoding="utf-8"
+    ) as file:
+
+        json.dump(
+            diarization_results,
+            file,
+            ensure_ascii=False,
+            indent=2
+        )
+
+    print(
+        "\nDiarization 結果已存：",
+        diarization_path
+    )
+
+    return diarization_results
+
+
+def get_overlap(
+    start1,
+    end1,
+    start2,
+    end2
+):
+
+    return max(
+        0,
+        min(end1, end2)
+        - max(start1, start2)
+    )
+
+
+def find_best_overlap_speaker(
+    segment_start,
+    segment_end,
+    diarization_results
+):
+
+    best_speaker = None
+    best_overlap = 0
+
+    for item in diarization_results:
+
+        overlap = get_overlap(
+            segment_start,
+            segment_end,
+            item["start"],
+            item["end"]
+        )
+
+        if overlap > best_overlap:
+
+            best_overlap = overlap
+            best_speaker = item["speaker"]
+
+    duration = (
+        segment_end
+        - segment_start
+    )
+
+    overlap_ratio = (
+        best_overlap / duration
+        if duration > 0
+        else 0
+    )
 
     return (
-        int(hours) * 3600
-        + int(minutes) * 60
-        + float(seconds)
+        best_speaker,
+        best_overlap,
+        overlap_ratio
     )
 
-async def save_speaker_and_update_segment(
-    cur,
-    company_code,
-    segment_id,
-    speaker_id,
-    start_time_sec,
-    end_time_sec
+
+def find_speaker_by_midpoint(
+    segment_start,
+    segment_end,
+    diarization_results
 ):
-    # 先確保 speaker_id 存在 speakers
-    sql_speaker = """
-        INSERT IGNORE INTO speakers (
-            speaker_id,
-            company_code
-        )
-        VALUES (%s, %s)
-    """
 
-    await cur.execute(
-        sql_speaker,
-        (
-            speaker_id,
-            company_code
-        )
-    )
+    midpoint = (
+        segment_start
+        + segment_end
+    ) / 2
 
-    # 再更新 speech_segments
-    sql_update = """
-        UPDATE speech_segments
-        SET
-            speaker_id = %s,
-            start_time_sec = %s,
-            end_time_sec = %s
-        WHERE segment_id = %s
-    """
+    for item in diarization_results:
 
-    await cur.execute(
-        sql_update,
-        (
-            speaker_id,
-            start_time_sec,
-            end_time_sec,
-            segment_id
-        )
-    )
+        if (
+            item["start"]
+            <= midpoint
+            <= item["end"]
+        ):
 
-def create_anonymous_speaker_id(
-    company_code,
-    speaker_number
-):
-    return (
-        f"{company_code}_"
-        f"SPEAKER_{speaker_number:02d}"
-    )
+            return item["speaker"]
 
-def assign_anonymous_speaker_ids(
-    results,
+    return None
+
+
+def create_speaker_map(
+    diarization_results,
     company_code
 ):
+
+    speakers = sorted(
+        {
+            item["speaker"]
+            for item
+            in diarization_results
+        }
+    )
+
     speaker_map = {}
-    speaker_counter = 1
 
-    for item in results:
+    for index, speaker in enumerate(
+        speakers,
+        start=1
+    ):
 
-        # 真實 speaker 名稱只拿來當內部 matching key
-        speaker_key = item["speaker_name"]
-
-        if speaker_key not in speaker_map:
-
-            speaker_map[speaker_key] = (
-                create_anonymous_speaker_id(
-                    company_code,
-                    speaker_counter
-                )
-            )
-
-            speaker_counter += 1
-
-        item["speaker_id"] = (
-            speaker_map[speaker_key]
+        speaker_map[speaker] = (
+            f"{company_code}_"
+            f"SPEAKER_{index:02d}"
         )
 
-    return results
-
-def get_wav_duration(file_path):
-    with wave.open(file_path, "rb") as audio:
-        frames = audio.getnframes()
-        frame_rate = audio.getframerate()
-
-        duration = frames / float(frame_rate)
-
-    return duration
-
-async def get_transcript_segments(call_id):
-
-    pool = await aiomysql.create_pool(
-        host=os.getenv("DB_HOST"),
-        port=int(os.getenv("DB_PORT", 3306)),
-        user=os.getenv("DB_USER"),
-        password=os.getenv("DB_PASSWORD"),
-        db=os.getenv("DB_NAME")
-    )
-
-    try:
-        async with pool.acquire() as conn:
-            async with conn.cursor() as cur:
-
-                await cur.execute("""
-                    SELECT
-                        segment_id,
-                        clean_text,
-                        start_time_sec,
-                        end_time_sec
-                    FROM transcript_segments
-                    WHERE call_id = %s
-                    ORDER BY start_time_sec
-                """, (call_id,))
-
-                return await cur.fetchall()
-
-    finally:
-        pool.close()
-        await pool.wait_closed()
-
-def normalize_text(text):
-    return " ".join(
-        text.lower()
-        .replace("\n", " ")
-        .split()
-    )
-
-def normalize_text(text):
-
-    text = text.lower().replace("\n", " ")
-
-    # 修正像 "a ccording" -> "according"
-    text = re.sub(
-        r"\b([a-z])\s+([a-z]{2,})\b",
-        r"\1\2",
-        text
-    )
-
-    text = " ".join(text.split())
-
-    return text
+    return speaker_map
 
 
-def match_turns_sequentially(speech_rows, transcript_rows):
+def match_segments(
+    segments,
+    diarization_results
+):
 
     results = []
 
-    transcript_index = 0
+    for segment in segments:
 
-    for speech_row in speech_rows:
+        segment_id = (
+            segment["segment_id"]
+        )
 
-        segment_id = speech_row[0]
-        speech_text = normalize_text(speech_row[1])
+        segment_start = (
+            segment["start"]
+        )
 
-        matched_indexes = []
+        segment_end = (
+            segment["end"]
+        )
 
-        # 只從上一個 turn 結束的位置繼續往後找
-        for i in range(transcript_index, len(transcript_rows)):
-
-            clean_text = normalize_text(transcript_rows[i][1])
-
-            if clean_text and clean_text in speech_text:
-                matched_indexes.append(i)
-
-        if not matched_indexes:
+        if (
+            segment_start is None
+            or segment_end is None
+        ):
 
             results.append({
                 "segment_id": segment_id,
-                "start_time_sec": None,
-                "end_time_sec": None
+                "start": segment_start,
+                "end": segment_end,
+                "speaker": None,
+                "original_speaker": None,
+                "overlap": 0,
+                "overlap_ratio": 0,
+                "match_method": "missing_timestamp",
+                "text": segment["text"]
             })
 
             continue
 
-        first_index = matched_indexes[0]
+        (
+            best_speaker,
+            best_overlap,
+            overlap_ratio
+        ) = find_best_overlap_speaker(
+            segment_start,
+            segment_end,
+            diarization_results
+        )
 
-        # 找「連續出現」的 transcript segments
-        consecutive = [first_index]
+        if (
+            best_speaker is not None
+            and overlap_ratio >= 0.5
+        ):
 
-        previous_index = first_index
+            final_speaker = (
+                best_speaker
+            )
 
-        for index in matched_indexes[1:]:
+            match_method = (
+                "overlap"
+            )
 
-            if index == previous_index + 1:
-                consecutive.append(index)
-                previous_index = index
+        else:
+
+            midpoint_speaker = (
+                find_speaker_by_midpoint(
+                    segment_start,
+                    segment_end,
+                    diarization_results
+                )
+            )
+
+            if midpoint_speaker is not None:
+
+                final_speaker = (
+                    midpoint_speaker
+                )
+
+                match_method = (
+                    "midpoint"
+                )
+
+            elif best_speaker is not None:
+
+                final_speaker = (
+                    best_speaker
+                )
+
+                match_method = (
+                    "fallback"
+                )
+
             else:
-                break
 
-        last_index = consecutive[-1]
+                final_speaker = None
 
-        start_time = float(
-            transcript_rows[first_index][2]
-        )
-
-        end_time = float(
-            transcript_rows[last_index][3]
-        )
+                match_method = (
+                    "unmatched"
+                )
 
         results.append({
             "segment_id": segment_id,
-            "start_time_sec": start_time,
-            "end_time_sec": end_time
+            "start": segment_start,
+            "end": segment_end,
+            "speaker": final_speaker,
+            "original_speaker": final_speaker,
+            "overlap": round(
+                best_overlap,
+                2
+            ),
+            "overlap_ratio": round(
+                overlap_ratio,
+                3
+            ),
+            "match_method": match_method,
+            "text": segment["text"]
         })
-
-        # 下一個 turn 從這裡之後開始找
-        transcript_index = last_index + 1
 
     return results
 
-def check_uncovered_segments(results, transcript_rows):
 
-    uncovered = []
+def smooth_speaker_results(
+    results
+):
 
-    for row in transcript_rows:
+    if len(results) < 3:
 
-        segment_id = row[0]
-        clean_text = row[1]
-        start_time = float(row[2])
-        end_time = float(row[3])
+        return results
 
-        covered = False
+    for i in range(
+        1,
+        len(results) - 1
+    ):
 
-        for item in results:
-
-            turn_start = item["start_time_sec"]
-            turn_end = item["end_time_sec"]
-
-            if turn_start is None or turn_end is None:
-                continue
-
-            # transcript segment 只要和某個 turn 有時間重疊
-            if start_time < turn_end and end_time > turn_start:
-                covered = True
-                break
-
-        if not covered:
-            uncovered.append({
-                "segment_id": segment_id,
-                "clean_text": clean_text,
-                "start": start_time,
-                "end": end_time
-            })
-
-    return uncovered
-
-async def update_segment_time(cur, segment_id, start_time_sec, end_time_sec):
-
-    sql = """
-        UPDATE speech_segments
-        SET start_time_sec = %s,
-            end_time_sec = %s
-        WHERE segment_id = %s
-    """
-
-    await cur.execute(
-        sql,
-        (
-            start_time_sec,
-            end_time_sec,
-            segment_id
-        )
-    )
-
-async def main():
-
-    call_id = "2454_20260311"
-
-    # 從 call_id 取得公司代碼
-    # 2454_20260311 -> 2454
-    company_code = call_id.split("_")[0]
-
-    # 取得 speech_segments
-    speech_rows = await get_segments(call_id)
-
-    # 取得 transcript_segments
-    transcript_rows = await get_transcript_segments(call_id)
-
-    print(f"speech_segments：{len(speech_rows)} 筆")
-    print(f"transcript_segments：{len(transcript_rows)} 筆")
-
-    # ==================================================
-    # 1. 從 speech_segments 找 Speaker + 開始時間
-    # ==================================================
-
-    results = []
-
-    for row in speech_rows:
-
-        segment_id = row[0]
-        transcript_text = row[1]
-
-        turns = extract_speaker_turns(
-            transcript_text
+        previous_speaker = (
+            results[i - 1]["speaker"]
         )
 
-        # 如果這筆沒有 speaker，就跳過
-        if len(turns) == 0:
-            print(
-                f"{segment_id} 找不到 speaker，跳過"
-            )
-            continue
-
-        # 現在一個 segment 應該只對應一個 speaker turn
-        turn = turns[0]
-
-        results.append({
-            "segment_id": segment_id,
-
-            # speaker_name 只在程式內部拿來判斷
-            # 是否為同一位 speaker
-            "speaker_name": turn["speaker_name"],
-
-            "start_time_sec": turn["start_time_sec"]
-        })
-
-    # ==================================================
-    # 2. 按時間排序
-    # ==================================================
-
-    results.sort(
-        key=lambda x: x["start_time_sec"]
-    )
-
-    # ==================================================
-    # 3. 將真實 speaker 標記轉成匿名 speaker_id
-    #
-    # 例如：
-    # A -> 2454_SPEAKER_01
-    # B -> 2454_SPEAKER_02
-    # A -> 2454_SPEAKER_01
-    # ==================================================
-
-    results = assign_anonymous_speaker_ids(
-        results,
-        company_code
-    )
-
-    # ==================================================
-    # 4. 計算 end_time_sec
-    #
-    # 下一段 start = 前一段 end
-    # 最後一段 end = WAV 音檔總長度
-    # ==================================================
-
-    audio_path = f"{call_id}.wav"
-
-    if os.path.exists(audio_path):
-
-        audio_duration = round(
-            get_wav_duration(audio_path),
-            2
+        current_speaker = (
+            results[i]["speaker"]
         )
 
-        print(
-            f"音檔總長度：{audio_duration:.2f} 秒"
+        next_speaker = (
+            results[i + 1]["speaker"]
         )
 
-    else:
+        if (
+            previous_speaker is not None
+            and previous_speaker
+            == next_speaker
+            and current_speaker
+            != previous_speaker
+            and results[i][
+                "overlap_ratio"
+            ] < 0.5
+        ):
 
-        audio_duration = None
+            results[i][
+                "original_speaker"
+            ] = current_speaker
 
-        print(
-            f"⚠️ 找不到音檔：{audio_path}"
-        )
+            results[i][
+                "speaker"
+            ] = previous_speaker
 
-    for i in range(len(results)):
+            results[i][
+                "match_method"
+            ] = "neighbor_smoothing"
 
-        # 不是最後一筆
-        if i + 1 < len(results):
+    return results
 
-            results[i]["end_time_sec"] = (
-                results[i + 1]["start_time_sec"]
-            )
 
-        # 最後一筆
-        else:
-
-            results[i]["end_time_sec"] = (
-                audio_duration
-            )
-
-    # ==================================================
-    # 5. 顯示 Matching 結果
-    # ==================================================
-
-    print("\n=== Sequential Time Matching ===")
+def add_database_speaker_ids(
+    results,
+    speaker_map
+):
 
     for item in results:
 
-        print(
-            item["segment_id"],
-            "|",
-            item["speaker_id"],
-            "| start:",
-            item["start_time_sec"],
-            "| end:",
-            item["end_time_sec"]
+        speaker = item["speaker"]
+
+        if speaker is None:
+
+            item["speaker_id"] = None
+
+        else:
+
+            item["speaker_id"] = (
+                speaker_map.get(
+                    speaker
+                )
+            )
+
+    return results
+
+
+def save_matching_json(
+    results,
+    matching_path
+):
+
+    with open(
+        matching_path,
+        "w",
+        encoding="utf-8"
+    ) as file:
+
+        json.dump(
+            results,
+            file,
+            ensure_ascii=False,
+            indent=2
         )
 
-    # ==================================================
-    # 6. 檢查 transcript_segments
-    #    是否有沒有被 Speaker Turn 涵蓋的資料
-    # ==================================================
-
-    uncovered = check_uncovered_segments(
-        results,
-        transcript_rows
-    )
-
     print(
-        "\n=== 沒有被任何 Speaker Turn 涵蓋的 "
-        "transcript segments ==="
+        "\nMatching 結果已存：",
+        matching_path
     )
 
-    print(
-        f"共 {len(uncovered)} 筆"
+
+async def write_results_to_database(
+    results,
+    company_code,
+    call_id
+):
+
+    speaker_ids = sorted(
+        {
+            item["speaker_id"]
+            for item in results
+            if item.get(
+                "speaker_id"
+            ) is not None
+        }
     )
-
-    for item in uncovered:
-
-        print(
-            item["segment_id"],
-            "|",
-            item["start"],
-            "→",
-            item["end"],
-            "|",
-            item["clean_text"]
-        )
-
-    # ==================================================
-    # 7. 寫入資料庫
-    # ==================================================
 
     pool = await aiomysql.create_pool(
         host=os.getenv("DB_HOST"),
@@ -576,56 +664,430 @@ async def main():
             async with conn.cursor() as cur:
 
                 print(
-                    "\n=== Update speech_segments ==="
+                    "\n=== 建立 / 確認 speakers ==="
                 )
 
-                for item in results:
+                for speaker_id in speaker_ids:
 
-                    # 如果時間不完整就不寫
-                    if (
-                        item["start_time_sec"] is None
-                        or item["end_time_sec"] is None
-                    ):
-
-                        print(
-                            f'{item["segment_id"]} '
-                            f'時間匹配失敗，跳過'
+                    sql = """
+                        INSERT INTO speakers (
+                            speaker_id,
+                            company_code
                         )
+                        VALUES (%s, %s)
+                        ON DUPLICATE KEY UPDATE
+                            company_code = %s
+                    """
 
-                        continue
-
-                    await save_speaker_and_update_segment(
-                        cur=cur,
-                        company_code=company_code,
-                        segment_id=item["segment_id"],
-                        speaker_id=item["speaker_id"],
-                        start_time_sec=item[
-                            "start_time_sec"
-                        ],
-                        end_time_sec=item[
-                            "end_time_sec"
-                        ]
+                    await cur.execute(
+                        sql,
+                        (
+                            speaker_id,
+                            company_code,
+                            company_code
+                        )
                     )
 
                     print(
-                        f'{item["segment_id"]} '
-                        f'更新成功：'
-                        f'{item["speaker_id"]} | '
-                        f'{item["start_time_sec"]} '
-                        f'→ '
-                        f'{item["end_time_sec"]}'
+                        speaker_id,
+                        "已確認"
                     )
+
+                print(
+                    "\n=== 驗證 speakers ==="
+                )
+
+                for speaker_id in speaker_ids:
+
+                    sql = """
+                        SELECT
+                            speaker_id,
+                            company_code
+                        FROM speakers
+                        WHERE speaker_id = %s
+                    """
+
+                    await cur.execute(
+                        sql,
+                        (speaker_id,)
+                    )
+
+                    row = (
+                        await cur.fetchone()
+                    )
+
+                    if row is None:
+
+                        raise ValueError(
+                            f"{speaker_id} "
+                            "沒有成功寫入 speakers"
+                        )
+
+                    print(
+                        "確認存在：",
+                        row[0],
+                        "| company_code：",
+                        row[1]
+                    )
+
+                print(
+                    "\n=== 更新 speech_segments ==="
+                )
+
+                updated_count = 0
+                skipped_count = 0
+
+                for item in results:
+
+                    segment_id = item.get(
+                        "segment_id"
+                    )
+
+                    speaker_id = item.get(
+                        "speaker_id"
+                    )
+
+                    if (
+                        segment_id is None
+                        or speaker_id is None
+                    ):
+
+                        skipped_count += 1
+
+                        continue
+
+                    sql = """
+                        UPDATE speech_segments
+                        SET
+                            speaker_id = %s,
+                            speaker_overlap_ratio = %s,
+                            speaker_match_method = %s
+                        WHERE segment_id = %s
+                        AND call_id = %s
+                    """
+
+                    await cur.execute(
+                        sql,
+                        (
+                            speaker_id,
+                            item.get("overlap_ratio"),
+                            item.get("match_method"),
+                            segment_id,
+                            call_id
+                        )
+                    )
+
+                    if cur.rowcount > 0:
+
+                        updated_count += 1
+
+                sql = """
+                    SELECT COUNT(*)
+                    FROM speech_segments
+                    WHERE call_id = %s
+                      AND speaker_id IS NOT NULL
+                """
+
+                await cur.execute(
+                    sql,
+                    (call_id,)
+                )
+
+                row = (
+                    await cur.fetchone()
+                )
+
+                db_matched_count = (
+                    row[0]
+                )
+
+                sql = """
+                    SELECT
+                        speaker_id,
+                        COUNT(*)
+                    FROM speech_segments
+                    WHERE call_id = %s
+                    GROUP BY speaker_id
+                    ORDER BY speaker_id
+                """
+
+                await cur.execute(
+                    sql,
+                    (call_id,)
+                )
+
+                speaker_counts = (
+                    await cur.fetchall()
+                )
+
+                print(
+                    "\n=== Database Summary ==="
+                )
+
+                print(
+                    "本次真正 UPDATE：",
+                    updated_count,
+                    "筆"
+                )
+
+                print(
+                    "跳過：",
+                    skipped_count,
+                    "筆"
+                )
+
+                print(
+                    "DB 中 speaker_id 非 NULL：",
+                    db_matched_count,
+                    "/",
+                    len(results)
+                )
+
+                print(
+                    "\n各 speaker 筆數："
+                )
+
+                for row in speaker_counts:
+
+                    print(
+                        row[0],
+                        ":",
+                        row[1],
+                        "筆"
+                    )
+
+                return (
+                    db_matched_count
+                )
 
     finally:
 
         pool.close()
         await pool.wait_closed()
 
+
+async def process_speakers(
+    call_id
+):
+
+    company_code = (
+        call_id.split("_")[0]
+    )
+
+    (
+        output_dir,
+        audio_path,
+        diarization_path,
+        matching_path
+    ) = get_paths(
+        call_id
+    )
+
     print(
-        "\n✅ 所有可匹配的 Speaker "
-        "與時間已更新完成"
+        "===================================="
+    )
+
+    print(
+        "Speaker Processor"
+    )
+
+    print(
+        "CALL_ID：",
+        call_id
+    )
+
+    print(
+        "===================================="
+    )
+
+    diarization_results = (
+        get_diarization_results(
+            output_dir,
+            audio_path,
+            diarization_path
+        )
+    )
+
+    print(
+        "\nDiarization 區段：",
+        len(diarization_results),
+        "筆"
+    )
+
+    speaker_map = (
+        create_speaker_map(
+            diarization_results,
+            company_code
+        )
+    )
+
+    print(
+        "\n=== Speaker Map ==="
+    )
+
+    for (
+        pyannote_speaker,
+        db_speaker
+    ) in speaker_map.items():
+
+        print(
+            pyannote_speaker,
+            "→",
+            db_speaker
+        )
+
+    segments = await get_segments(
+        call_id
+    )
+
+    print(
+        "\nspeech_segments：",
+        len(segments),
+        "筆"
+    )
+
+    if not segments:
+
+        raise ValueError(
+            f"找不到 call_id={call_id} "
+            "的 speech_segments"
+        )
+
+    matching_results = (
+        match_segments(
+            segments,
+            diarization_results
+        )
+    )
+
+    matching_results = (
+        smooth_speaker_results(
+            matching_results
+        )
+    )
+
+    matching_results = (
+        add_database_speaker_ids(
+            matching_results,
+            speaker_map
+        )
+    )
+
+    method_counts = {}
+
+    unmatched_count = 0
+
+    for item in matching_results:
+
+        method = (
+            item["match_method"]
+        )
+
+        method_counts[method] = (
+            method_counts.get(
+                method,
+                0
+            )
+            + 1
+        )
+
+        if item["speaker_id"] is None:
+
+            unmatched_count += 1
+
+    print(
+        "\n=== Matching Summary ==="
+    )
+
+    print(
+        "成功 Matching：",
+        len(matching_results)
+        - unmatched_count,
+        "/",
+        len(matching_results)
+    )
+
+    print(
+        "\n=== Match Method 統計 ==="
+    )
+
+    for (
+        method,
+        count
+    ) in method_counts.items():
+
+        print(
+            method,
+            ":",
+            count,
+            "筆"
+        )
+
+    print(
+        "\n仍無法自動判斷：",
+        unmatched_count,
+        "筆"
+    )
+
+    save_matching_json(
+        matching_results,
+        matching_path
+    )
+
+    if unmatched_count > 0:
+
+        print(
+            "\n⚠️ 有 segment 無法自動判斷，"
+            "目前不寫入資料庫"
+        )
+
+        return False
+
+    db_count = await (
+        write_results_to_database(
+            matching_results,
+            company_code,
+            call_id
+        )
+    )
+
+    if db_count == len(
+        matching_results
+    ):
+
+        print(
+            "\n✅ Speaker Processor 全部完成"
+        )
+
+        return True
+
+    print(
+        "\n⚠️ Matching 完成，"
+        "但 DB 筆數不一致"
+    )
+
+    return False
+
+
+async def main():
+
+    if len(sys.argv) < 2:
+
+        raise ValueError(
+            "請輸入 call_id，例如："
+            "\npython speaker_processor.py "
+            "2454_20260311"
+        )
+
+    call_id = sys.argv[1]
+
+    await process_speakers(
+        call_id
     )
 
 
 if __name__ == "__main__":
-    asyncio.run(main())
+
+    asyncio.run(
+        main()
+    )

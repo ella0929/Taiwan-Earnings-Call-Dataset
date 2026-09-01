@@ -444,6 +444,12 @@ async def insert_segment(
         "end"
     )
 
+    if start_time is not None:
+        start_time = round(float(start_time), 2)
+
+    if end_time is not None:
+        end_time = round(float(end_time), 2)
+
     raw_text = segment.get(
         "original_text",
         ""
@@ -505,6 +511,9 @@ async def insert_words(
     words
 ):
 
+    if not words:
+        return 0
+
     sql = """
         INSERT INTO transcript_words
         (
@@ -531,11 +540,9 @@ async def insert_words(
         )
     """
 
-    count = 0
+    rows = []
 
-    for index, word_info in enumerate(
-        words
-    ):
+    for index, word_info in enumerate(words):
 
         word = word_info.get(
             "word",
@@ -550,6 +557,12 @@ async def insert_words(
             "end"
         )
 
+        if start is not None:
+            start = round(float(start), 2)
+
+        if end is not None:
+            end = round(float(end), 2)
+
         removed = bool(
             word_info.get(
                 "removed",
@@ -563,8 +576,7 @@ async def insert_words(
             else None
         )
 
-        await cur.execute(
-            sql,
+        rows.append(
             (
                 segment_id,
                 call_id,
@@ -577,9 +589,12 @@ async def insert_words(
             )
         )
 
-        count += 1
+    await cur.executemany(
+        sql,
+        rows
+    )
 
-    return count
+    return len(rows)
 
 
 # ============================================================
@@ -737,6 +752,18 @@ async def import_transcript(
                             inserted_word_count
                         )
 
+                        if (
+                            (index + 1) % 20 == 0
+                            or (index + 1) == len(segments)
+                        ):
+                            print(
+                                f"⏳ 已處理 "
+                                f"{index + 1}/{len(segments)} "
+                                f"個 segments，"
+                                f"{word_count} 個 words",
+                                flush=True
+                            )
+
                     # ----------------------------------------
                     # 全部成功才 Commit
                     # ----------------------------------------
@@ -845,6 +872,8 @@ async def main():
         print(
             f"錯誤：{e}"
         )
+
+        raise
 
 
 if __name__ == "__main__":
