@@ -135,8 +135,8 @@ async def get_segments(call_id):
                         segment_id,
                         start_time_sec,
                         end_time_sec,
-                        transcript_text
-                    FROM speech_segments
+                        clean_text
+                    FROM transcript_segments
                     WHERE call_id = %s
                     ORDER BY start_time_sec
                 """
@@ -663,6 +663,10 @@ async def write_results_to_database(
 
             async with conn.cursor() as cur:
 
+                # ==================================================
+                # 1. 建立 / 確認 speakers
+                # ==================================================
+
                 print(
                     "\n=== 建立 / 確認 speakers ==="
                 )
@@ -692,6 +696,10 @@ async def write_results_to_database(
                         speaker_id,
                         "已確認"
                     )
+
+                # ==================================================
+                # 2. 驗證 speakers
+                # ==================================================
 
                 print(
                     "\n=== 驗證 speakers ==="
@@ -730,8 +738,12 @@ async def write_results_to_database(
                         row[1]
                     )
 
+                # ==================================================
+                # 3. 更新 transcript_segments
+                # ==================================================
+
                 print(
-                    "\n=== 更新 speech_segments ==="
+                    "\n=== 更新 transcript_segments ==="
                 )
 
                 updated_count = 0
@@ -757,21 +769,25 @@ async def write_results_to_database(
                         continue
 
                     sql = """
-                        UPDATE speech_segments
+                        UPDATE transcript_segments
                         SET
                             speaker_id = %s,
                             speaker_overlap_ratio = %s,
                             speaker_match_method = %s
                         WHERE segment_id = %s
-                        AND call_id = %s
+                          AND call_id = %s
                     """
 
                     await cur.execute(
                         sql,
                         (
                             speaker_id,
-                            item.get("overlap_ratio"),
-                            item.get("match_method"),
+                            item.get(
+                                "overlap_ratio"
+                            ),
+                            item.get(
+                                "match_method"
+                            ),
                             segment_id,
                             call_id
                         )
@@ -781,9 +797,13 @@ async def write_results_to_database(
 
                         updated_count += 1
 
+                # ==================================================
+                # 4. 驗證 transcript_segments
+                # ==================================================
+
                 sql = """
                     SELECT COUNT(*)
-                    FROM speech_segments
+                    FROM transcript_segments
                     WHERE call_id = %s
                       AND speaker_id IS NOT NULL
                 """
@@ -801,11 +821,15 @@ async def write_results_to_database(
                     row[0]
                 )
 
+                # ==================================================
+                # 5. 統計各 speaker 筆數
+                # ==================================================
+
                 sql = """
                     SELECT
                         speaker_id,
                         COUNT(*)
-                    FROM speech_segments
+                    FROM transcript_segments
                     WHERE call_id = %s
                     GROUP BY speaker_id
                     ORDER BY speaker_id
@@ -819,6 +843,10 @@ async def write_results_to_database(
                 speaker_counts = (
                     await cur.fetchall()
                 )
+
+                # ==================================================
+                # 6. 顯示結果
+                # ==================================================
 
                 print(
                     "\n=== Database Summary ==="
@@ -941,7 +969,7 @@ async def process_speakers(
     )
 
     print(
-        "\nspeech_segments：",
+        "\ntranscript_segments：",
         len(segments),
         "筆"
     )
