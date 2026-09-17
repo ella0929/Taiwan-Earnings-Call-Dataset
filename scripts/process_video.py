@@ -7,6 +7,8 @@ from pathlib import Path
 import ctranslate2
 from faster_whisper import WhisperModel
 
+from transcript_qc import generate_qc_report
+
 
 # =========================
 # 設定
@@ -302,6 +304,11 @@ def process_video(video_file):
         f"{call_id}_raw.txt"
     )
 
+    metadata_path = (
+        output_dir /
+        f"{call_id}_metadata.json"
+    )
+
     device, compute_type = resolve_runtime()
     expected_config = build_transcription_config(
         device,
@@ -369,6 +376,23 @@ def process_video(video_file):
         result,
         raw_txt_path
     )
+
+    # -------------------------
+    # Step 4：自動品質檢查
+    # -------------------------
+
+    print("\n🔎 [4/4] 產生逐字稿 QC report")
+
+    try:
+        qc_paths = generate_qc_report(
+            raw_json_path,
+            metadata_path if metadata_path.exists() else None
+        )
+        for qc_path in qc_paths.values():
+            print(f"✅ QC 輸出：{qc_path}")
+    except Exception as error:
+        # QC 失敗不應讓已完成的轉錄跟著失敗。
+        print(f"⚠️ QC report 產生失敗：{error}")
 
     print("\n🎉 自動轉錄完成！")
 

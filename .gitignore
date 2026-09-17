@@ -1,3 +1,7 @@
 .env
 __pycache__/
 *.pyc
+
+# 原始影音檔案太大，不提交到一般 GitHub repository
+data/raw/*.mp4
+output/**/*.wav

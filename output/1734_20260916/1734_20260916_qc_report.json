@@ -1,0 +1,4523 @@
+{
+  "report_type": "automatic_transcript_qc",
+  "important_note": "此報告只會找出疑似錯誤與高風險片段，不代表真實轉錄準確率；準確率需以人工校正樣本計算 CER/WER。",
+  "source_raw_json": "C:\\Ella\\專題\\Taiwan-Earnings-Call-Dataset\\output\\1734_20260916\\1734_20260916_raw.json",
+  "metadata_json": "C:\\Ella\\專題\\Taiwan-Earnings-Call-Dataset\\output\\1734_20260916\\1734_20260916_metadata.json",
+  "thresholds": {
+    "low_word_probability": 0.5,
+    "low_segment_avg_logprob": -1.0,
+    "high_no_speech_probability": 0.6,
+    "high_compression_ratio": 2.4,
+    "long_segment_seconds": 30.0
+  },
+  "summary": {
+    "language": "zh",
+    "duration_seconds": 1671.168,
+    "segment_count": 729,
+    "word_count": 6399,
+    "average_word_probability": 0.9069,
+    "low_probability_word_count": 321,
+    "low_probability_word_rate": 0.0502,
+    "missing_or_invalid_word_timestamp_count": 0,
+    "review_segment_count": 245,
+    "review_segment_rate": 0.3361,
+    "missing_reference_terms": [
+      "杏輝藥品工業股份有限公司"
+    ],
+    "issue_counts": {
+      "低信心詞 2 個": 45,
+      "低信心詞 1 個": 186,
+      "低信心詞 3 個": 12,
+      "低信心詞 5 個": 1,
+      "低信心詞 4 個": 1
+    }
+  },
+  "review_segments": [
+    {
+      "segment_id": 1,
+      "start_sec": 0.68,
+      "end_sec": 6.12,
+      "timestamp": "00:00:00.680 --> 00:00:06.120",
+      "text": "大家午安,歡迎參加信輝藥品工業股份有限公司法人說明會",
+      "reasons": [
+        "低信心詞 2 個：大家、工"
+      ],
+      "low_confidence_words": [
+        "大家",
+        "工"
+      ],
+      "average_word_probability": 0.8838,
+      "minimum_word_probability": 0.1532,
+      "avg_logprob": -0.18437410249478287,
+      "no_speech_prob": 0.28903692960739136,
+      "compression_ratio": 1.3642857142857143
+    },
+    {
+      "segment_id": 4,
+      "start_sec": 10.36,
+      "end_sec": 13.26,
+      "timestamp": "00:00:10.360 --> 00:00:13.260",
+      "text": "為各位說明公司的進行營運與展望",
+      "reasons": [
+        "低信心詞 1 個：行"
+      ],
+      "low_confidence_words": [
+        "行"
+      ],
+      "average_word_probability": 0.9003,
+      "minimum_word_probability": 0.4422,
+      "avg_logprob": -0.18437410249478287,
+      "no_speech_prob": 0.28903692960739136,
+      "compression_ratio": 1.3642857142857143
+    },
+    {
+      "segment_id": 5,
+      "start_sec": 13.26,
+      "end_sec": 16.08,
+      "timestamp": "00:00:13.260 --> 00:00:16.080",
+      "text": "現在我們就把時間交給陳副總,副總請",
+      "reasons": [
+        "低信心詞 1 個：現在"
+      ],
+      "low_confidence_words": [
+        "現在"
+      ],
+      "average_word_probability": 0.9388,
+      "minimum_word_probability": 0.3972,
+      "avg_logprob": -0.18437410249478287,
+      "no_speech_prob": 0.28903692960739136,
+      "compression_ratio": 1.3642857142857143
+    },
+    {
+      "segment_id": 8,
+      "start_sec": 23.84,
+      "end_sec": 26.62,
+      "timestamp": "00:00:23.840 --> 00:00:26.620",
+      "text": "那今天由我來向各位進行一個報告",
+      "reasons": [
+        "低信心詞 1 個：一個"
+      ],
+      "low_confidence_words": [
+        "一個"
+      ],
+      "average_word_probability": 0.9303,
+      "minimum_word_probability": 0.4641,
+      "avg_logprob": -0.18437410249478287,
+      "no_speech_prob": 0.28903692960739136,
+      "compression_ratio": 1.3642857142857143
+    },
+    {
+      "segment_id": 9,
+      "start_sec": 27.04,
+      "end_sec": 28.86,
+      "timestamp": "00:00:27.040 --> 00:00:28.860",
+      "text": "那在正式的報告之前",
+      "reasons": [
+        "低信心詞 1 個：那"
+      ],
+      "low_confidence_words": [
+        "那"
+      ],
+      "average_word_probability": 0.8594,
+      "minimum_word_probability": 0.3543,
+      "avg_logprob": -0.09067568841840135,
+      "no_speech_prob": 0.004553539212793112,
+      "compression_ratio": 1.370503597122302
+    },
+    {
+      "segment_id": 10,
+      "start_sec": 29.44,
+      "end_sec": 32.56,
+      "timestamp": "00:00:29.440 --> 00:00:32.560",
+      "text": "先請各位看一下簡報的第二頁",
+      "reasons": [
+        "低信心詞 1 個：先"
+      ],
+      "low_confidence_words": [
+        "先"
+      ],
+      "average_word_probability": 0.9269,
+      "minimum_word_probability": 0.484,
+      "avg_logprob": -0.09067568841840135,
+      "no_speech_prob": 0.004553539212793112,
+      "compression_ratio": 1.370503597122302
+    },
+    {
+      "segment_id": 13,
+      "start_sec": 38.0,
+      "end_sec": 42.04,
+      "timestamp": "00:00:38.000 --> 00:00:42.040",
+      "text": "軍售、產業法規還有未來市場的不確定性因素影響",
+      "reasons": [
+        "低信心詞 1 個：軍"
+      ],
+      "low_confidence_words": [
+        "軍"
+      ],
+      "average_word_probability": 0.9356,
+      "minimum_word_probability": 0.3516,
+      "avg_logprob": -0.09067568841840135,
+      "no_speech_prob": 0.004553539212793112,
+      "compression_ratio": 1.370503597122302
+    },
+    {
+      "segment_id": 19,
+      "start_sec": 54.92,
+      "end_sec": 56.58,
+      "timestamp": "00:00:54.920 --> 00:00:56.580",
+      "text": "第二個呢是財報",
+      "reasons": [
+        "低信心詞 1 個：第二個"
+      ],
+      "low_confidence_words": [
+        "第二個"
+      ],
+      "average_word_probability": 0.841,
+      "minimum_word_probability": 0.3751,
+      "avg_logprob": -0.09067568841840135,
+      "no_speech_prob": 0.004553539212793112,
+      "compression_ratio": 1.370503597122302
+    },
+    {
+      "segment_id": 20,
+      "start_sec": 57.3,
+      "end_sec": 58.22,
+      "timestamp": "00:00:57.300 --> 00:00:58.220",
+      "text": "第三部分呢",
+      "reasons": [
+        "低信心詞 1 個：呢"
+      ],
+      "low_confidence_words": [
+        "呢"
+      ],
+      "average_word_probability": 0.6091,
+      "minimum_word_probability": 0.1943,
+      "avg_logprob": -0.13173752047476314,
+      "no_speech_prob": 0.16892296075820923,
+      "compression_ratio": 1.2962962962962963
+    },
+    {
+      "segment_id": 21,
+      "start_sec": 58.22,
+      "end_sec": 61.6,
+      "timestamp": "00:00:58.220 --> 00:01:01.600",
+      "text": "則是關於永續發展跟社會關懷的具體事件",
+      "reasons": [
+        "低信心詞 1 個：則"
+      ],
+      "low_confidence_words": [
+        "則"
+      ],
+      "average_word_probability": 0.8885,
+      "minimum_word_probability": 0.0191,
+      "avg_logprob": -0.13173752047476314,
+      "no_speech_prob": 0.16892296075820923,
+      "compression_ratio": 1.2962962962962963
+    },
+    {
+      "segment_id": 22,
+      "start_sec": 63.64,
+      "end_sec": 67.62,
+      "timestamp": "00:01:03.640 --> 00:01:07.620",
+      "text": "那信輝從1977年於宜蘭創立以來",
+      "reasons": [
+        "低信心詞 1 個：信"
+      ],
+      "low_confidence_words": [
+        "信"
+      ],
+      "average_word_probability": 0.8996,
+      "minimum_word_probability": 0.3303,
+      "avg_logprob": -0.13173752047476314,
+      "no_speech_prob": 0.16892296075820923,
+      "compression_ratio": 1.2962962962962963
+    },
+    {
+      "segment_id": 24,
+      "start_sec": 68.94,
+      "end_sec": 71.22,
+      "timestamp": "00:01:08.940 --> 00:01:11.220",
+      "text": "那集團橫跨我們公司信輝",
+      "reasons": [
+        "低信心詞 1 個：我們"
+      ],
+      "low_confidence_words": [
+        "我們"
+      ],
+      "average_word_probability": 0.8899,
+      "minimum_word_probability": 0.1929,
+      "avg_logprob": -0.13173752047476314,
+      "no_speech_prob": 0.16892296075820923,
+      "compression_ratio": 1.2962962962962963
+    },
+    {
+      "segment_id": 25,
+      "start_sec": 71.22,
+      "end_sec": 73.22,
+      "timestamp": "00:01:11.220 --> 00:01:13.220",
+      "text": "專注研發的信國新藥",
+      "reasons": [
+        "低信心詞 1 個：新"
+      ],
+      "low_confidence_words": [
+        "新"
+      ],
+      "average_word_probability": 0.8632,
+      "minimum_word_probability": 0.4705,
+      "avg_logprob": -0.13173752047476314,
+      "no_speech_prob": 0.16892296075820923,
+      "compression_ratio": 1.2962962962962963
+    },
+    {
+      "segment_id": 26,
+      "start_sec": 73.62,
+      "end_sec": 77.16,
+      "timestamp": "00:01:13.620 --> 00:01:17.160",
+      "text": "深耕天然質體的功能性原料的信輝天力",
+      "reasons": [
+        "低信心詞 2 個：深、功"
+      ],
+      "low_confidence_words": [
+        "深",
+        "功"
+      ],
+      "average_word_probability": 0.8479,
+      "minimum_word_probability": 0.267,
+      "avg_logprob": -0.13173752047476314,
+      "no_speech_prob": 0.16892296075820923,
+      "compression_ratio": 1.2962962962962963
+    },
+    {
+      "segment_id": 31,
+      "start_sec": 84.28,
+      "end_sec": 86.6,
+      "timestamp": "00:01:24.280 --> 00:01:26.600",
+      "text": "並且在台灣、加拿大跟大陸的",
+      "reasons": [
+        "低信心詞 1 個：的"
+      ],
+      "low_confidence_words": [
+        "的"
+      ],
+      "average_word_probability": 0.9038,
+      "minimum_word_probability": 0.386,
+      "avg_logprob": -0.13173752047476314,
+      "no_speech_prob": 0.16892296075820923,
+      "compression_ratio": 1.2962962962962963
+    },
+    {
+      "segment_id": 32,
+      "start_sec": 86.62,
+      "end_sec": 87.8,
+      "timestamp": "00:01:26.620 --> 00:01:27.800",
+      "text": "都有經營的公司",
+      "reasons": [
+        "低信心詞 1 個：都有"
+      ],
+      "low_confidence_words": [
+        "都有"
+      ],
+      "average_word_probability": 0.8464,
+      "minimum_word_probability": 0.313,
+      "avg_logprob": -0.0918758590732302,
+      "no_speech_prob": 0.0006167711690068245,
+      "compression_ratio": 1.3746031746031746
+    },
+    {
+      "segment_id": 33,
+      "start_sec": 88.18,
+      "end_sec": 89.9,
+      "timestamp": "00:01:28.180 --> 00:01:29.900",
+      "text": "那集團內所有的公司呢",
+      "reasons": [
+        "低信心詞 1 個：集"
+      ],
+      "low_confidence_words": [
+        "集"
+      ],
+      "average_word_probability": 0.8056,
+      "minimum_word_probability": 0.4252,
+      "avg_logprob": -0.0918758590732302,
+      "no_speech_prob": 0.0006167711690068245,
+      "compression_ratio": 1.3746031746031746
+    },
+    {
+      "segment_id": 36,
+      "start_sec": 94.86,
+      "end_sec": 98.54,
+      "timestamp": "00:01:34.860 --> 00:01:38.540",
+      "text": "包含了我們抗癌治劑、天然質體、醫療器材製造",
+      "reasons": [
+        "低信心詞 2 個：治、質"
+      ],
+      "low_confidence_words": [
+        "治",
+        "質"
+      ],
+      "average_word_probability": 0.8515,
+      "minimum_word_probability": 0.2982,
+      "avg_logprob": -0.0918758590732302,
+      "no_speech_prob": 0.0006167711690068245,
+      "compression_ratio": 1.3746031746031746
+    },
+    {
+      "segment_id": 38,
+      "start_sec": 99.32,
+      "end_sec": 101.16,
+      "timestamp": "00:01:39.320 --> 00:01:41.160",
+      "text": "那我們進行資源的共享",
+      "reasons": [
+        "低信心詞 1 個：那我們"
+      ],
+      "low_confidence_words": [
+        "那我們"
+      ],
+      "average_word_probability": 0.8625,
+      "minimum_word_probability": 0.1902,
+      "avg_logprob": -0.0918758590732302,
+      "no_speech_prob": 0.0006167711690068245,
+      "compression_ratio": 1.3746031746031746
+    },
+    {
+      "segment_id": 44,
+      "start_sec": 116.82,
+      "end_sec": 119.18,
+      "timestamp": "00:01:56.820 --> 00:01:59.180",
+      "text": "那我們做到廣發肉蟲的源頭管理",
+      "reasons": [
+        "低信心詞 1 個：那我們"
+      ],
+      "low_confidence_words": [
+        "那我們"
+      ],
+      "average_word_probability": 0.8088,
+      "minimum_word_probability": 0.049,
+      "avg_logprob": -0.12832255829125644,
+      "no_speech_prob": 0.0053932699374854565,
+      "compression_ratio": 1.29
+    },
+    {
+      "segment_id": 45,
+      "start_sec": 119.18,
+      "end_sec": 121.34,
+      "timestamp": "00:01:59.180 --> 00:02:01.340",
+      "text": "然後再到我們信輝、天立、杭州",
+      "reasons": [
+        "低信心詞 1 個：信"
+      ],
+      "low_confidence_words": [
+        "信"
+      ],
+      "average_word_probability": 0.8105,
+      "minimum_word_probability": 0.417,
+      "avg_logprob": -0.12832255829125644,
+      "no_speech_prob": 0.0053932699374854565,
+      "compression_ratio": 1.29
+    },
+    {
+      "segment_id": 48,
+      "start_sec": 128.04,
+      "end_sec": 129.06,
+      "timestamp": "00:02:08.040 --> 00:02:09.060",
+      "text": "也讓我們呢",
+      "reasons": [
+        "低信心詞 1 個：呢"
+      ],
+      "low_confidence_words": [
+        "呢"
+      ],
+      "average_word_probability": 0.832,
+      "minimum_word_probability": 0.4822,
+      "avg_logprob": -0.12832255829125644,
+      "no_speech_prob": 0.0053932699374854565,
+      "compression_ratio": 1.29
+    },
+    {
+      "segment_id": 50,
+      "start_sec": 132.28,
+      "end_sec": 136.44,
+      "timestamp": "00:02:12.280 --> 00:02:16.440",
+      "text": "建立了比較高的一個競爭壁壘的富城河",
+      "reasons": [
+        "低信心詞 2 個：的、富"
+      ],
+      "low_confidence_words": [
+        "的",
+        "富"
+      ],
+      "average_word_probability": 0.8381,
+      "minimum_word_probability": 0.107,
+      "avg_logprob": -0.12832255829125644,
+      "no_speech_prob": 0.0053932699374854565,
+      "compression_ratio": 1.29
+    },
+    {
+      "segment_id": 52,
+      "start_sec": 141.96,
+      "end_sec": 143.44,
+      "timestamp": "00:02:21.960 --> 00:02:23.440",
+      "text": "引發剛性需求",
+      "reasons": [
+        "低信心詞 1 個：引"
+      ],
+      "low_confidence_words": [
+        "引"
+      ],
+      "average_word_probability": 0.813,
+      "minimum_word_probability": 0.4,
+      "avg_logprob": -0.12832255829125644,
+      "no_speech_prob": 0.0053932699374854565,
+      "compression_ratio": 1.29
+    },
+    {
+      "segment_id": 56,
+      "start_sec": 150.52,
+      "end_sec": 152.74,
+      "timestamp": "00:02:30.520 --> 00:02:32.740",
+      "text": "在恢復健康方面的藥品呢",
+      "reasons": [
+        "低信心詞 1 個：呢"
+      ],
+      "low_confidence_words": [
+        "呢"
+      ],
+      "average_word_probability": 0.9143,
+      "minimum_word_probability": 0.4146,
+      "avg_logprob": -0.06439306764375596,
+      "no_speech_prob": 0.0017300033941864967,
+      "compression_ratio": 1.3655913978494623
+    },
+    {
+      "segment_id": 58,
+      "start_sec": 154.62,
+      "end_sec": 156.96,
+      "timestamp": "00:02:34.620 --> 00:02:36.960",
+      "text": "陸續取得四項藥品許可證",
+      "reasons": [
+        "低信心詞 1 個：許"
+      ],
+      "low_confidence_words": [
+        "許"
+      ],
+      "average_word_probability": 0.8837,
+      "minimum_word_probability": 0.1943,
+      "avg_logprob": -0.06439306764375596,
+      "no_speech_prob": 0.0017300033941864967,
+      "compression_ratio": 1.3655913978494623
+    },
+    {
+      "segment_id": 59,
+      "start_sec": 157.62,
+      "end_sec": 162.7,
+      "timestamp": "00:02:37.620 --> 00:02:42.700",
+      "text": "那涵蓋高血脂、消化道及皮膚治療等核心領域",
+      "reasons": [
+        "低信心詞 1 個：那"
+      ],
+      "low_confidence_words": [
+        "那"
+      ],
+      "average_word_probability": 0.9277,
+      "minimum_word_probability": 0.0483,
+      "avg_logprob": -0.06439306764375596,
+      "no_speech_prob": 0.0017300033941864967,
+      "compression_ratio": 1.3655913978494623
+    },
+    {
+      "segment_id": 63,
+      "start_sec": 168.64,
+      "end_sec": 171.38,
+      "timestamp": "00:02:48.640 --> 00:02:51.380",
+      "text": "那包含腸道與助眠健康",
+      "reasons": [
+        "低信心詞 1 個：那"
+      ],
+      "low_confidence_words": [
+        "那"
+      ],
+      "average_word_probability": 0.8881,
+      "minimum_word_probability": 0.2985,
+      "avg_logprob": -0.06439306764375596,
+      "no_speech_prob": 0.0017300033941864967,
+      "compression_ratio": 1.3655913978494623
+    },
+    {
+      "segment_id": 66,
+      "start_sec": 176.62,
+      "end_sec": 180.28,
+      "timestamp": "00:02:56.620 --> 00:03:00.280",
+      "text": "補鈣、抗氧化、解救護肝、血脂調節",
+      "reasons": [
+        "低信心詞 2 個：救、血"
+      ],
+      "low_confidence_words": [
+        "救",
+        "血"
+      ],
+      "average_word_probability": 0.7936,
+      "minimum_word_probability": 0.0892,
+      "avg_logprob": -0.14975557815802248,
+      "no_speech_prob": 0.0015501687303185463,
+      "compression_ratio": 1.2335526315789473
+    },
+    {
+      "segment_id": 67,
+      "start_sec": 181.02,
+      "end_sec": 183.82,
+      "timestamp": "00:03:01.020 --> 00:03:03.820",
+      "text": "及內皮功能改善等全方位的保健",
+      "reasons": [
+        "低信心詞 1 個：的"
+      ],
+      "low_confidence_words": [
+        "的"
+      ],
+      "average_word_probability": 0.8899,
+      "minimum_word_probability": 0.3777,
+      "avg_logprob": -0.14975557815802248,
+      "no_speech_prob": 0.0015501687303185463,
+      "compression_ratio": 1.2335526315789473
+    },
+    {
+      "segment_id": 68,
+      "start_sec": 183.82,
+      "end_sec": 186.18,
+      "timestamp": "00:03:03.820 --> 00:03:06.180",
+      "text": "那接下來就是我們的美麗健康",
+      "reasons": [
+        "低信心詞 1 個：那"
+      ],
+      "low_confidence_words": [
+        "那"
+      ],
+      "average_word_probability": 0.8171,
+      "minimum_word_probability": 0.0706,
+      "avg_logprob": -0.14975557815802248,
+      "no_speech_prob": 0.0015501687303185463,
+      "compression_ratio": 1.2335526315789473
+    },
+    {
+      "segment_id": 69,
+      "start_sec": 186.96,
+      "end_sec": 188.22,
+      "timestamp": "00:03:06.960 --> 00:03:08.220",
+      "text": "就是醫美的保養品",
+      "reasons": [
+        "低信心詞 1 個：就是"
+      ],
+      "low_confidence_words": [
+        "就是"
+      ],
+      "average_word_probability": 0.8082,
+      "minimum_word_probability": 0.0949,
+      "avg_logprob": -0.14975557815802248,
+      "no_speech_prob": 0.0015501687303185463,
+      "compression_ratio": 1.2335526315789473
+    },
+    {
+      "segment_id": 70,
+      "start_sec": 188.22,
+      "end_sec": 191.28,
+      "timestamp": "00:03:08.220 --> 00:03:11.280",
+      "text": "那在2026年呢有上市六項新品",
+      "reasons": [
+        "低信心詞 1 個：六"
+      ],
+      "low_confidence_words": [
+        "六"
+      ],
+      "average_word_probability": 0.8365,
+      "minimum_word_probability": 0.4898,
+      "avg_logprob": -0.14975557815802248,
+      "no_speech_prob": 0.0015501687303185463,
+      "compression_ratio": 1.2335526315789473
+    },
+    {
+      "segment_id": 71,
+      "start_sec": 191.28,
+      "end_sec": 194.3,
+      "timestamp": "00:03:11.280 --> 00:03:14.300",
+      "text": "那包括生活市場好評的亞佛利露",
+      "reasons": [
+        "低信心詞 3 個：那、亞、利"
+      ],
+      "low_confidence_words": [
+        "那",
+        "亞",
+        "利"
+      ],
+      "average_word_probability": 0.7993,
+      "minimum_word_probability": 0.2055,
+      "avg_logprob": -0.14975557815802248,
+      "no_speech_prob": 0.0015501687303185463,
+      "compression_ratio": 1.2335526315789473
+    },
+    {
+      "segment_id": 72,
+      "start_sec": 194.3,
+      "end_sec": 198.66,
+      "timestamp": "00:03:14.300 --> 00:03:18.660",
+      "text": "還有專注科研修護的SkinPro激發者的部分",
+      "reasons": [
+        "低信心詞 1 個：Pro"
+      ],
+      "low_confidence_words": [
+        "Pro"
+      ],
+      "average_word_probability": 0.857,
+      "minimum_word_probability": 0.4003,
+      "avg_logprob": -0.14975557815802248,
+      "no_speech_prob": 0.0015501687303185463,
+      "compression_ratio": 1.2335526315789473
+    },
+    {
+      "segment_id": 73,
+      "start_sec": 198.66,
+      "end_sec": 202.28,
+      "timestamp": "00:03:18.660 --> 00:03:22.280",
+      "text": "那規劃在2027年陸續上市的有九項產品",
+      "reasons": [
+        "低信心詞 1 個：那"
+      ],
+      "low_confidence_words": [
+        "那"
+      ],
+      "average_word_probability": 0.9362,
+      "minimum_word_probability": 0.453,
+      "avg_logprob": -0.14975557815802248,
+      "no_speech_prob": 0.0015501687303185463,
+      "compression_ratio": 1.2335526315789473
+    },
+    {
+      "segment_id": 74,
+      "start_sec": 203.14,
+      "end_sec": 205.6,
+      "timestamp": "00:03:23.140 --> 00:03:25.600",
+      "text": "那稍後會進行一個相對的介紹",
+      "reasons": [
+        "低信心詞 1 個：對"
+      ],
+      "low_confidence_words": [
+        "對"
+      ],
+      "average_word_probability": 0.8723,
+      "minimum_word_probability": 0.3779,
+      "avg_logprob": -0.14975557815802248,
+      "no_speech_prob": 0.0015501687303185463,
+      "compression_ratio": 1.2335526315789473
+    },
+    {
+      "segment_id": 75,
+      "start_sec": 205.6,
+      "end_sec": 206.0,
+      "timestamp": "00:03:25.600 --> 00:03:26.000",
+      "text": "那",
+      "reasons": [
+        "低信心詞 1 個：那"
+      ],
+      "low_confidence_words": [
+        "那"
+      ],
+      "average_word_probability": 0.4377,
+      "minimum_word_probability": 0.4377,
+      "avg_logprob": -0.14975557815802248,
+      "no_speech_prob": 0.0015501687303185463,
+      "compression_ratio": 1.2335526315789473
+    },
+    {
+      "segment_id": 76,
+      "start_sec": 206.9,
+      "end_sec": 208.82,
+      "timestamp": "00:03:26.900 --> 00:03:28.820",
+      "text": "接下來這邊是我們容易劑的部分",
+      "reasons": [
+        "低信心詞 1 個：容易"
+      ],
+      "low_confidence_words": [
+        "容易"
+      ],
+      "average_word_probability": 0.7718,
+      "minimum_word_probability": 0.3799,
+      "avg_logprob": -0.0724460061858682,
+      "no_speech_prob": 0.0036437867674976587,
+      "compression_ratio": 1.25
+    },
+    {
+      "segment_id": 77,
+      "start_sec": 208.82,
+      "end_sec": 213.38,
+      "timestamp": "00:03:28.820 --> 00:03:33.380",
+      "text": "那這是我們全台唯一兼具國家生技醫療品質獎",
+      "reasons": [
+        "低信心詞 1 個：那"
+      ],
+      "low_confidence_words": [
+        "那"
+      ],
+      "average_word_probability": 0.9206,
+      "minimum_word_probability": 0.2222,
+      "avg_logprob": -0.0724460061858682,
+      "no_speech_prob": 0.0036437867674976587,
+      "compression_ratio": 1.25
+    },
+    {
+      "segment_id": 85,
+      "start_sec": 240.72,
+      "end_sec": 244.32,
+      "timestamp": "00:04:00.720 --> 00:04:04.320",
+      "text": "有效延緩重度患者的認知退化",
+      "reasons": [
+        "低信心詞 1 個：有"
+      ],
+      "low_confidence_words": [
+        "有"
+      ],
+      "average_word_probability": 0.929,
+      "minimum_word_probability": 0.4372,
+      "avg_logprob": -0.10941279583236799,
+      "no_speech_prob": 0.017253678292036057,
+      "compression_ratio": 1.1133333333333333
+    },
+    {
+      "segment_id": 86,
+      "start_sec": 244.32,
+      "end_sec": 247.84,
+      "timestamp": "00:04:04.320 --> 00:04:07.840",
+      "text": "那信輝醫藥集團也持續在這領域的研究",
+      "reasons": [
+        "低信心詞 2 個：那、也"
+      ],
+      "low_confidence_words": [
+        "那",
+        "也"
+      ],
+      "average_word_probability": 0.8538,
+      "minimum_word_probability": 0.0652,
+      "avg_logprob": -0.10941279583236799,
+      "no_speech_prob": 0.017253678292036057,
+      "compression_ratio": 1.1133333333333333
+    },
+    {
+      "segment_id": 87,
+      "start_sec": 247.84,
+      "end_sec": 252.48,
+      "timestamp": "00:04:07.840 --> 00:04:12.480",
+      "text": "所以在今年國際期刊Open Access Library Journal",
+      "reasons": [
+        "低信心詞 1 個：Open"
+      ],
+      "low_confidence_words": [
+        "Open"
+      ],
+      "average_word_probability": 0.857,
+      "minimum_word_probability": 0.4314,
+      "avg_logprob": -0.10941279583236799,
+      "no_speech_prob": 0.017253678292036057,
+      "compression_ratio": 1.1133333333333333
+    },
+    {
+      "segment_id": 89,
+      "start_sec": 256.02,
+      "end_sec": 258.7,
+      "timestamp": "00:04:16.020 --> 00:04:18.700",
+      "text": "那針對85名健康受試者",
+      "reasons": [
+        "低信心詞 1 個：那"
+      ],
+      "low_confidence_words": [
+        "那"
+      ],
+      "average_word_probability": 0.8941,
+      "minimum_word_probability": 0.1317,
+      "avg_logprob": -0.10941279583236799,
+      "no_speech_prob": 0.017253678292036057,
+      "compression_ratio": 1.1133333333333333
+    },
+    {
+      "segment_id": 91,
+      "start_sec": 265.82,
+      "end_sec": 272.78,
+      "timestamp": "00:04:25.820 --> 00:04:32.780",
+      "text": "那有效抑制其他的衰退的因子並提升腦神經滋養因子",
+      "reasons": [
+        "低信心詞 2 個：那、並"
+      ],
+      "low_confidence_words": [
+        "那",
+        "並"
+      ],
+      "average_word_probability": 0.8925,
+      "minimum_word_probability": 0.0661,
+      "avg_logprob": -0.10593128609744941,
+      "no_speech_prob": 0.01894148252904415,
+      "compression_ratio": 1.291044776119403
+    },
+    {
+      "segment_id": 94,
+      "start_sec": 280.0,
+      "end_sec": 284.74,
+      "timestamp": "00:04:40.000 --> 00:04:44.740",
+      "text": "AIE2對健康成人也具有提升學習記憶能力的潛力",
+      "reasons": [
+        "低信心詞 1 個：2"
+      ],
+      "low_confidence_words": [
+        "2"
+      ],
+      "average_word_probability": 0.9276,
+      "minimum_word_probability": 0.4608,
+      "avg_logprob": -0.10593128609744941,
+      "no_speech_prob": 0.01894148252904415,
+      "compression_ratio": 1.291044776119403
+    },
+    {
+      "segment_id": 95,
+      "start_sec": 286.0,
+      "end_sec": 290.28,
+      "timestamp": "00:04:46.000 --> 00:04:50.280",
+      "text": "那下一個也是我們另外一個強大的一個產品",
+      "reasons": [
+        "低信心詞 1 個：大的"
+      ],
+      "low_confidence_words": [
+        "大的"
+      ],
+      "average_word_probability": 0.8709,
+      "minimum_word_probability": 0.4446,
+      "avg_logprob": -0.10593128609744941,
+      "no_speech_prob": 0.01894148252904415,
+      "compression_ratio": 1.291044776119403
+    },
+    {
+      "segment_id": 96,
+      "start_sec": 290.28,
+      "end_sec": 291.64,
+      "timestamp": "00:04:50.280 --> 00:04:51.640",
+      "text": "那是我們的信輝佛心",
+      "reasons": [
+        "低信心詞 2 個：那、信"
+      ],
+      "low_confidence_words": [
+        "那",
+        "信"
+      ],
+      "average_word_probability": 0.6601,
+      "minimum_word_probability": 0.2804,
+      "avg_logprob": -0.10593128609744941,
+      "no_speech_prob": 0.01894148252904415,
+      "compression_ratio": 1.291044776119403
+    },
+    {
+      "segment_id": 98,
+      "start_sec": 293.76,
+      "end_sec": 297.48,
+      "timestamp": "00:04:53.760 --> 00:04:57.480",
+      "text": "國家抗疲勞健康食品認證還有多國的專利",
+      "reasons": [
+        "低信心詞 2 個：國家、還有"
+      ],
+      "low_confidence_words": [
+        "國家",
+        "還有"
+      ],
+      "average_word_probability": 0.8518,
+      "minimum_word_probability": 0.2066,
+      "avg_logprob": -0.08519607149574855,
+      "no_speech_prob": 0.022595757618546486,
+      "compression_ratio": 1.2214285714285715
+    },
+    {
+      "segment_id": 99,
+      "start_sec": 297.48,
+      "end_sec": 301.02,
+      "timestamp": "00:04:57.480 --> 00:05:01.020",
+      "text": "那我們最新發表國際期刊的研究也證實",
+      "reasons": [
+        "低信心詞 1 個：那我們"
+      ],
+      "low_confidence_words": [
+        "那我們"
+      ],
+      "average_word_probability": 0.9439,
+      "minimum_word_probability": 0.45,
+      "avg_logprob": -0.08519607149574855,
+      "no_speech_prob": 0.022595757618546486,
+      "compression_ratio": 1.2214285714285715
+    },
+    {
+      "segment_id": 101,
+      "start_sec": 302.96,
+      "end_sec": 307.44,
+      "timestamp": "00:05:02.960 --> 00:05:07.440",
+      "text": "也就是天然松果橘乾還有活性型的Q10 QH",
+      "reasons": [
+        "低信心詞 1 個：Q"
+      ],
+      "low_confidence_words": [
+        "Q"
+      ],
+      "average_word_probability": 0.8663,
+      "minimum_word_probability": 0.2281,
+      "avg_logprob": -0.08519607149574855,
+      "no_speech_prob": 0.022595757618546486,
+      "compression_ratio": 1.2214285714285715
+    },
+    {
+      "segment_id": 102,
+      "start_sec": 307.44,
+      "end_sec": 309.84,
+      "timestamp": "00:05:07.440 --> 00:05:09.840",
+      "text": "那具有顯著的協同效益",
+      "reasons": [
+        "低信心詞 1 個：那"
+      ],
+      "low_confidence_words": [
+        "那"
+      ],
+      "average_word_probability": 0.8812,
+      "minimum_word_probability": 0.3659,
+      "avg_logprob": -0.08519607149574855,
+      "no_speech_prob": 0.022595757618546486,
+      "compression_ratio": 1.2214285714285715
+    },
+    {
+      "segment_id": 107,
+      "start_sec": 321.54,
+      "end_sec": 325.14,
+      "timestamp": "00:05:21.540 --> 00:05:25.140",
+      "text": "那肌力呢也提上升了百分之十二",
+      "reasons": [
+        "低信心詞 5 個：那、呢、也、上、百"
+      ],
+      "low_confidence_words": [
+        "那",
+        "呢",
+        "也",
+        "上",
+        "百"
+      ],
+      "average_word_probability": 0.6773,
+      "minimum_word_probability": 0.0132,
+      "avg_logprob": -0.16901450824569647,
+      "no_speech_prob": 0.002833546372130513,
+      "compression_ratio": 1.3074324324324325
+    },
+    {
+      "segment_id": 108,
+      "start_sec": 325.66,
+      "end_sec": 327.84,
+      "timestamp": "00:05:25.660 --> 00:05:27.840",
+      "text": "然後呢也可以有效的解決",
+      "reasons": [
+        "低信心詞 1 個：然後"
+      ],
+      "low_confidence_words": [
+        "然後"
+      ],
+      "average_word_probability": 0.8736,
+      "minimum_word_probability": 0.439,
+      "avg_logprob": -0.16901450824569647,
+      "no_speech_prob": 0.002833546372130513,
+      "compression_ratio": 1.3074324324324325
+    },
+    {
+      "segment_id": 109,
+      "start_sec": 327.84,
+      "end_sec": 332.08,
+      "timestamp": "00:05:27.840 --> 00:05:32.080",
+      "text": "現代人運動族群心臟及體力能量不足的一個問題",
+      "reasons": [
+        "低信心詞 2 個：現、及"
+      ],
+      "low_confidence_words": [
+        "現",
+        "及"
+      ],
+      "average_word_probability": 0.903,
+      "minimum_word_probability": 0.4606,
+      "avg_logprob": -0.16901450824569647,
+      "no_speech_prob": 0.002833546372130513,
+      "compression_ratio": 1.3074324324324325
+    },
+    {
+      "segment_id": 111,
+      "start_sec": 335.06,
+      "end_sec": 339.38,
+      "timestamp": "00:05:35.060 --> 00:05:39.380",
+      "text": "從美金門海上長友還有我們自己的信輝宜蘭馬拉松",
+      "reasons": [
+        "低信心詞 3 個：美、長、信"
+      ],
+      "low_confidence_words": [
+        "美",
+        "長",
+        "信"
+      ],
+      "average_word_probability": 0.785,
+      "minimum_word_probability": 0.1104,
+      "avg_logprob": -0.16901450824569647,
+      "no_speech_prob": 0.002833546372130513,
+      "compression_ratio": 1.3074324324324325
+    },
+    {
+      "segment_id": 112,
+      "start_sec": 339.38,
+      "end_sec": 343.46,
+      "timestamp": "00:05:39.380 --> 00:05:43.460",
+      "text": "跑著指定維持心臟機能與體力的最佳後盾",
+      "reasons": [
+        "低信心詞 2 個：跑、機"
+      ],
+      "low_confidence_words": [
+        "跑",
+        "機"
+      ],
+      "average_word_probability": 0.8771,
+      "minimum_word_probability": 0.1989,
+      "avg_logprob": -0.16901450824569647,
+      "no_speech_prob": 0.002833546372130513,
+      "compression_ratio": 1.3074324324324325
+    },
+    {
+      "segment_id": 113,
+      "start_sec": 344.66,
+      "end_sec": 347.6,
+      "timestamp": "00:05:44.660 --> 00:05:47.600",
+      "text": "那這邊是我們的化妝影評的部分",
+      "reasons": [
+        "低信心詞 2 個：影、評"
+      ],
+      "low_confidence_words": [
+        "影",
+        "評"
+      ],
+      "average_word_probability": 0.8091,
+      "minimum_word_probability": 0.2364,
+      "avg_logprob": -0.16901450824569647,
+      "no_speech_prob": 0.002833546372130513,
+      "compression_ratio": 1.3074324324324325
+    },
+    {
+      "segment_id": 114,
+      "start_sec": 347.6,
+      "end_sec": 350.42,
+      "timestamp": "00:05:47.600 --> 00:05:50.420",
+      "text": "那當然在頭影片上面可以看得出白色的字",
+      "reasons": [
+        "低信心詞 2 個：那、影片"
+      ],
+      "low_confidence_words": [
+        "那",
+        "影片"
+      ],
+      "average_word_probability": 0.8454,
+      "minimum_word_probability": 0.4287,
+      "avg_logprob": -0.16901450824569647,
+      "no_speech_prob": 0.002833546372130513,
+      "compression_ratio": 1.3074324324324325
+    },
+    {
+      "segment_id": 116,
+      "start_sec": 351.36,
+      "end_sec": 352.54,
+      "timestamp": "00:05:51.360 --> 00:05:52.540",
+      "text": "但是不是很清楚",
+      "reasons": [
+        "低信心詞 1 個：但是"
+      ],
+      "low_confidence_words": [
+        "但是"
+      ],
+      "average_word_probability": 0.794,
+      "minimum_word_probability": 0.2342,
+      "avg_logprob": -0.10383203847422487,
+      "no_speech_prob": 0.0011191526427865028,
+      "compression_ratio": 1.3636363636363635
+    },
+    {
+      "segment_id": 117,
+      "start_sec": 352.54,
+      "end_sec": 354.82,
+      "timestamp": "00:05:52.540 --> 00:05:54.820",
+      "text": "那後續的檔案大家可以自己看",
+      "reasons": [
+        "低信心詞 1 個：那"
+      ],
+      "low_confidence_words": [
+        "那"
+      ],
+      "average_word_probability": 0.8817,
+      "minimum_word_probability": 0.144,
+      "avg_logprob": -0.10383203847422487,
+      "no_speech_prob": 0.0011191526427865028,
+      "compression_ratio": 1.3636363636363635
+    },
+    {
+      "segment_id": 119,
+      "start_sec": 356.92,
+      "end_sec": 358.3,
+      "timestamp": "00:05:56.920 --> 00:05:58.300",
+      "text": "化妝品其實簡單的說",
+      "reasons": [
+        "低信心詞 1 個：化"
+      ],
+      "low_confidence_words": [
+        "化"
+      ],
+      "average_word_probability": 0.8397,
+      "minimum_word_probability": 0.4158,
+      "avg_logprob": -0.10383203847422487,
+      "no_speech_prob": 0.0011191526427865028,
+      "compression_ratio": 1.3636363636363635
+    },
+    {
+      "segment_id": 123,
+      "start_sec": 363.24,
+      "end_sec": 366.52,
+      "timestamp": "00:06:03.240 --> 00:06:06.520",
+      "text": "那如果傳統藥廠的化妝品來說",
+      "reasons": [
+        "低信心詞 1 個：那"
+      ],
+      "low_confidence_words": [
+        "那"
+      ],
+      "average_word_probability": 0.9348,
+      "minimum_word_probability": 0.3448,
+      "avg_logprob": -0.10383203847422487,
+      "no_speech_prob": 0.0011191526427865028,
+      "compression_ratio": 1.3636363636363635
+    },
+    {
+      "segment_id": 125,
+      "start_sec": 369.64,
+      "end_sec": 370.62,
+      "timestamp": "00:06:09.640 --> 00:06:10.620",
+      "text": "我們的特色呢",
+      "reasons": [
+        "低信心詞 1 個：呢"
+      ],
+      "low_confidence_words": [
+        "呢"
+      ],
+      "average_word_probability": 0.8495,
+      "minimum_word_probability": 0.4299,
+      "avg_logprob": -0.10383203847422487,
+      "no_speech_prob": 0.0011191526427865028,
+      "compression_ratio": 1.3636363636363635
+    },
+    {
+      "segment_id": 130,
+      "start_sec": 378.58,
+      "end_sec": 380.4,
+      "timestamp": "00:06:18.580 --> 00:06:20.400",
+      "text": "那畢竟大品牌也會有",
+      "reasons": [
+        "低信心詞 3 個：那、會、有"
+      ],
+      "low_confidence_words": [
+        "那",
+        "會",
+        "有"
+      ],
+      "average_word_probability": 0.7164,
+      "minimum_word_probability": 0.1157,
+      "avg_logprob": -0.10383203847422487,
+      "no_speech_prob": 0.0011191526427865028,
+      "compression_ratio": 1.3636363636363635
+    },
+    {
+      "segment_id": 132,
+      "start_sec": 383.96,
+      "end_sec": 384.94,
+      "timestamp": "00:06:23.960 --> 00:06:24.940",
+      "text": "那這一頁",
+      "reasons": [
+        "低信心詞 1 個：那"
+      ],
+      "low_confidence_words": [
+        "那"
+      ],
+      "average_word_probability": 0.7912,
+      "minimum_word_probability": 0.4124,
+      "avg_logprob": -0.12210737607658725,
+      "no_speech_prob": 0.004952686373144388,
+      "compression_ratio": 1.4166666666666667
+    },
+    {
+      "segment_id": 135,
+      "start_sec": 391.7,
+      "end_sec": 395.1,
+      "timestamp": "00:06:31.700 --> 00:06:35.100",
+      "text": "我們今年大概估計會有超過兩萬人的配方",
+      "reasons": [
+        "低信心詞 2 個：的、配"
+      ],
+      "low_confidence_words": [
+        "的",
+        "配"
+      ],
+      "average_word_probability": 0.8146,
+      "minimum_word_probability": 0.0579,
+      "avg_logprob": -0.12210737607658725,
+      "no_speech_prob": 0.004952686373144388,
+      "compression_ratio": 1.4166666666666667
+    },
+    {
+      "segment_id": 136,
+      "start_sec": 395.1,
+      "end_sec": 397.88,
+      "timestamp": "00:06:35.100 --> 00:06:37.880",
+      "text": "那所有的部品其實都是買的",
+      "reasons": [
+        "低信心詞 1 個：部"
+      ],
+      "low_confidence_words": [
+        "部"
+      ],
+      "average_word_probability": 0.8375,
+      "minimum_word_probability": 0.2467,
+      "avg_logprob": -0.12210737607658725,
+      "no_speech_prob": 0.004952686373144388,
+      "compression_ratio": 1.4166666666666667
+    },
+    {
+      "segment_id": 139,
+      "start_sec": 400.88,
+      "end_sec": 402.54,
+      "timestamp": "00:06:40.880 --> 00:06:42.540",
+      "text": "我們在明年的預計呢",
+      "reasons": [
+        "低信心詞 1 個：呢"
+      ],
+      "low_confidence_words": [
+        "呢"
+      ],
+      "average_word_probability": 0.8432,
+      "minimum_word_probability": 0.1707,
+      "avg_logprob": -0.12210737607658725,
+      "no_speech_prob": 0.004952686373144388,
+      "compression_ratio": 1.4166666666666667
+    },
+    {
+      "segment_id": 140,
+      "start_sec": 402.54,
+      "end_sec": 404.72,
+      "timestamp": "00:06:42.540 --> 00:06:44.720",
+      "text": "大概會有超過四萬人的民眾",
+      "reasons": [
+        "低信心詞 1 個：人"
+      ],
+      "low_confidence_words": [
+        "人"
+      ],
+      "average_word_probability": 0.8699,
+      "minimum_word_probability": 0.2978,
+      "avg_logprob": -0.12210737607658725,
+      "no_speech_prob": 0.004952686373144388,
+      "compression_ratio": 1.4166666666666667
+    },
+    {
+      "segment_id": 143,
+      "start_sec": 408.12,
+      "end_sec": 410.14,
+      "timestamp": "00:06:48.120 --> 00:06:50.140",
+      "text": "擴建我們整個的健康園區",
+      "reasons": [
+        "低信心詞 1 個：我們"
+      ],
+      "low_confidence_words": [
+        "我們"
+      ],
+      "average_word_probability": 0.8242,
+      "minimum_word_probability": 0.4068,
+      "avg_logprob": -0.11943034387917982,
+      "no_speech_prob": 0.0027222693897783756,
+      "compression_ratio": 1.362369337979094
+    },
+    {
+      "segment_id": 144,
+      "start_sec": 412.3,
+      "end_sec": 415.84,
+      "timestamp": "00:06:52.300 --> 00:06:55.840",
+      "text": "那這邊講到我們對外銷這一部分的發展",
+      "reasons": [
+        "低信心詞 1 個：那"
+      ],
+      "low_confidence_words": [
+        "那"
+      ],
+      "average_word_probability": 0.8882,
+      "minimum_word_probability": 0.3431,
+      "avg_logprob": -0.11943034387917982,
+      "no_speech_prob": 0.0027222693897783756,
+      "compression_ratio": 1.362369337979094
+    },
+    {
+      "segment_id": 147,
+      "start_sec": 420.12,
+      "end_sec": 423.78,
+      "timestamp": "00:07:00.120 --> 00:07:03.780",
+      "text": "在今年會有在不同國家包含東西的部分",
+      "reasons": [
+        "低信心詞 1 個：東西"
+      ],
+      "low_confidence_words": [
+        "東西"
+      ],
+      "average_word_probability": 0.8747,
+      "minimum_word_probability": 0.4222,
+      "avg_logprob": -0.11943034387917982,
+      "no_speech_prob": 0.0027222693897783756,
+      "compression_ratio": 1.362369337979094
+    },
+    {
+      "segment_id": 149,
+      "start_sec": 427.12,
+      "end_sec": 429.66,
+      "timestamp": "00:07:07.120 --> 00:07:09.660",
+      "text": "都會有產品在二零二七年上市",
+      "reasons": [
+        "低信心詞 1 個：二"
+      ],
+      "low_confidence_words": [
+        "二"
+      ],
+      "average_word_probability": 0.901,
+      "minimum_word_probability": 0.1235,
+      "avg_logprob": -0.11943034387917982,
+      "no_speech_prob": 0.0027222693897783756,
+      "compression_ratio": 1.362369337979094
+    },
+    {
+      "segment_id": 152,
+      "start_sec": 432.06,
+      "end_sec": 434.56,
+      "timestamp": "00:07:12.060 --> 00:07:14.560",
+      "text": "我們的董事長李義達董事長博士呢",
+      "reasons": [
+        "低信心詞 1 個：義"
+      ],
+      "low_confidence_words": [
+        "義"
+      ],
+      "average_word_probability": 0.9064,
+      "minimum_word_probability": 0.3488,
+      "avg_logprob": -0.11943034387917982,
+      "no_speech_prob": 0.0027222693897783756,
+      "compression_ratio": 1.362369337979094
+    },
+    {
+      "segment_id": 153,
+      "start_sec": 435.12,
+      "end_sec": 436.02,
+      "timestamp": "00:07:15.120 --> 00:07:16.020",
+      "text": "跟我們的總經理",
+      "reasons": [
+        "低信心詞 1 個：跟"
+      ],
+      "low_confidence_words": [
+        "跟"
+      ],
+      "average_word_probability": 0.8723,
+      "minimum_word_probability": 0.4338,
+      "avg_logprob": -0.11943034387917982,
+      "no_speech_prob": 0.0027222693897783756,
+      "compression_ratio": 1.362369337979094
+    },
+    {
+      "segment_id": 156,
+      "start_sec": 439.96,
+      "end_sec": 441.16,
+      "timestamp": "00:07:19.960 --> 00:07:21.160",
+      "text": "在台的代理權",
+      "reasons": [
+        "低信心詞 1 個：在"
+      ],
+      "low_confidence_words": [
+        "在"
+      ],
+      "average_word_probability": 0.8366,
+      "minimum_word_probability": 0.4789,
+      "avg_logprob": -0.0868201831719656,
+      "no_speech_prob": 0.022978102788329124,
+      "compression_ratio": 1.2842465753424657
+    },
+    {
+      "segment_id": 157,
+      "start_sec": 441.16,
+      "end_sec": 443.62,
+      "timestamp": "00:07:21.160 --> 00:07:23.620",
+      "text": "那消化道跟便秘用藥",
+      "reasons": [
+        "低信心詞 1 個：那"
+      ],
+      "low_confidence_words": [
+        "那"
+      ],
+      "average_word_probability": 0.833,
+      "minimum_word_probability": 0.4316,
+      "avg_logprob": -0.0868201831719656,
+      "no_speech_prob": 0.022978102788329124,
+      "compression_ratio": 1.2842465753424657
+    },
+    {
+      "segment_id": 158,
+      "start_sec": 443.62,
+      "end_sec": 445.88,
+      "timestamp": "00:07:23.620 --> 00:07:25.880",
+      "text": "名列國人健保用藥的第三名",
+      "reasons": [
+        "低信心詞 1 個：名"
+      ],
+      "low_confidence_words": [
+        "名"
+      ],
+      "average_word_probability": 0.8895,
+      "minimum_word_probability": 0.1413,
+      "avg_logprob": -0.0868201831719656,
+      "no_speech_prob": 0.022978102788329124,
+      "compression_ratio": 1.2842465753424657
+    },
+    {
+      "segment_id": 160,
+      "start_sec": 447.74,
+      "end_sec": 449.7,
+      "timestamp": "00:07:27.740 --> 00:07:29.700",
+      "text": "一個年大概有八億元",
+      "reasons": [
+        "低信心詞 1 個：八"
+      ],
+      "low_confidence_words": [
+        "八"
+      ],
+      "average_word_probability": 0.8805,
+      "minimum_word_probability": 0.4667,
+      "avg_logprob": -0.0868201831719656,
+      "no_speech_prob": 0.022978102788329124,
+      "compression_ratio": 1.2842465753424657
+    },
+    {
+      "segment_id": 169,
+      "start_sec": 467.4,
+      "end_sec": 468.5,
+      "timestamp": "00:07:47.400 --> 00:07:48.500",
+      "text": "跟在台製造",
+      "reasons": [
+        "低信心詞 1 個：跟"
+      ],
+      "low_confidence_words": [
+        "跟"
+      ],
+      "average_word_probability": 0.7973,
+      "minimum_word_probability": 0.3398,
+      "avg_logprob": -0.09407631669215813,
+      "no_speech_prob": 0.000718651688657701,
+      "compression_ratio": 1.3588850174216027
+    },
+    {
+      "segment_id": 178,
+      "start_sec": 482.58,
+      "end_sec": 484.36,
+      "timestamp": "00:08:02.580 --> 00:08:04.360",
+      "text": "多家洽談中的廠商",
+      "reasons": [
+        "低信心詞 1 個：談"
+      ],
+      "low_confidence_words": [
+        "談"
+      ],
+      "average_word_probability": 0.8239,
+      "minimum_word_probability": 0.1854,
+      "avg_logprob": -0.09407631669215813,
+      "no_speech_prob": 0.000718651688657701,
+      "compression_ratio": 1.3588850174216027
+    },
+    {
+      "segment_id": 180,
+      "start_sec": 485.68,
+      "end_sec": 486.62,
+      "timestamp": "00:08:05.680 --> 00:08:06.620",
+      "text": "ODM也好",
+      "reasons": [
+        "低信心詞 2 個：OD、M"
+      ],
+      "low_confidence_words": [
+        "OD",
+        "M"
+      ],
+      "average_word_probability": 0.62,
+      "minimum_word_probability": 0.1477,
+      "avg_logprob": -0.09407631669215813,
+      "no_speech_prob": 0.000718651688657701,
+      "compression_ratio": 1.3588850174216027
+    },
+    {
+      "segment_id": 181,
+      "start_sec": 487.22,
+      "end_sec": 487.92,
+      "timestamp": "00:08:07.220 --> 00:08:07.920",
+      "text": "訂單",
+      "reasons": [
+        "低信心詞 1 個：訂"
+      ],
+      "low_confidence_words": [
+        "訂"
+      ],
+      "average_word_probability": 0.6796,
+      "minimum_word_probability": 0.3597,
+      "avg_logprob": -0.09407631669215813,
+      "no_speech_prob": 0.000718651688657701,
+      "compression_ratio": 1.3588850174216027
+    },
+    {
+      "segment_id": 190,
+      "start_sec": 497.76,
+      "end_sec": 499.4,
+      "timestamp": "00:08:17.760 --> 00:08:19.400",
+      "text": "智慧物流中心",
+      "reasons": [
+        "低信心詞 1 個：物"
+      ],
+      "low_confidence_words": [
+        "物"
+      ],
+      "average_word_probability": 0.8884,
+      "minimum_word_probability": 0.4409,
+      "avg_logprob": -0.078201092559205,
+      "no_speech_prob": 0.0035469576250761747,
+      "compression_ratio": 1.3087719298245615
+    },
+    {
+      "segment_id": 191,
+      "start_sec": 499.4,
+      "end_sec": 500.86,
+      "timestamp": "00:08:19.400 --> 00:08:20.860",
+      "text": "那我們目前的規劃呢",
+      "reasons": [
+        "低信心詞 1 個：那我們"
+      ],
+      "low_confidence_words": [
+        "那我們"
+      ],
+      "average_word_probability": 0.7692,
+      "minimum_word_probability": 0.0977,
+      "avg_logprob": -0.078201092559205,
+      "no_speech_prob": 0.0035469576250761747,
+      "compression_ratio": 1.3087719298245615
+    },
+    {
+      "segment_id": 204,
+      "start_sec": 522.98,
+      "end_sec": 524.16,
+      "timestamp": "00:08:42.980 --> 00:08:44.160",
+      "text": "那抱歉",
+      "reasons": [
+        "低信心詞 1 個：抱"
+      ],
+      "low_confidence_words": [
+        "抱"
+      ],
+      "average_word_probability": 0.776,
+      "minimum_word_probability": 0.342,
+      "avg_logprob": -0.078201092559205,
+      "no_speech_prob": 0.0035469576250761747,
+      "compression_ratio": 1.3087719298245615
+    },
+    {
+      "segment_id": 206,
+      "start_sec": 527.48,
+      "end_sec": 527.88,
+      "timestamp": "00:08:47.480 --> 00:08:47.880",
+      "text": "好",
+      "reasons": [
+        "低信心詞 1 個：好"
+      ],
+      "low_confidence_words": [
+        "好"
+      ],
+      "average_word_probability": 0.0006,
+      "minimum_word_probability": 0.0006,
+      "avg_logprob": -0.1481689429283142,
+      "no_speech_prob": 0.0066553810611367226,
+      "compression_ratio": 1.3252595155709344
+    },
+    {
+      "segment_id": 207,
+      "start_sec": 532.42,
+      "end_sec": 534.42,
+      "timestamp": "00:08:52.420 --> 00:08:54.420",
+      "text": "那除了智慧物流中心之外呢",
+      "reasons": [
+        "低信心詞 1 個：那"
+      ],
+      "low_confidence_words": [
+        "那"
+      ],
+      "average_word_probability": 0.8934,
+      "minimum_word_probability": 0.0407,
+      "avg_logprob": -0.1481689429283142,
+      "no_speech_prob": 0.0066553810611367226,
+      "compression_ratio": 1.3252595155709344
+    },
+    {
+      "segment_id": 209,
+      "start_sec": 535.26,
+      "end_sec": 536.72,
+      "timestamp": "00:08:55.260 --> 00:08:56.720",
+      "text": "就生產的一個部分",
+      "reasons": [
+        "低信心詞 1 個：就"
+      ],
+      "low_confidence_words": [
+        "就"
+      ],
+      "average_word_probability": 0.7888,
+      "minimum_word_probability": 0.4778,
+      "avg_logprob": -0.1481689429283142,
+      "no_speech_prob": 0.0066553810611367226,
+      "compression_ratio": 1.3252595155709344
+    },
+    {
+      "segment_id": 214,
+      "start_sec": 545.22,
+      "end_sec": 546.56,
+      "timestamp": "00:09:05.220 --> 00:09:06.560",
+      "text": "不菌之際的一個部分",
+      "reasons": [
+        "低信心詞 1 個：之"
+      ],
+      "low_confidence_words": [
+        "之"
+      ],
+      "average_word_probability": 0.8209,
+      "minimum_word_probability": 0.359,
+      "avg_logprob": -0.1481689429283142,
+      "no_speech_prob": 0.0066553810611367226,
+      "compression_ratio": 1.3252595155709344
+    },
+    {
+      "segment_id": 215,
+      "start_sec": 546.56,
+      "end_sec": 549.0,
+      "timestamp": "00:09:06.560 --> 00:09:09.000",
+      "text": "那其實現在隨著Peace的要求",
+      "reasons": [
+        "低信心詞 1 個：Pe"
+      ],
+      "low_confidence_words": [
+        "Pe"
+      ],
+      "average_word_probability": 0.8782,
+      "minimum_word_probability": 0.0903,
+      "avg_logprob": -0.1481689429283142,
+      "no_speech_prob": 0.0066553810611367226,
+      "compression_ratio": 1.3252595155709344
+    },
+    {
+      "segment_id": 222,
+      "start_sec": 559.16,
+      "end_sec": 560.78,
+      "timestamp": "00:09:19.160 --> 00:09:20.780",
+      "text": "那順以幸輝",
+      "reasons": [
+        "低信心詞 2 個：以、幸"
+      ],
+      "low_confidence_words": [
+        "以",
+        "幸"
+      ],
+      "average_word_probability": 0.545,
+      "minimum_word_probability": 0.2049,
+      "avg_logprob": -0.1441929192324869,
+      "no_speech_prob": 0.0014481639955192804,
+      "compression_ratio": 1.3426573426573427
+    },
+    {
+      "segment_id": 227,
+      "start_sec": 567.62,
+      "end_sec": 569.36,
+      "timestamp": "00:09:27.620 --> 00:09:29.360",
+      "text": "我們決定再繼續擴充",
+      "reasons": [
+        "低信心詞 1 個：繼續"
+      ],
+      "low_confidence_words": [
+        "繼續"
+      ],
+      "average_word_probability": 0.8395,
+      "minimum_word_probability": 0.3475,
+      "avg_logprob": -0.1441929192324869,
+      "no_speech_prob": 0.0014481639955192804,
+      "compression_ratio": 1.3426573426573427
+    },
+    {
+      "segment_id": 232,
+      "start_sec": 578.78,
+      "end_sec": 580.74,
+      "timestamp": "00:09:38.780 --> 00:09:40.740",
+      "text": "那包含我們節能省碳的一個部分",
+      "reasons": [
+        "低信心詞 1 個：那"
+      ],
+      "low_confidence_words": [
+        "那"
+      ],
+      "average_word_probability": 0.8308,
+      "minimum_word_probability": 0.2908,
+      "avg_logprob": -0.1441929192324869,
+      "no_speech_prob": 0.0014481639955192804,
+      "compression_ratio": 1.3426573426573427
+    },
+    {
+      "segment_id": 233,
+      "start_sec": 583.66,
+      "end_sec": 585.68,
+      "timestamp": "00:09:43.660 --> 00:09:45.680",
+      "text": "那接下來講過了信國新藥",
+      "reasons": [
+        "低信心詞 1 個：信"
+      ],
+      "low_confidence_words": [
+        "信"
+      ],
+      "average_word_probability": 0.8076,
+      "minimum_word_probability": 0.2347,
+      "avg_logprob": -0.1441929192324869,
+      "no_speech_prob": 0.0014481639955192804,
+      "compression_ratio": 1.3426573426573427
+    },
+    {
+      "segment_id": 234,
+      "start_sec": 585.68,
+      "end_sec": 586.78,
+      "timestamp": "00:09:45.680 --> 00:09:46.780",
+      "text": "那信國新藥呢",
+      "reasons": [
+        "低信心詞 3 個：那、信、新"
+      ],
+      "low_confidence_words": [
+        "那",
+        "信",
+        "新"
+      ],
+      "average_word_probability": 0.5435,
+      "minimum_word_probability": 0.1679,
+      "avg_logprob": -0.15630595594145066,
+      "no_speech_prob": 0.02160460501909256,
+      "compression_ratio": 1.261168384879725
+    },
+    {
+      "segment_id": 235,
+      "start_sec": 587.62,
+      "end_sec": 588.98,
+      "timestamp": "00:09:47.620 --> 00:09:48.980",
+      "text": "目前的狀態就是",
+      "reasons": [
+        "低信心詞 2 個：目前、就是"
+      ],
+      "low_confidence_words": [
+        "目前",
+        "就是"
+      ],
+      "average_word_probability": 0.7373,
+      "minimum_word_probability": 0.317,
+      "avg_logprob": -0.15630595594145066,
+      "no_speech_prob": 0.02160460501909256,
+      "compression_ratio": 1.261168384879725
+    },
+    {
+      "segment_id": 238,
+      "start_sec": 591.82,
+      "end_sec": 593.6,
+      "timestamp": "00:09:51.820 --> 00:09:53.600",
+      "text": "合作授權的三大引擎",
+      "reasons": [
+        "低信心詞 1 個：的"
+      ],
+      "low_confidence_words": [
+        "的"
+      ],
+      "average_word_probability": 0.873,
+      "minimum_word_probability": 0.4721,
+      "avg_logprob": -0.15630595594145066,
+      "no_speech_prob": 0.02160460501909256,
+      "compression_ratio": 1.261168384879725
+    },
+    {
+      "segment_id": 242,
+      "start_sec": 599.32,
+      "end_sec": 601.56,
+      "timestamp": "00:09:59.320 --> 00:10:01.560",
+      "text": "他陸續推出了全數機能產品",
+      "reasons": [
+        "低信心詞 2 個：他、數"
+      ],
+      "low_confidence_words": [
+        "他",
+        "數"
+      ],
+      "average_word_probability": 0.8926,
+      "minimum_word_probability": 0.3471,
+      "avg_logprob": -0.15630595594145066,
+      "no_speech_prob": 0.02160460501909256,
+      "compression_ratio": 1.261168384879725
+    },
+    {
+      "segment_id": 243,
+      "start_sec": 601.56,
+      "end_sec": 603.66,
+      "timestamp": "00:10:01.560 --> 00:10:03.660",
+      "text": "類似像龍一鳴",
+      "reasons": [
+        "低信心詞 2 個：龍、一"
+      ],
+      "low_confidence_words": [
+        "龍",
+        "一"
+      ],
+      "average_word_probability": 0.664,
+      "minimum_word_probability": 0.1904,
+      "avg_logprob": -0.15630595594145066,
+      "no_speech_prob": 0.02160460501909256,
+      "compression_ratio": 1.261168384879725
+    },
+    {
+      "segment_id": 244,
+      "start_sec": 603.66,
+      "end_sec": 604.38,
+      "timestamp": "00:10:03.660 --> 00:10:04.380",
+      "text": "新台好棉",
+      "reasons": [
+        "低信心詞 1 個：新"
+      ],
+      "low_confidence_words": [
+        "新"
+      ],
+      "average_word_probability": 0.5933,
+      "minimum_word_probability": 0.0739,
+      "avg_logprob": -0.15630595594145066,
+      "no_speech_prob": 0.02160460501909256,
+      "compression_ratio": 1.261168384879725
+    },
+    {
+      "segment_id": 245,
+      "start_sec": 604.38,
+      "end_sec": 605.2,
+      "timestamp": "00:10:04.380 --> 00:10:05.200",
+      "text": "無機泰順",
+      "reasons": [
+        "低信心詞 2 個：無、機"
+      ],
+      "low_confidence_words": [
+        "無",
+        "機"
+      ],
+      "average_word_probability": 0.5783,
+      "minimum_word_probability": 0.3276,
+      "avg_logprob": -0.15630595594145066,
+      "no_speech_prob": 0.02160460501909256,
+      "compression_ratio": 1.261168384879725
+    },
+    {
+      "segment_id": 246,
+      "start_sec": 605.2,
+      "end_sec": 605.9,
+      "timestamp": "00:10:05.200 --> 00:10:05.900",
+      "text": "龍暢鮮",
+      "reasons": [
+        "低信心詞 1 個：龍"
+      ],
+      "low_confidence_words": [
+        "龍"
+      ],
+      "average_word_probability": 0.6623,
+      "minimum_word_probability": 0.3762,
+      "avg_logprob": -0.15630595594145066,
+      "no_speech_prob": 0.02160460501909256,
+      "compression_ratio": 1.261168384879725
+    },
+    {
+      "segment_id": 248,
+      "start_sec": 607.96,
+      "end_sec": 608.76,
+      "timestamp": "00:10:07.960 --> 00:10:08.760",
+      "text": "跟現金流",
+      "reasons": [
+        "低信心詞 1 個：跟"
+      ],
+      "low_confidence_words": [
+        "跟"
+      ],
+      "average_word_probability": 0.7666,
+      "minimum_word_probability": 0.2649,
+      "avg_logprob": -0.15630595594145066,
+      "no_speech_prob": 0.02160460501909256,
+      "compression_ratio": 1.261168384879725
+    },
+    {
+      "segment_id": 250,
+      "start_sec": 609.9,
+      "end_sec": 611.9,
+      "timestamp": "00:10:09.900 --> 00:10:11.900",
+      "text": "信國自主開發的魚原泡",
+      "reasons": [
+        "低信心詞 1 個：原"
+      ],
+      "low_confidence_words": [
+        "原"
+      ],
+      "average_word_probability": 0.8872,
+      "minimum_word_probability": 0.4297,
+      "avg_logprob": -0.15630595594145066,
+      "no_speech_prob": 0.02160460501909256,
+      "compression_ratio": 1.261168384879725
+    },
+    {
+      "segment_id": 252,
+      "start_sec": 616.04,
+      "end_sec": 617.94,
+      "timestamp": "00:10:16.040 --> 00:10:17.940",
+      "text": "與今年二月正式取得",
+      "reasons": [
+        "低信心詞 2 個：與、二"
+      ],
+      "low_confidence_words": [
+        "與",
+        "二"
+      ],
+      "average_word_probability": 0.7803,
+      "minimum_word_probability": 0.1643,
+      "avg_logprob": -0.11733084236398156,
+      "no_speech_prob": 0.009391010738909245,
+      "compression_ratio": 1.2553191489361701
+    },
+    {
+      "segment_id": 254,
+      "start_sec": 619.54,
+      "end_sec": 621.38,
+      "timestamp": "00:10:19.540 --> 00:10:21.380",
+      "text": "那合規",
+      "reasons": [
+        "低信心詞 1 個：那"
+      ],
+      "low_confidence_words": [
+        "那"
+      ],
+      "average_word_probability": 0.6087,
+      "minimum_word_probability": 0.0069,
+      "avg_logprob": -0.11733084236398156,
+      "no_speech_prob": 0.009391010738909245,
+      "compression_ratio": 1.2553191489361701
+    },
+    {
+      "segment_id": 256,
+      "start_sec": 624.56,
+      "end_sec": 626.68,
+      "timestamp": "00:10:24.560 --> 00:10:26.680",
+      "text": "那目前正在跟醫美專家",
+      "reasons": [
+        "低信心詞 1 個：跟"
+      ],
+      "low_confidence_words": [
+        "跟"
+      ],
+      "average_word_probability": 0.8282,
+      "minimum_word_probability": 0.3702,
+      "avg_logprob": -0.11733084236398156,
+      "no_speech_prob": 0.009391010738909245,
+      "compression_ratio": 1.2553191489361701
+    },
+    {
+      "segment_id": 258,
+      "start_sec": 628.62,
+      "end_sec": 632.54,
+      "timestamp": "00:10:28.620 --> 00:10:32.540",
+      "text": "那藏在抗癌為之體性藥平台方面呢",
+      "reasons": [
+        "低信心詞 1 個：性"
+      ],
+      "low_confidence_words": [
+        "性"
+      ],
+      "average_word_probability": 0.7833,
+      "minimum_word_probability": 0.2428,
+      "avg_logprob": -0.11733084236398156,
+      "no_speech_prob": 0.009391010738909245,
+      "compression_ratio": 1.2553191489361701
+    },
+    {
+      "segment_id": 261,
+      "start_sec": 637.3,
+      "end_sec": 638.18,
+      "timestamp": "00:10:37.300 --> 00:10:38.180",
+      "text": "跟合作",
+      "reasons": [
+        "低信心詞 1 個：跟"
+      ],
+      "low_confidence_words": [
+        "跟"
+      ],
+      "average_word_probability": 0.8084,
+      "minimum_word_probability": 0.4268,
+      "avg_logprob": -0.11733084236398156,
+      "no_speech_prob": 0.009391010738909245,
+      "compression_ratio": 1.2553191489361701
+    },
+    {
+      "segment_id": 263,
+      "start_sec": 639.28,
+      "end_sec": 639.88,
+      "timestamp": "00:10:39.280 --> 00:10:39.880",
+      "text": "信國呢",
+      "reasons": [
+        "低信心詞 1 個：信"
+      ],
+      "low_confidence_words": [
+        "信"
+      ],
+      "average_word_probability": 0.6066,
+      "minimum_word_probability": 0.1535,
+      "avg_logprob": -0.11733084236398156,
+      "no_speech_prob": 0.009391010738909245,
+      "compression_ratio": 1.2553191489361701
+    },
+    {
+      "segment_id": 264,
+      "start_sec": 639.88,
+      "end_sec": 641.2,
+      "timestamp": "00:10:39.880 --> 00:10:41.200",
+      "text": "也在八月十七號",
+      "reasons": [
+        "低信心詞 1 個：八"
+      ],
+      "low_confidence_words": [
+        "八"
+      ],
+      "average_word_probability": 0.8841,
+      "minimum_word_probability": 0.4753,
+      "avg_logprob": -0.11733084236398156,
+      "no_speech_prob": 0.009391010738909245,
+      "compression_ratio": 1.2553191489361701
+    },
+    {
+      "segment_id": 266,
+      "start_sec": 642.52,
+      "end_sec": 644.36,
+      "timestamp": "00:10:42.520 --> 00:10:44.360",
+      "text": "這部分也就不在這邊追溯了",
+      "reasons": [
+        "低信心詞 1 個：也"
+      ],
+      "low_confidence_words": [
+        "也"
+      ],
+      "average_word_probability": 0.9053,
+      "minimum_word_probability": 0.4904,
+      "avg_logprob": -0.11733084236398156,
+      "no_speech_prob": 0.009391010738909245,
+      "compression_ratio": 1.2553191489361701
+    },
+    {
+      "segment_id": 267,
+      "start_sec": 647.82,
+      "end_sec": 649.94,
+      "timestamp": "00:10:47.820 --> 00:10:49.940",
+      "text": "那接下來提到我們天然資源的部分",
+      "reasons": [
+        "低信心詞 1 個：那"
+      ],
+      "low_confidence_words": [
+        "那"
+      ],
+      "average_word_probability": 0.8652,
+      "minimum_word_probability": 0.3882,
+      "avg_logprob": -0.08357140789853364,
+      "no_speech_prob": 0.009326210245490074,
+      "compression_ratio": 1.4412811387900355
+    },
+    {
+      "segment_id": 271,
+      "start_sec": 655.46,
+      "end_sec": 656.44,
+      "timestamp": "00:10:55.460 --> 00:10:56.440",
+      "text": "在我們子公司",
+      "reasons": [
+        "低信心詞 2 個：在、子"
+      ],
+      "low_confidence_words": [
+        "在",
+        "子"
+      ],
+      "average_word_probability": 0.6644,
+      "minimum_word_probability": 0.1705,
+      "avg_logprob": -0.08357140789853364,
+      "no_speech_prob": 0.009326210245490074,
+      "compression_ratio": 1.4412811387900355
+    },
+    {
+      "segment_id": 272,
+      "start_sec": 656.44,
+      "end_sec": 658.48,
+      "timestamp": "00:10:56.440 --> 00:10:58.480",
+      "text": "那天然資源我們的策略呢",
+      "reasons": [
+        "低信心詞 1 個：那"
+      ],
+      "low_confidence_words": [
+        "那"
+      ],
+      "average_word_probability": 0.9053,
+      "minimum_word_probability": 0.4955,
+      "avg_logprob": -0.08357140789853364,
+      "no_speech_prob": 0.009326210245490074,
+      "compression_ratio": 1.4412811387900355
+    },
+    {
+      "segment_id": 280,
+      "start_sec": 675.7,
+      "end_sec": 677.9,
+      "timestamp": "00:11:15.700 --> 00:11:17.900",
+      "text": "那除了已經銷售十個國家",
+      "reasons": [
+        "低信心詞 2 個：那、十"
+      ],
+      "low_confidence_words": [
+        "那",
+        "十"
+      ],
+      "average_word_probability": 0.7912,
+      "minimum_word_probability": 0.0625,
+      "avg_logprob": -0.07046430562537141,
+      "no_speech_prob": 0.07608626782894135,
+      "compression_ratio": 1.3717472118959109
+    },
+    {
+      "segment_id": 281,
+      "start_sec": 677.9,
+      "end_sec": 680.66,
+      "timestamp": "00:11:17.900 --> 00:11:20.660",
+      "text": "跟地區的管化肉蟲籠提取原料外",
+      "reasons": [
+        "低信心詞 1 個：管"
+      ],
+      "low_confidence_words": [
+        "管"
+      ],
+      "average_word_probability": 0.893,
+      "minimum_word_probability": 0.415,
+      "avg_logprob": -0.07046430562537141,
+      "no_speech_prob": 0.07608626782894135,
+      "compression_ratio": 1.3717472118959109
+    },
+    {
+      "segment_id": 294,
+      "start_sec": 705.3,
+      "end_sec": 708.2,
+      "timestamp": "00:11:45.300 --> 00:11:48.200",
+      "text": "肌肉合成跟運動後乳酸的代謝能力",
+      "reasons": [
+        "低信心詞 1 個：運"
+      ],
+      "low_confidence_words": [
+        "運"
+      ],
+      "average_word_probability": 0.9138,
+      "minimum_word_probability": 0.3497,
+      "avg_logprob": -0.07113170473182455,
+      "no_speech_prob": 0.0004874758596997708,
+      "compression_ratio": 1.346938775510204
+    },
+    {
+      "segment_id": 295,
+      "start_sec": 708.2,
+      "end_sec": 710.08,
+      "timestamp": "00:11:48.200 --> 00:11:50.080",
+      "text": "是運動營養品類中",
+      "reasons": [
+        "低信心詞 1 個：是"
+      ],
+      "low_confidence_words": [
+        "是"
+      ],
+      "average_word_probability": 0.9195,
+      "minimum_word_probability": 0.4619,
+      "avg_logprob": -0.07113170473182455,
+      "no_speech_prob": 0.0004874758596997708,
+      "compression_ratio": 1.346938775510204
+    },
+    {
+      "segment_id": 303,
+      "start_sec": 725.36,
+      "end_sec": 727.08,
+      "timestamp": "00:12:05.360 --> 00:12:07.080",
+      "text": "那相較於胺基酸呢",
+      "reasons": [
+        "低信心詞 1 個：那"
+      ],
+      "low_confidence_words": [
+        "那"
+      ],
+      "average_word_probability": 0.8983,
+      "minimum_word_probability": 0.2474,
+      "avg_logprob": -0.07113170473182455,
+      "no_speech_prob": 0.0004874758596997708,
+      "compression_ratio": 1.346938775510204
+    },
+    {
+      "segment_id": 306,
+      "start_sec": 733.64,
+      "end_sec": 734.92,
+      "timestamp": "00:12:13.640 --> 00:12:14.920",
+      "text": "那杏輝呢",
+      "reasons": [
+        "低信心詞 1 個：那"
+      ],
+      "low_confidence_words": [
+        "那"
+      ],
+      "average_word_probability": 0.5558,
+      "minimum_word_probability": 0.2609,
+      "avg_logprob": -0.11289272630321127,
+      "no_speech_prob": 0.008769742213189602,
+      "compression_ratio": 1.248299319727891
+    },
+    {
+      "segment_id": 310,
+      "start_sec": 740.64,
+      "end_sec": 741.38,
+      "timestamp": "00:12:20.640 --> 00:12:21.380",
+      "text": "易吸收",
+      "reasons": [
+        "低信心詞 1 個：易"
+      ],
+      "low_confidence_words": [
+        "易"
+      ],
+      "average_word_probability": 0.7776,
+      "minimum_word_probability": 0.3358,
+      "avg_logprob": -0.11289272630321127,
+      "no_speech_prob": 0.008769742213189602,
+      "compression_ratio": 1.248299319727891
+    },
+    {
+      "segment_id": 312,
+      "start_sec": 743.58,
+      "end_sec": 745.64,
+      "timestamp": "00:12:23.580 --> 00:12:25.640",
+      "text": "那是健康成食品的",
+      "reasons": [
+        "低信心詞 1 個：成"
+      ],
+      "low_confidence_words": [
+        "成"
+      ],
+      "average_word_probability": 0.8484,
+      "minimum_word_probability": 0.2239,
+      "avg_logprob": -0.11289272630321127,
+      "no_speech_prob": 0.008769742213189602,
+      "compression_ratio": 1.248299319727891
+    },
+    {
+      "segment_id": 313,
+      "start_sec": 745.64,
+      "end_sec": 747.1,
+      "timestamp": "00:12:25.640 --> 00:12:27.100",
+      "text": "複方搭配的優選者",
+      "reasons": [
+        "低信心詞 1 個：者"
+      ],
+      "low_confidence_words": [
+        "者"
+      ],
+      "average_word_probability": 0.8742,
+      "minimum_word_probability": 0.3501,
+      "avg_logprob": -0.11289272630321127,
+      "no_speech_prob": 0.008769742213189602,
+      "compression_ratio": 1.248299319727891
+    },
+    {
+      "segment_id": 320,
+      "start_sec": 759.42,
+      "end_sec": 763.14,
+      "timestamp": "00:12:39.420 --> 00:12:43.140",
+      "text": "那為集團打造出高技術避雷的天然產物整合",
+      "reasons": [
+        "低信心詞 1 個：產"
+      ],
+      "low_confidence_words": [
+        "產"
+      ],
+      "average_word_probability": 0.8987,
+      "minimum_word_probability": 0.3785,
+      "avg_logprob": -0.11289272630321127,
+      "no_speech_prob": 0.008769742213189602,
+      "compression_ratio": 1.248299319727891
+    },
+    {
+      "segment_id": 321,
+      "start_sec": 765.04,
+      "end_sec": 766.7,
+      "timestamp": "00:12:45.040 --> 00:12:46.700",
+      "text": "那能夠做到這些呢",
+      "reasons": [
+        "低信心詞 1 個：那"
+      ],
+      "low_confidence_words": [
+        "那"
+      ],
+      "average_word_probability": 0.8218,
+      "minimum_word_probability": 0.2395,
+      "avg_logprob": -0.07113226619031694,
+      "no_speech_prob": 0.0034052040427923203,
+      "compression_ratio": 1.3320754716981131
+    },
+    {
+      "segment_id": 322,
+      "start_sec": 767.62,
+      "end_sec": 770.02,
+      "timestamp": "00:12:47.620 --> 00:12:50.020",
+      "text": "除了剛剛所報告的這些之外",
+      "reasons": [
+        "低信心詞 1 個：的"
+      ],
+      "low_confidence_words": [
+        "的"
+      ],
+      "average_word_probability": 0.8895,
+      "minimum_word_probability": 0.4551,
+      "avg_logprob": -0.07113226619031694,
+      "no_speech_prob": 0.0034052040427923203,
+      "compression_ratio": 1.3320754716981131
+    },
+    {
+      "segment_id": 332,
+      "start_sec": 795.92,
+      "end_sec": 797.38,
+      "timestamp": "00:13:15.920 --> 00:13:17.380",
+      "text": "那基於以上的報告",
+      "reasons": [
+        "低信心詞 3 個：那、基、於"
+      ],
+      "low_confidence_words": [
+        "那",
+        "基",
+        "於"
+      ],
+      "average_word_probability": 0.6944,
+      "minimum_word_probability": 0.2012,
+      "avg_logprob": -0.09768382454775784,
+      "no_speech_prob": 0.020166192203760147,
+      "compression_ratio": 1.357429718875502
+    },
+    {
+      "segment_id": 335,
+      "start_sec": 802.38,
+      "end_sec": 804.62,
+      "timestamp": "00:13:22.380 --> 00:13:24.620",
+      "text": "從今年的半年報可以看出來",
+      "reasons": [
+        "低信心詞 1 個：從"
+      ],
+      "low_confidence_words": [
+        "從"
+      ],
+      "average_word_probability": 0.9219,
+      "minimum_word_probability": 0.4,
+      "avg_logprob": -0.09768382454775784,
+      "no_speech_prob": 0.020166192203760147,
+      "compression_ratio": 1.357429718875502
+    },
+    {
+      "segment_id": 341,
+      "start_sec": 816.34,
+      "end_sec": 820.26,
+      "timestamp": "00:13:36.340 --> 00:13:40.260",
+      "text": "那相較於去年同期成長1.26億元",
+      "reasons": [
+        "低信心詞 1 個：那"
+      ],
+      "low_confidence_words": [
+        "那"
+      ],
+      "average_word_probability": 0.9535,
+      "minimum_word_probability": 0.4146,
+      "avg_logprob": -0.09768382454775784,
+      "no_speech_prob": 0.020166192203760147,
+      "compression_ratio": 1.357429718875502
+    },
+    {
+      "segment_id": 343,
+      "start_sec": 822.6,
+      "end_sec": 824.22,
+      "timestamp": "00:13:42.600 --> 00:13:44.220",
+      "text": "那除了營收以外",
+      "reasons": [
+        "低信心詞 1 個：那"
+      ],
+      "low_confidence_words": [
+        "那"
+      ],
+      "average_word_probability": 0.8122,
+      "minimum_word_probability": 0.015,
+      "avg_logprob": -0.09854240666807088,
+      "no_speech_prob": 0.005519143771380186,
+      "compression_ratio": 1.263537906137184
+    },
+    {
+      "segment_id": 344,
+      "start_sec": 824.22,
+      "end_sec": 828.04,
+      "timestamp": "00:13:44.220 --> 00:13:48.040",
+      "text": "那我們上半年毛利率45.4%",
+      "reasons": [
+        "低信心詞 2 個：那我們、毛"
+      ],
+      "low_confidence_words": [
+        "那我們",
+        "毛"
+      ],
+      "average_word_probability": 0.8031,
+      "minimum_word_probability": 0.0857,
+      "avg_logprob": -0.09854240666807088,
+      "no_speech_prob": 0.005519143771380186,
+      "compression_ratio": 1.263537906137184
+    },
+    {
+      "segment_id": 345,
+      "start_sec": 829.02,
+      "end_sec": 830.28,
+      "timestamp": "00:13:49.020 --> 00:13:50.280",
+      "text": "45.4%",
+      "reasons": [
+        "低信心詞 1 個：45."
+      ],
+      "low_confidence_words": [
+        "45."
+      ],
+      "average_word_probability": 0.7265,
+      "minimum_word_probability": 0.2518,
+      "avg_logprob": -0.09854240666807088,
+      "no_speech_prob": 0.005519143771380186,
+      "compression_ratio": 1.263537906137184
+    },
+    {
+      "segment_id": 352,
+      "start_sec": 843.98,
+      "end_sec": 846.4,
+      "timestamp": "00:14:03.980 --> 00:14:06.400",
+      "text": "較多的就是我們的農業基跟活芯",
+      "reasons": [
+        "低信心詞 1 個：業"
+      ],
+      "low_confidence_words": [
+        "業"
+      ],
+      "average_word_probability": 0.7947,
+      "minimum_word_probability": 0.3867,
+      "avg_logprob": -0.09854240666807088,
+      "no_speech_prob": 0.005519143771380186,
+      "compression_ratio": 1.263537906137184
+    },
+    {
+      "segment_id": 353,
+      "start_sec": 846.94,
+      "end_sec": 849.54,
+      "timestamp": "00:14:06.940 --> 00:14:09.540",
+      "text": "那這兩項是新會投入數十年",
+      "reasons": [
+        "低信心詞 1 個：新"
+      ],
+      "low_confidence_words": [
+        "新"
+      ],
+      "average_word_probability": 0.8881,
+      "minimum_word_probability": 0.312,
+      "avg_logprob": -0.09854240666807088,
+      "no_speech_prob": 0.005519143771380186,
+      "compression_ratio": 1.263537906137184
+    },
+    {
+      "segment_id": 355,
+      "start_sec": 852.6,
+      "end_sec": 855.04,
+      "timestamp": "00:14:12.600 --> 00:14:15.040",
+      "text": "並且與市面上其他產品有較大的區隔",
+      "reasons": [
+        "低信心詞 1 個：並"
+      ],
+      "low_confidence_words": [
+        "並"
+      ],
+      "average_word_probability": 0.8318,
+      "minimum_word_probability": 0.1352,
+      "avg_logprob": -0.08918813106825026,
+      "no_speech_prob": 0.016818812116980553,
+      "compression_ratio": 1.3074074074074074
+    },
+    {
+      "segment_id": 356,
+      "start_sec": 855.04,
+      "end_sec": 857.18,
+      "timestamp": "00:14:15.040 --> 00:14:17.180",
+      "text": "所以當然毛利是較高的",
+      "reasons": [
+        "低信心詞 2 個：所以、是"
+      ],
+      "low_confidence_words": [
+        "所以",
+        "是"
+      ],
+      "average_word_probability": 0.7947,
+      "minimum_word_probability": 0.4049,
+      "avg_logprob": -0.08918813106825026,
+      "no_speech_prob": 0.016818812116980553,
+      "compression_ratio": 1.3074074074074074
+    },
+    {
+      "segment_id": 357,
+      "start_sec": 857.18,
+      "end_sec": 858.32,
+      "timestamp": "00:14:17.180 --> 00:14:18.320",
+      "text": "這兩部分呢",
+      "reasons": [
+        "低信心詞 1 個：呢"
+      ],
+      "low_confidence_words": [
+        "呢"
+      ],
+      "average_word_probability": 0.7205,
+      "minimum_word_probability": 0.1656,
+      "avg_logprob": -0.08918813106825026,
+      "no_speech_prob": 0.016818812116980553,
+      "compression_ratio": 1.3074074074074074
+    },
+    {
+      "segment_id": 364,
+      "start_sec": 875.96,
+      "end_sec": 881.36,
+      "timestamp": "00:14:35.960 --> 00:14:41.360",
+      "text": "約當的現金的部分提高到了14.76億元",
+      "reasons": [
+        "低信心詞 1 個：元"
+      ],
+      "low_confidence_words": [
+        "元"
+      ],
+      "average_word_probability": 0.866,
+      "minimum_word_probability": 0.362,
+      "avg_logprob": -0.08918813106825026,
+      "no_speech_prob": 0.016818812116980553,
+      "compression_ratio": 1.3074074074074074
+    },
+    {
+      "segment_id": 365,
+      "start_sec": 881.36,
+      "end_sec": 885.18,
+      "timestamp": "00:14:41.360 --> 00:14:45.180",
+      "text": "那為後續大型擴建計畫提供了充足的資源",
+      "reasons": [
+        "低信心詞 3 個：那、為、提"
+      ],
+      "low_confidence_words": [
+        "那",
+        "為",
+        "提"
+      ],
+      "average_word_probability": 0.8537,
+      "minimum_word_probability": 0.3532,
+      "avg_logprob": -0.10293439595527898,
+      "no_speech_prob": 0.0018345894059166312,
+      "compression_ratio": 1.3450704225352113
+    },
+    {
+      "segment_id": 370,
+      "start_sec": 895.04,
+      "end_sec": 896.64,
+      "timestamp": "00:14:55.040 --> 00:14:56.640",
+      "text": "上半年的稅銜淨利率呢",
+      "reasons": [
+        "低信心詞 1 個：上"
+      ],
+      "low_confidence_words": [
+        "上"
+      ],
+      "average_word_probability": 0.8522,
+      "minimum_word_probability": 0.4172,
+      "avg_logprob": -0.10293439595527898,
+      "no_speech_prob": 0.0018345894059166312,
+      "compression_ratio": 1.3450704225352113
+    },
+    {
+      "segment_id": 373,
+      "start_sec": 899.98,
+      "end_sec": 901.7,
+      "timestamp": "00:14:59.980 --> 00:15:01.700",
+      "text": "也沒有相差太多",
+      "reasons": [
+        "低信心詞 1 個：太"
+      ],
+      "low_confidence_words": [
+        "太"
+      ],
+      "average_word_probability": 0.8409,
+      "minimum_word_probability": 0.3114,
+      "avg_logprob": -0.10293439595527898,
+      "no_speech_prob": 0.0018345894059166312,
+      "compression_ratio": 1.3450704225352113
+    },
+    {
+      "segment_id": 379,
+      "start_sec": 910.98,
+      "end_sec": 911.72,
+      "timestamp": "00:15:10.980 --> 00:15:11.720",
+      "text": "還有費用的增長",
+      "reasons": [
+        "低信心詞 3 個：還有、費、的"
+      ],
+      "low_confidence_words": [
+        "還有",
+        "費",
+        "的"
+      ],
+      "average_word_probability": 0.5971,
+      "minimum_word_probability": 0.0463,
+      "avg_logprob": -0.09046952604063299,
+      "no_speech_prob": 0.00154624052811414,
+      "compression_ratio": 1.3416370106761566
+    },
+    {
+      "segment_id": 380,
+      "start_sec": 911.72,
+      "end_sec": 912.94,
+      "timestamp": "00:15:11.720 --> 00:15:12.940",
+      "text": "那從下面呢",
+      "reasons": [
+        "低信心詞 2 個：那、呢"
+      ],
+      "low_confidence_words": [
+        "那",
+        "呢"
+      ],
+      "average_word_probability": 0.5797,
+      "minimum_word_probability": 0.11,
+      "avg_logprob": -0.09046952604063299,
+      "no_speech_prob": 0.00154624052811414,
+      "compression_ratio": 1.3416370106761566
+    },
+    {
+      "segment_id": 385,
+      "start_sec": 920.98,
+      "end_sec": 923.32,
+      "timestamp": "00:15:20.980 --> 00:15:23.320",
+      "text": "那11.4年度的配發",
+      "reasons": [
+        "低信心詞 1 個：11."
+      ],
+      "low_confidence_words": [
+        "11."
+      ],
+      "average_word_probability": 0.9008,
+      "minimum_word_probability": 0.4156,
+      "avg_logprob": -0.09046952604063299,
+      "no_speech_prob": 0.00154624052811414,
+      "compression_ratio": 1.3416370106761566
+    },
+    {
+      "segment_id": 393,
+      "start_sec": 939.46,
+      "end_sec": 941.1,
+      "timestamp": "00:15:39.460 --> 00:15:41.100",
+      "text": "我們是把永續發展",
+      "reasons": [
+        "低信心詞 2 個：我們、發"
+      ],
+      "low_confidence_words": [
+        "我們",
+        "發"
+      ],
+      "average_word_probability": 0.7616,
+      "minimum_word_probability": 0.2262,
+      "avg_logprob": -0.0819688778297574,
+      "no_speech_prob": 0.0087352953851223,
+      "compression_ratio": 1.2816901408450705
+    },
+    {
+      "segment_id": 394,
+      "start_sec": 941.1,
+      "end_sec": 943.0,
+      "timestamp": "00:15:41.100 --> 00:15:43.000",
+      "text": "當作我們長期的競爭力",
+      "reasons": [
+        "低信心詞 1 個：作"
+      ],
+      "low_confidence_words": [
+        "作"
+      ],
+      "average_word_probability": 0.8679,
+      "minimum_word_probability": 0.4928,
+      "avg_logprob": -0.0819688778297574,
+      "no_speech_prob": 0.0087352953851223,
+      "compression_ratio": 1.2816901408450705
+    },
+    {
+      "segment_id": 395,
+      "start_sec": 943.0,
+      "end_sec": 945.04,
+      "timestamp": "00:15:43.000 --> 00:15:45.040",
+      "text": "那我們這邊有列出兩個例子",
+      "reasons": [
+        "低信心詞 1 個：那我們"
+      ],
+      "low_confidence_words": [
+        "那我們"
+      ],
+      "average_word_probability": 0.9183,
+      "minimum_word_probability": 0.484,
+      "avg_logprob": -0.0819688778297574,
+      "no_speech_prob": 0.0087352953851223,
+      "compression_ratio": 1.2816901408450705
+    },
+    {
+      "segment_id": 396,
+      "start_sec": 945.04,
+      "end_sec": 948.1,
+      "timestamp": "00:15:45.040 --> 00:15:48.100",
+      "text": "來說明為什麼我們的能源密集度呢",
+      "reasons": [
+        "低信心詞 1 個：呢"
+      ],
+      "low_confidence_words": [
+        "呢"
+      ],
+      "average_word_probability": 0.8693,
+      "minimum_word_probability": 0.4633,
+      "avg_logprob": -0.0819688778297574,
+      "no_speech_prob": 0.0087352953851223,
+      "compression_ratio": 1.2816901408450705
+    },
+    {
+      "segment_id": 403,
+      "start_sec": 961.76,
+      "end_sec": 962.8,
+      "timestamp": "00:16:01.760 --> 00:16:02.800",
+      "text": "不算方式",
+      "reasons": [
+        "低信心詞 1 個：不"
+      ],
+      "low_confidence_words": [
+        "不"
+      ],
+      "average_word_probability": 0.7324,
+      "minimum_word_probability": 0.1069,
+      "avg_logprob": -0.0819688778297574,
+      "no_speech_prob": 0.0087352953851223,
+      "compression_ratio": 1.2816901408450705
+    },
+    {
+      "segment_id": 407,
+      "start_sec": 969.46,
+      "end_sec": 970.82,
+      "timestamp": "00:16:09.460 --> 00:16:10.820",
+      "text": "那初期減量目標呢",
+      "reasons": [
+        "低信心詞 2 個：那、呢"
+      ],
+      "low_confidence_words": [
+        "那",
+        "呢"
+      ],
+      "average_word_probability": 0.8048,
+      "minimum_word_probability": 0.2156,
+      "avg_logprob": -0.08958430405248675,
+      "no_speech_prob": 0.016033073887228966,
+      "compression_ratio": 1.3322884012539185
+    },
+    {
+      "segment_id": 412,
+      "start_sec": 978.38,
+      "end_sec": 979.54,
+      "timestamp": "00:16:18.380 --> 00:16:19.540",
+      "text": "用電的佔比較高",
+      "reasons": [
+        "低信心詞 1 個：的"
+      ],
+      "low_confidence_words": [
+        "的"
+      ],
+      "average_word_probability": 0.7775,
+      "minimum_word_probability": 0.261,
+      "avg_logprob": -0.08958430405248675,
+      "no_speech_prob": 0.016033073887228966,
+      "compression_ratio": 1.3322884012539185
+    },
+    {
+      "segment_id": 415,
+      "start_sec": 982.5,
+      "end_sec": 984.66,
+      "timestamp": "00:16:22.500 --> 00:16:24.660",
+      "text": "那我們換了B棟I棟",
+      "reasons": [
+        "低信心詞 1 個：I"
+      ],
+      "low_confidence_words": [
+        "I"
+      ],
+      "average_word_probability": 0.8115,
+      "minimum_word_probability": 0.3509,
+      "avg_logprob": -0.08958430405248675,
+      "no_speech_prob": 0.016033073887228966,
+      "compression_ratio": 1.3322884012539185
+    },
+    {
+      "segment_id": 416,
+      "start_sec": 984.66,
+      "end_sec": 986.82,
+      "timestamp": "00:16:24.660 --> 00:16:26.820",
+      "text": "從定頻式改為變頻式",
+      "reasons": [
+        "低信心詞 1 個：從"
+      ],
+      "low_confidence_words": [
+        "從"
+      ],
+      "average_word_probability": 0.8711,
+      "minimum_word_probability": 0.4283,
+      "avg_logprob": -0.08958430405248675,
+      "no_speech_prob": 0.016033073887228966,
+      "compression_ratio": 1.3322884012539185
+    },
+    {
+      "segment_id": 423,
+      "start_sec": 998.14,
+      "end_sec": 1000.82,
+      "timestamp": "00:16:38.140 --> 00:16:40.820",
+      "text": "那用電量溫度也可以下降",
+      "reasons": [
+        "低信心詞 1 個：那"
+      ],
+      "low_confidence_words": [
+        "那"
+      ],
+      "average_word_probability": 0.7756,
+      "minimum_word_probability": 0.0726,
+      "avg_logprob": -0.11505725614677202,
+      "no_speech_prob": 0.0017849107971414924,
+      "compression_ratio": 1.3558718861209964
+    },
+    {
+      "segment_id": 424,
+      "start_sec": 1000.82,
+      "end_sec": 1002.12,
+      "timestamp": "00:16:40.820 --> 00:16:42.120",
+      "text": "用電量也可以下降",
+      "reasons": [
+        "低信心詞 1 個：用"
+      ],
+      "low_confidence_words": [
+        "用"
+      ],
+      "average_word_probability": 0.7916,
+      "minimum_word_probability": 0.2953,
+      "avg_logprob": -0.11505725614677202,
+      "no_speech_prob": 0.0017849107971414924,
+      "compression_ratio": 1.3558718861209964
+    },
+    {
+      "segment_id": 426,
+      "start_sec": 1003.54,
+      "end_sec": 1006.62,
+      "timestamp": "00:16:43.540 --> 00:16:46.620",
+      "text": "所以就是做了這些點點滴滴的之後",
+      "reasons": [
+        "低信心詞 1 個：的"
+      ],
+      "low_confidence_words": [
+        "的"
+      ],
+      "average_word_probability": 0.9007,
+      "minimum_word_probability": 0.3737,
+      "avg_logprob": -0.11505725614677202,
+      "no_speech_prob": 0.0017849107971414924,
+      "compression_ratio": 1.3558718861209964
+    },
+    {
+      "segment_id": 429,
+      "start_sec": 1010.06,
+      "end_sec": 1013.08,
+      "timestamp": "00:16:50.060 --> 00:16:53.080",
+      "text": "我們可以降低了12.38%",
+      "reasons": [
+        "低信心詞 1 個：低"
+      ],
+      "low_confidence_words": [
+        "低"
+      ],
+      "average_word_probability": 0.7979,
+      "minimum_word_probability": 0.3459,
+      "avg_logprob": -0.11505725614677202,
+      "no_speech_prob": 0.0017849107971414924,
+      "compression_ratio": 1.3558718861209964
+    },
+    {
+      "segment_id": 433,
+      "start_sec": 1021.28,
+      "end_sec": 1023.02,
+      "timestamp": "00:17:01.280 --> 00:17:03.020",
+      "text": "完成第三章確信的審核",
+      "reasons": [
+        "低信心詞 1 個：第三"
+      ],
+      "low_confidence_words": [
+        "第三"
+      ],
+      "average_word_probability": 0.793,
+      "minimum_word_probability": 0.2468,
+      "avg_logprob": -0.11505725614677202,
+      "no_speech_prob": 0.0017849107971414924,
+      "compression_ratio": 1.3558718861209964
+    },
+    {
+      "segment_id": 436,
+      "start_sec": 1026.68,
+      "end_sec": 1029.64,
+      "timestamp": "00:17:06.680 --> 00:17:09.640",
+      "text": "那在扣除掉今年新增的範疇三",
+      "reasons": [
+        "低信心詞 1 個：那"
+      ],
+      "low_confidence_words": [
+        "那"
+      ],
+      "average_word_probability": 0.8369,
+      "minimum_word_probability": 0.2852,
+      "avg_logprob": -0.08593900611429858,
+      "no_speech_prob": 0.0014758120523765683,
+      "compression_ratio": 1.4246575342465753
+    },
+    {
+      "segment_id": 437,
+      "start_sec": 1029.64,
+      "end_sec": 1031.6,
+      "timestamp": "00:17:09.640 --> 00:17:11.600",
+      "text": "員工偷情的比較標準後",
+      "reasons": [
+        "低信心詞 2 個：員、情"
+      ],
+      "low_confidence_words": [
+        "員",
+        "情"
+      ],
+      "average_word_probability": 0.8108,
+      "minimum_word_probability": 0.2479,
+      "avg_logprob": -0.08593900611429858,
+      "no_speech_prob": 0.0014758120523765683,
+      "compression_ratio": 1.4246575342465753
+    },
+    {
+      "segment_id": 438,
+      "start_sec": 1031.6,
+      "end_sec": 1033.3,
+      "timestamp": "00:17:11.600 --> 00:17:13.300",
+      "text": "那實質排放的密集度",
+      "reasons": [
+        "低信心詞 1 個：那"
+      ],
+      "low_confidence_words": [
+        "那"
+      ],
+      "average_word_probability": 0.8959,
+      "minimum_word_probability": 0.2765,
+      "avg_logprob": -0.08593900611429858,
+      "no_speech_prob": 0.0014758120523765683,
+      "compression_ratio": 1.4246575342465753
+    },
+    {
+      "segment_id": 439,
+      "start_sec": 1033.3,
+      "end_sec": 1035.8,
+      "timestamp": "00:17:13.300 --> 00:17:15.800",
+      "text": "比前一年度下降了4.57%",
+      "reasons": [
+        "低信心詞 3 個：了、57、%"
+      ],
+      "low_confidence_words": [
+        "了",
+        "57",
+        "%"
+      ],
+      "average_word_probability": 0.7644,
+      "minimum_word_probability": 0.2306,
+      "avg_logprob": -0.08593900611429858,
+      "no_speech_prob": 0.0014758120523765683,
+      "compression_ratio": 1.4246575342465753
+    },
+    {
+      "segment_id": 445,
+      "start_sec": 1044.92,
+      "end_sec": 1048.06,
+      "timestamp": "00:17:24.920 --> 00:17:28.060",
+      "text": "必須拉到相同的標準",
+      "reasons": [
+        "低信心詞 1 個：到"
+      ],
+      "low_confidence_words": [
+        "到"
+      ],
+      "average_word_probability": 0.9208,
+      "minimum_word_probability": 0.4247,
+      "avg_logprob": -0.08593900611429858,
+      "no_speech_prob": 0.0014758120523765683,
+      "compression_ratio": 1.4246575342465753
+    },
+    {
+      "segment_id": 450,
+      "start_sec": 1056.68,
+      "end_sec": 1056.8,
+      "timestamp": "00:17:36.680 --> 00:17:36.800",
+      "text": "的時候",
+      "reasons": [
+        "低信心詞 1 個：的時候"
+      ],
+      "low_confidence_words": [
+        "的時候"
+      ],
+      "average_word_probability": 0.005,
+      "minimum_word_probability": 0.005,
+      "avg_logprob": -0.1193291487248793,
+      "no_speech_prob": 0.0006756154471077025,
+      "compression_ratio": 1.2602739726027397
+    },
+    {
+      "segment_id": 451,
+      "start_sec": 1057.24,
+      "end_sec": 1061.58,
+      "timestamp": "00:17:37.240 --> 00:17:41.580",
+      "text": "我們整個的碳排放密集度",
+      "reasons": [
+        "低信心詞 3 個：我們、排、放"
+      ],
+      "low_confidence_words": [
+        "我們",
+        "排",
+        "放"
+      ],
+      "average_word_probability": 0.7239,
+      "minimum_word_probability": 0.2034,
+      "avg_logprob": -0.1193291487248793,
+      "no_speech_prob": 0.0006756154471077025,
+      "compression_ratio": 1.2602739726027397
+    },
+    {
+      "segment_id": 452,
+      "start_sec": 1061.58,
+      "end_sec": 1063.84,
+      "timestamp": "00:17:41.580 --> 00:17:43.840",
+      "text": "會較前一年度下降4.57%",
+      "reasons": [
+        "低信心詞 2 個：4.、%"
+      ],
+      "low_confidence_words": [
+        "4.",
+        "%"
+      ],
+      "average_word_probability": 0.776,
+      "minimum_word_probability": 0.1397,
+      "avg_logprob": -0.1193291487248793,
+      "no_speech_prob": 0.0006756154471077025,
+      "compression_ratio": 1.2602739726027397
+    },
+    {
+      "segment_id": 453,
+      "start_sec": 1066.22,
+      "end_sec": 1069.06,
+      "timestamp": "00:17:46.220 --> 00:17:49.060",
+      "text": "那除了上面的報告營運發展部分",
+      "reasons": [
+        "低信心詞 1 個：那"
+      ],
+      "low_confidence_words": [
+        "那"
+      ],
+      "average_word_probability": 0.9325,
+      "minimum_word_probability": 0.4258,
+      "avg_logprob": -0.1193291487248793,
+      "no_speech_prob": 0.0006756154471077025,
+      "compression_ratio": 1.2602739726027397
+    },
+    {
+      "segment_id": 456,
+      "start_sec": 1073.24,
+      "end_sec": 1075.28,
+      "timestamp": "00:17:53.240 --> 00:17:55.280",
+      "text": "我們正式成立一個信輝的學院",
+      "reasons": [
+        "低信心詞 1 個：信"
+      ],
+      "low_confidence_words": [
+        "信"
+      ],
+      "average_word_probability": 0.8289,
+      "minimum_word_probability": 0.2145,
+      "avg_logprob": -0.1193291487248793,
+      "no_speech_prob": 0.0006756154471077025,
+      "compression_ratio": 1.2602739726027397
+    },
+    {
+      "segment_id": 458,
+      "start_sec": 1077.28,
+      "end_sec": 1079.04,
+      "timestamp": "00:17:57.280 --> 00:17:59.040",
+      "text": "都有對應的要求跟條件",
+      "reasons": [
+        "低信心詞 1 個：都有"
+      ],
+      "low_confidence_words": [
+        "都有"
+      ],
+      "average_word_probability": 0.9145,
+      "minimum_word_probability": 0.3065,
+      "avg_logprob": -0.1193291487248793,
+      "no_speech_prob": 0.0006756154471077025,
+      "compression_ratio": 1.2602739726027397
+    },
+    {
+      "segment_id": 462,
+      "start_sec": 1085.7,
+      "end_sec": 1087.88,
+      "timestamp": "00:18:05.700 --> 00:18:07.880",
+      "text": "我們所有的晉升跟調薪",
+      "reasons": [
+        "低信心詞 1 個：我們"
+      ],
+      "low_confidence_words": [
+        "我們"
+      ],
+      "average_word_probability": 0.7556,
+      "minimum_word_probability": 0.1929,
+      "avg_logprob": -0.08981077955754775,
+      "no_speech_prob": 0.002867612289264798,
+      "compression_ratio": 1.6333333333333333
+    },
+    {
+      "segment_id": 472,
+      "start_sec": 1103.8,
+      "end_sec": 1106.4,
+      "timestamp": "00:18:23.800 --> 00:18:26.400",
+      "text": "他就會進行兩次的調整",
+      "reasons": [
+        "低信心詞 1 個：進"
+      ],
+      "low_confidence_words": [
+        "進"
+      ],
+      "average_word_probability": 0.9216,
+      "minimum_word_probability": 0.384,
+      "avg_logprob": -0.08981077955754775,
+      "no_speech_prob": 0.002867612289264798,
+      "compression_ratio": 1.6333333333333333
+    },
+    {
+      "segment_id": 476,
+      "start_sec": 1112.98,
+      "end_sec": 1115.68,
+      "timestamp": "00:18:32.980 --> 00:18:35.680",
+      "text": "同仁們的一個培訓跟課程的一個安排",
+      "reasons": [
+        "低信心詞 1 個：安"
+      ],
+      "low_confidence_words": [
+        "安"
+      ],
+      "average_word_probability": 0.9202,
+      "minimum_word_probability": 0.306,
+      "avg_logprob": -0.08981077955754775,
+      "no_speech_prob": 0.002867612289264798,
+      "compression_ratio": 1.6333333333333333
+    },
+    {
+      "segment_id": 477,
+      "start_sec": 1115.7,
+      "end_sec": 1117.92,
+      "timestamp": "00:18:35.700 --> 00:18:37.920",
+      "text": "會去做一個依歸的一個動作",
+      "reasons": [
+        "低信心詞 2 個：會、一個"
+      ],
+      "low_confidence_words": [
+        "會",
+        "一個"
+      ],
+      "average_word_probability": 0.6882,
+      "minimum_word_probability": 0.0503,
+      "avg_logprob": -0.07923046254281756,
+      "no_speech_prob": 0.0016105029499158263,
+      "compression_ratio": 1.3298611111111112
+    },
+    {
+      "segment_id": 483,
+      "start_sec": 1130.58,
+      "end_sec": 1132.28,
+      "timestamp": "00:18:50.580 --> 00:18:52.280",
+      "text": "人次達到400人",
+      "reasons": [
+        "低信心詞 1 個：人"
+      ],
+      "low_confidence_words": [
+        "人"
+      ],
+      "average_word_probability": 0.8746,
+      "minimum_word_probability": 0.3653,
+      "avg_logprob": -0.07923046254281756,
+      "no_speech_prob": 0.0016105029499158263,
+      "compression_ratio": 1.3298611111111112
+    },
+    {
+      "segment_id": 491,
+      "start_sec": 1150.94,
+      "end_sec": 1153.14,
+      "timestamp": "00:19:10.940 --> 00:19:13.140",
+      "text": "我們也致力於對運動的推廣",
+      "reasons": [
+        "低信心詞 1 個：推"
+      ],
+      "low_confidence_words": [
+        "推"
+      ],
+      "average_word_probability": 0.8938,
+      "minimum_word_probability": 0.4559,
+      "avg_logprob": -0.11948814324435146,
+      "no_speech_prob": 0.000708479608874768,
+      "compression_ratio": 1.428115015974441
+    },
+    {
+      "segment_id": 496,
+      "start_sec": 1162.9,
+      "end_sec": 1164.76,
+      "timestamp": "00:19:22.900 --> 00:19:24.760",
+      "text": "我們的信惠依賴馬拉松之外",
+      "reasons": [
+        "低信心詞 1 個：信"
+      ],
+      "low_confidence_words": [
+        "信"
+      ],
+      "average_word_probability": 0.7567,
+      "minimum_word_probability": 0.1875,
+      "avg_logprob": -0.11948814324435146,
+      "no_speech_prob": 0.000708479608874768,
+      "compression_ratio": 1.428115015974441
+    },
+    {
+      "segment_id": 499,
+      "start_sec": 1167.34,
+      "end_sec": 1169.3,
+      "timestamp": "00:19:27.340 --> 00:19:29.300",
+      "text": "還有我們金門海上長友",
+      "reasons": [
+        "低信心詞 1 個：友"
+      ],
+      "low_confidence_words": [
+        "友"
+      ],
+      "average_word_probability": 0.8541,
+      "minimum_word_probability": 0.3151,
+      "avg_logprob": -0.11948814324435146,
+      "no_speech_prob": 0.000708479608874768,
+      "compression_ratio": 1.428115015974441
+    },
+    {
+      "segment_id": 502,
+      "start_sec": 1175.18,
+      "end_sec": 1178.68,
+      "timestamp": "00:19:35.180 --> 00:19:38.680",
+      "text": "樂至宜蘭縣失智症照護協會的一個部分",
+      "reasons": [
+        "低信心詞 3 個：樂、至、失"
+      ],
+      "low_confidence_words": [
+        "樂",
+        "至",
+        "失"
+      ],
+      "average_word_probability": 0.697,
+      "minimum_word_probability": 0.0252,
+      "avg_logprob": -0.10219044621879532,
+      "no_speech_prob": 0.002210160717368126,
+      "compression_ratio": 1.4080267558528428
+    },
+    {
+      "segment_id": 503,
+      "start_sec": 1178.68,
+      "end_sec": 1179.86,
+      "timestamp": "00:19:38.680 --> 00:19:39.860",
+      "text": "我們也會進行一個捐贈",
+      "reasons": [
+        "低信心詞 2 個：我們、也"
+      ],
+      "low_confidence_words": [
+        "我們",
+        "也"
+      ],
+      "average_word_probability": 0.8019,
+      "minimum_word_probability": 0.2282,
+      "avg_logprob": -0.10219044621879532,
+      "no_speech_prob": 0.002210160717368126,
+      "compression_ratio": 1.4080267558528428
+    },
+    {
+      "segment_id": 504,
+      "start_sec": 1179.86,
+      "end_sec": 1181.44,
+      "timestamp": "00:19:39.860 --> 00:19:41.440",
+      "text": "那除了這個捐贈之外",
+      "reasons": [
+        "低信心詞 1 個：那"
+      ],
+      "low_confidence_words": [
+        "那"
+      ],
+      "average_word_probability": 0.8575,
+      "minimum_word_probability": 0.1661,
+      "avg_logprob": -0.10219044621879532,
+      "no_speech_prob": 0.002210160717368126,
+      "compression_ratio": 1.4080267558528428
+    },
+    {
+      "segment_id": 506,
+      "start_sec": 1184.3,
+      "end_sec": 1187.52,
+      "timestamp": "00:19:44.300 --> 00:19:47.520",
+      "text": "都會進行一個健康講座的一個宣導跟關懷",
+      "reasons": [
+        "低信心詞 1 個：都"
+      ],
+      "low_confidence_words": [
+        "都"
+      ],
+      "average_word_probability": 0.9385,
+      "minimum_word_probability": 0.4388,
+      "avg_logprob": -0.10219044621879532,
+      "no_speech_prob": 0.002210160717368126,
+      "compression_ratio": 1.4080267558528428
+    },
+    {
+      "segment_id": 507,
+      "start_sec": 1187.52,
+      "end_sec": 1189.72,
+      "timestamp": "00:19:47.520 --> 00:19:49.720",
+      "text": "進行一些允髮族的一些慰教",
+      "reasons": [
+        "低信心詞 2 個：進、允"
+      ],
+      "low_confidence_words": [
+        "進",
+        "允"
+      ],
+      "average_word_probability": 0.8134,
+      "minimum_word_probability": 0.4668,
+      "avg_logprob": -0.10219044621879532,
+      "no_speech_prob": 0.002210160717368126,
+      "compression_ratio": 1.4080267558528428
+    },
+    {
+      "segment_id": 518,
+      "start_sec": 1208.2,
+      "end_sec": 1210.38,
+      "timestamp": "00:20:08.200 --> 00:20:10.380",
+      "text": "植物圖譜的技術標準化提取",
+      "reasons": [
+        "低信心詞 1 個：物"
+      ],
+      "low_confidence_words": [
+        "物"
+      ],
+      "average_word_probability": 0.8772,
+      "minimum_word_probability": 0.4813,
+      "avg_logprob": -0.10703393879036109,
+      "no_speech_prob": 0.07871457934379578,
+      "compression_ratio": 1.2870090634441087
+    },
+    {
+      "segment_id": 522,
+      "start_sec": 1214.5,
+      "end_sec": 1216.1,
+      "timestamp": "00:20:14.500 --> 00:20:16.100",
+      "text": "整理成了這本書了",
+      "reasons": [
+        "低信心詞 1 個：了"
+      ],
+      "low_confidence_words": [
+        "了"
+      ],
+      "average_word_probability": 0.8665,
+      "minimum_word_probability": 0.2874,
+      "avg_logprob": -0.10703393879036109,
+      "no_speech_prob": 0.07871457934379578,
+      "compression_ratio": 1.2870090634441087
+    },
+    {
+      "segment_id": 526,
+      "start_sec": 1221.74,
+      "end_sec": 1222.86,
+      "timestamp": "00:20:21.740 --> 00:20:22.860",
+      "text": "火星鑑定",
+      "reasons": [
+        "低信心詞 1 個：火"
+      ],
+      "low_confidence_words": [
+        "火"
+      ],
+      "average_word_probability": 0.7926,
+      "minimum_word_probability": 0.2606,
+      "avg_logprob": -0.10703393879036109,
+      "no_speech_prob": 0.07871457934379578,
+      "compression_ratio": 1.2870090634441087
+    },
+    {
+      "segment_id": 534,
+      "start_sec": 1233.42,
+      "end_sec": 1234.76,
+      "timestamp": "00:20:33.420 --> 00:20:34.760",
+      "text": "不僅代表信號",
+      "reasons": [
+        "低信心詞 2 個：信、號"
+      ],
+      "low_confidence_words": [
+        "信",
+        "號"
+      ],
+      "average_word_probability": 0.7613,
+      "minimum_word_probability": 0.1677,
+      "avg_logprob": -0.10703393879036109,
+      "no_speech_prob": 0.07871457934379578,
+      "compression_ratio": 1.2870090634441087
+    },
+    {
+      "segment_id": 535,
+      "start_sec": 1234.82,
+      "end_sec": 1236.76,
+      "timestamp": "00:20:34.820 --> 00:20:36.760",
+      "text": "信輝對天然物的研究長期投入",
+      "reasons": [
+        "低信心詞 1 個：信"
+      ],
+      "low_confidence_words": [
+        "信"
+      ],
+      "average_word_probability": 0.8816,
+      "minimum_word_probability": 0.0483,
+      "avg_logprob": -0.09798836256894801,
+      "no_speech_prob": 0.0040582045912742615,
+      "compression_ratio": 1.2969283276450512
+    },
+    {
+      "segment_id": 536,
+      "start_sec": 1236.76,
+      "end_sec": 1238.84,
+      "timestamp": "00:20:36.760 --> 00:20:38.840",
+      "text": "也體現集團長期以來",
+      "reasons": [
+        "低信心詞 1 個：也"
+      ],
+      "low_confidence_words": [
+        "也"
+      ],
+      "average_word_probability": 0.8939,
+      "minimum_word_probability": 0.2316,
+      "avg_logprob": -0.09798836256894801,
+      "no_speech_prob": 0.0040582045912742615,
+      "compression_ratio": 1.2969283276450512
+    },
+    {
+      "segment_id": 538,
+      "start_sec": 1243.42,
+      "end_sec": 1244.56,
+      "timestamp": "00:20:43.420 --> 00:20:44.560",
+      "text": "那信輝呢",
+      "reasons": [
+        "低信心詞 1 個：那"
+      ],
+      "low_confidence_words": [
+        "那"
+      ],
+      "average_word_probability": 0.7424,
+      "minimum_word_probability": 0.414,
+      "avg_logprob": -0.09798836256894801,
+      "no_speech_prob": 0.0040582045912742615,
+      "compression_ratio": 1.2969283276450512
+    },
+    {
+      "segment_id": 539,
+      "start_sec": 1244.56,
+      "end_sec": 1247.4,
+      "timestamp": "00:20:44.560 --> 00:20:47.400",
+      "text": "即將一來創立了50週年",
+      "reasons": [
+        "低信心詞 1 個：一"
+      ],
+      "low_confidence_words": [
+        "一"
+      ],
+      "average_word_probability": 0.8115,
+      "minimum_word_probability": 0.4079,
+      "avg_logprob": -0.09798836256894801,
+      "no_speech_prob": 0.0040582045912742615,
+      "compression_ratio": 1.2969283276450512
+    },
+    {
+      "segment_id": 550,
+      "start_sec": 1262.56,
+      "end_sec": 1264.7,
+      "timestamp": "00:21:02.560 --> 00:21:04.700",
+      "text": "更回應全球低碳製造的趨勢",
+      "reasons": [
+        "低信心詞 1 個：更"
+      ],
+      "low_confidence_words": [
+        "更"
+      ],
+      "average_word_probability": 0.9248,
+      "minimum_word_probability": 0.2483,
+      "avg_logprob": -0.09798836256894801,
+      "no_speech_prob": 0.0040582045912742615,
+      "compression_ratio": 1.2969283276450512
+    },
+    {
+      "segment_id": 551,
+      "start_sec": 1264.82,
+      "end_sec": 1268.54,
+      "timestamp": "00:21:04.820 --> 00:21:08.540",
+      "text": "為企業奠定長期的競爭優勢",
+      "reasons": [
+        "低信心詞 1 個：為"
+      ],
+      "low_confidence_words": [
+        "為"
+      ],
+      "average_word_probability": 0.9129,
+      "minimum_word_probability": 0.2312,
+      "avg_logprob": -0.078576326048052,
+      "no_speech_prob": 0.005513165146112442,
+      "compression_ratio": 1.2640264026402641
+    },
+    {
+      "segment_id": 558,
+      "start_sec": 1279.64,
+      "end_sec": 1281.58,
+      "timestamp": "00:21:19.640 --> 00:21:21.580",
+      "text": "創辦人李志文耀斯的經營理念",
+      "reasons": [
+        "低信心詞 1 個：斯"
+      ],
+      "low_confidence_words": [
+        "斯"
+      ],
+      "average_word_probability": 0.8654,
+      "minimum_word_probability": 0.0922,
+      "avg_logprob": -0.078576326048052,
+      "no_speech_prob": 0.005513165146112442,
+      "compression_ratio": 1.2640264026402641
+    },
+    {
+      "segment_id": 560,
+      "start_sec": 1282.44,
+      "end_sec": 1283.38,
+      "timestamp": "00:21:22.440 --> 00:21:23.380",
+      "text": "秉持呢",
+      "reasons": [
+        "低信心詞 1 個：呢"
+      ],
+      "low_confidence_words": [
+        "呢"
+      ],
+      "average_word_probability": 0.7645,
+      "minimum_word_probability": 0.3213,
+      "avg_logprob": -0.078576326048052,
+      "no_speech_prob": 0.005513165146112442,
+      "compression_ratio": 1.2640264026402641
+    },
+    {
+      "segment_id": 568,
+      "start_sec": 1293.7,
+      "end_sec": 1294.8,
+      "timestamp": "00:21:33.700 --> 00:21:34.800",
+      "text": "就是這邊的部分",
+      "reasons": [
+        "低信心詞 1 個：部分"
+      ],
+      "low_confidence_words": [
+        "部分"
+      ],
+      "average_word_probability": 0.8181,
+      "minimum_word_probability": 0.3085,
+      "avg_logprob": -0.078576326048052,
+      "no_speech_prob": 0.005513165146112442,
+      "compression_ratio": 1.2640264026402641
+    },
+    {
+      "segment_id": 569,
+      "start_sec": 1294.82,
+      "end_sec": 1295.06,
+      "timestamp": "00:21:34.820 --> 00:21:35.060",
+      "text": "報告",
+      "reasons": [
+        "低信心詞 1 個：報"
+      ],
+      "low_confidence_words": [
+        "報"
+      ],
+      "average_word_probability": 0.5397,
+      "minimum_word_probability": 0.0799,
+      "avg_logprob": -0.11548185740074102,
+      "no_speech_prob": 0.0017138472758233547,
+      "compression_ratio": 1.2595419847328244
+    },
+    {
+      "segment_id": 570,
+      "start_sec": 1295.06,
+      "end_sec": 1297.54,
+      "timestamp": "00:21:35.060 --> 00:21:37.540",
+      "text": "那接下來就進行Q&A",
+      "reasons": [
+        "低信心詞 1 個：那"
+      ],
+      "low_confidence_words": [
+        "那"
+      ],
+      "average_word_probability": 0.8498,
+      "minimum_word_probability": 0.2914,
+      "avg_logprob": -0.11548185740074102,
+      "no_speech_prob": 0.0017138472758233547,
+      "compression_ratio": 1.2595419847328244
+    },
+    {
+      "segment_id": 576,
+      "start_sec": 1312.1,
+      "end_sec": 1313.96,
+      "timestamp": "00:21:52.100 --> 00:21:53.960",
+      "text": "市場利率實質走升",
+      "reasons": [
+        "低信心詞 1 個：實"
+      ],
+      "low_confidence_words": [
+        "實"
+      ],
+      "average_word_probability": 0.8547,
+      "minimum_word_probability": 0.3479,
+      "avg_logprob": -0.11548185740074102,
+      "no_speech_prob": 0.0017138472758233547,
+      "compression_ratio": 1.2595419847328244
+    },
+    {
+      "segment_id": 580,
+      "start_sec": 1323.0,
+      "end_sec": 1326.9,
+      "timestamp": "00:22:03.000 --> 00:22:06.900",
+      "text": "信輝手握近15億豐沛現金的",
+      "reasons": [
+        "低信心詞 1 個：信"
+      ],
+      "low_confidence_words": [
+        "信"
+      ],
+      "average_word_probability": 0.821,
+      "minimum_word_probability": 0.1005,
+      "avg_logprob": -0.11385627841023174,
+      "no_speech_prob": 0.024877013638615608,
+      "compression_ratio": 1.20817843866171
+    },
+    {
+      "segment_id": 581,
+      "start_sec": 1326.9,
+      "end_sec": 1328.72,
+      "timestamp": "00:22:06.900 --> 00:22:08.720",
+      "text": "實際配置策略是為何",
+      "reasons": [
+        "低信心詞 1 個：實"
+      ],
+      "low_confidence_words": [
+        "實"
+      ],
+      "average_word_probability": 0.8097,
+      "minimum_word_probability": 0.1996,
+      "avg_logprob": -0.11385627841023174,
+      "no_speech_prob": 0.024877013638615608,
+      "compression_ratio": 1.20817843866171
+    },
+    {
+      "segment_id": 582,
+      "start_sec": 1330.26,
+      "end_sec": 1331.44,
+      "timestamp": "00:22:10.260 --> 00:22:11.440",
+      "text": "那感謝提問",
+      "reasons": [
+        "低信心詞 1 個：那"
+      ],
+      "low_confidence_words": [
+        "那"
+      ],
+      "average_word_probability": 0.6133,
+      "minimum_word_probability": 0.0303,
+      "avg_logprob": -0.11385627841023174,
+      "no_speech_prob": 0.024877013638615608,
+      "compression_ratio": 1.20817843866171
+    },
+    {
+      "segment_id": 583,
+      "start_sec": 1332.0,
+      "end_sec": 1334.4,
+      "timestamp": "00:22:12.000 --> 00:22:14.400",
+      "text": "那財務結構的穩健呢",
+      "reasons": [
+        "低信心詞 1 個：那"
+      ],
+      "low_confidence_words": [
+        "那"
+      ],
+      "average_word_probability": 0.8765,
+      "minimum_word_probability": 0.422,
+      "avg_logprob": -0.11385627841023174,
+      "no_speech_prob": 0.024877013638615608,
+      "compression_ratio": 1.20817843866171
+    },
+    {
+      "segment_id": 584,
+      "start_sec": 1334.4,
+      "end_sec": 1335.7,
+      "timestamp": "00:22:14.400 --> 00:22:15.700",
+      "text": "跟抗風險能力呢",
+      "reasons": [
+        "低信心詞 1 個：跟"
+      ],
+      "low_confidence_words": [
+        "跟"
+      ],
+      "average_word_probability": 0.8747,
+      "minimum_word_probability": 0.2352,
+      "avg_logprob": -0.11385627841023174,
+      "no_speech_prob": 0.024877013638615608,
+      "compression_ratio": 1.20817843866171
+    },
+    {
+      "segment_id": 589,
+      "start_sec": 1346.0,
+      "end_sec": 1349.04,
+      "timestamp": "00:22:26.000 --> 00:22:29.040",
+      "text": "那我們跟充裕的未動用銀行額度",
+      "reasons": [
+        "低信心詞 2 個：那我們、未"
+      ],
+      "low_confidence_words": [
+        "那我們",
+        "未"
+      ],
+      "average_word_probability": 0.848,
+      "minimum_word_probability": 0.3861,
+      "avg_logprob": -0.11385627841023174,
+      "no_speech_prob": 0.024877013638615608,
+      "compression_ratio": 1.20817843866171
+    },
+    {
+      "segment_id": 591,
+      "start_sec": 1352.16,
+      "end_sec": 1354.58,
+      "timestamp": "00:22:32.160 --> 00:22:34.580",
+      "text": "那因為集團跨越了不同的國家",
+      "reasons": [
+        "低信心詞 1 個：那"
+      ],
+      "low_confidence_words": [
+        "那"
+      ],
+      "average_word_probability": 0.8844,
+      "minimum_word_probability": 0.4294,
+      "avg_logprob": -0.10378378785626832,
+      "no_speech_prob": 0.018023008480668068,
+      "compression_ratio": 1.4331210191082802
+    },
+    {
+      "segment_id": 592,
+      "start_sec": 1354.58,
+      "end_sec": 1356.94,
+      "timestamp": "00:22:34.580 --> 00:22:36.940",
+      "text": "所以每個國家每個公司",
+      "reasons": [
+        "低信心詞 2 個：所以、每"
+      ],
+      "low_confidence_words": [
+        "所以",
+        "每"
+      ],
+      "average_word_probability": 0.8478,
+      "minimum_word_probability": 0.4461,
+      "avg_logprob": -0.10378378785626832,
+      "no_speech_prob": 0.018023008480668068,
+      "compression_ratio": 1.4331210191082802
+    },
+    {
+      "segment_id": 594,
+      "start_sec": 1357.98,
+      "end_sec": 1359.7,
+      "timestamp": "00:22:37.980 --> 00:22:39.700",
+      "text": "那就集團的角度而言",
+      "reasons": [
+        "低信心詞 1 個：那"
+      ],
+      "low_confidence_words": [
+        "那"
+      ],
+      "average_word_probability": 0.9008,
+      "minimum_word_probability": 0.3524,
+      "avg_logprob": -0.10378378785626832,
+      "no_speech_prob": 0.018023008480668068,
+      "compression_ratio": 1.4331210191082802
+    },
+    {
+      "segment_id": 600,
+      "start_sec": 1371.36,
+      "end_sec": 1373.2,
+      "timestamp": "00:22:51.360 --> 00:22:53.200",
+      "text": "那我們做出的這些提前因應呢",
+      "reasons": [
+        "低信心詞 2 個：的、呢"
+      ],
+      "low_confidence_words": [
+        "的",
+        "呢"
+      ],
+      "average_word_probability": 0.8332,
+      "minimum_word_probability": 0.0503,
+      "avg_logprob": -0.10378378785626832,
+      "no_speech_prob": 0.018023008480668068,
+      "compression_ratio": 1.4331210191082802
+    },
+    {
+      "segment_id": 602,
+      "start_sec": 1374.42,
+      "end_sec": 1375.74,
+      "timestamp": "00:22:54.420 --> 00:22:55.740",
+      "text": "我們有兩大考量",
+      "reasons": [
+        "低信心詞 1 個：我們"
+      ],
+      "low_confidence_words": [
+        "我們"
+      ],
+      "average_word_probability": 0.871,
+      "minimum_word_probability": 0.3383,
+      "avg_logprob": -0.10378378785626832,
+      "no_speech_prob": 0.018023008480668068,
+      "compression_ratio": 1.4331210191082802
+    },
+    {
+      "segment_id": 606,
+      "start_sec": 1381.78,
+      "end_sec": 1383.44,
+      "timestamp": "00:23:01.780 --> 00:23:03.440",
+      "text": "我們宜蘭智慧物流中心",
+      "reasons": [
+        "低信心詞 1 個：我們"
+      ],
+      "low_confidence_words": [
+        "我們"
+      ],
+      "average_word_probability": 0.9339,
+      "minimum_word_probability": 0.4506,
+      "avg_logprob": -0.07825776305678603,
+      "no_speech_prob": 0.002421918325126171,
+      "compression_ratio": 1.3672727272727272
+    },
+    {
+      "segment_id": 607,
+      "start_sec": 1383.44,
+      "end_sec": 1384.72,
+      "timestamp": "00:23:03.440 --> 00:23:04.720",
+      "text": "還有我們的育流廠房",
+      "reasons": [
+        "低信心詞 2 個：我們的、流"
+      ],
+      "low_confidence_words": [
+        "我們的",
+        "流"
+      ],
+      "average_word_probability": 0.7147,
+      "minimum_word_probability": 0.3246,
+      "avg_logprob": -0.07825776305678603,
+      "no_speech_prob": 0.002421918325126171,
+      "compression_ratio": 1.3672727272727272
+    },
+    {
+      "segment_id": 608,
+      "start_sec": 1384.72,
+      "end_sec": 1386.52,
+      "timestamp": "00:23:04.720 --> 00:23:06.520",
+      "text": "那這部分有公告的金額呢",
+      "reasons": [
+        "低信心詞 1 個：呢"
+      ],
+      "low_confidence_words": [
+        "呢"
+      ],
+      "average_word_probability": 0.85,
+      "minimum_word_probability": 0.1015,
+      "avg_logprob": -0.07825776305678603,
+      "no_speech_prob": 0.002421918325126171,
+      "compression_ratio": 1.3672727272727272
+    },
+    {
+      "segment_id": 621,
+      "start_sec": 1410.58,
+      "end_sec": 1412.56,
+      "timestamp": "00:23:30.580 --> 00:23:32.560",
+      "text": "那關於育流廠房部分呢",
+      "reasons": [
+        "低信心詞 4 個：那、關、流、房"
+      ],
+      "low_confidence_words": [
+        "那",
+        "關",
+        "流",
+        "房"
+      ],
+      "average_word_probability": 0.5338,
+      "minimum_word_probability": 0.0397,
+      "avg_logprob": -0.0949127993262406,
+      "no_speech_prob": 0.03784472495317459,
+      "compression_ratio": 1.421641791044776
+    },
+    {
+      "segment_id": 625,
+      "start_sec": 1418.36,
+      "end_sec": 1420.78,
+      "timestamp": "00:23:38.360 --> 00:23:40.780",
+      "text": "就是目前國際國內的PIS法規",
+      "reasons": [
+        "低信心詞 1 個：IS"
+      ],
+      "low_confidence_words": [
+        "IS"
+      ],
+      "average_word_probability": 0.8776,
+      "minimum_word_probability": 0.0781,
+      "avg_logprob": -0.0949127993262406,
+      "no_speech_prob": 0.03784472495317459,
+      "compression_ratio": 1.421641791044776
+    },
+    {
+      "segment_id": 634,
+      "start_sec": 1438.68,
+      "end_sec": 1441.96,
+      "timestamp": "00:23:58.680 --> 00:24:01.960",
+      "text": "如果沒有原本的一個比較大量的一個基礎之上",
+      "reasons": [
+        "低信心詞 2 個：一個、一個"
+      ],
+      "low_confidence_words": [
+        "一個",
+        "一個"
+      ],
+      "average_word_probability": 0.8212,
+      "minimum_word_probability": 0.3733,
+      "avg_logprob": -0.07959649514626055,
+      "no_speech_prob": 0.0014792237197980285,
+      "compression_ratio": 1.4456521739130435
+    },
+    {
+      "segment_id": 636,
+      "start_sec": 1444.72,
+      "end_sec": 1446.6,
+      "timestamp": "00:24:04.720 --> 00:24:06.600",
+      "text": "邊際成本就會高出很多",
+      "reasons": [
+        "低信心詞 1 個：邊"
+      ],
+      "low_confidence_words": [
+        "邊"
+      ],
+      "average_word_probability": 0.8786,
+      "minimum_word_probability": 0.2401,
+      "avg_logprob": -0.07959649514626055,
+      "no_speech_prob": 0.0014792237197980285,
+      "compression_ratio": 1.4456521739130435
+    },
+    {
+      "segment_id": 637,
+      "start_sec": 1446.6,
+      "end_sec": 1448.64,
+      "timestamp": "00:24:06.600 --> 00:24:08.640",
+      "text": "也就是它邊際的效益會降低很多",
+      "reasons": [
+        "低信心詞 1 個：它"
+      ],
+      "low_confidence_words": [
+        "它"
+      ],
+      "average_word_probability": 0.8873,
+      "minimum_word_probability": 0.2383,
+      "avg_logprob": -0.07959649514626055,
+      "no_speech_prob": 0.0014792237197980285,
+      "compression_ratio": 1.4456521739130435
+    },
+    {
+      "segment_id": 644,
+      "start_sec": 1465.88,
+      "end_sec": 1467.28,
+      "timestamp": "00:24:25.880 --> 00:24:27.280",
+      "text": "育流廠房的一個部分",
+      "reasons": [
+        "低信心詞 1 個：流"
+      ],
+      "low_confidence_words": [
+        "流"
+      ],
+      "average_word_probability": 0.7258,
+      "minimum_word_probability": 0.0336,
+      "avg_logprob": -0.07959649514626055,
+      "no_speech_prob": 0.0014792237197980285,
+      "compression_ratio": 1.4456521739130435
+    },
+    {
+      "segment_id": 645,
+      "start_sec": 1467.28,
+      "end_sec": 1468.2,
+      "timestamp": "00:24:27.280 --> 00:24:28.200",
+      "text": "那主要呢",
+      "reasons": [
+        "低信心詞 1 個：那"
+      ],
+      "low_confidence_words": [
+        "那"
+      ],
+      "average_word_probability": 0.6132,
+      "minimum_word_probability": 0.1105,
+      "avg_logprob": -0.09059085750154086,
+      "no_speech_prob": 0.00281274551525712,
+      "compression_ratio": 1.4339622641509433
+    },
+    {
+      "segment_id": 646,
+      "start_sec": 1468.2,
+      "end_sec": 1469.72,
+      "timestamp": "00:24:28.200 --> 00:24:29.720",
+      "text": "還有另外一個最主要關鍵的原因",
+      "reasons": [
+        "低信心詞 1 個：還有"
+      ],
+      "low_confidence_words": [
+        "還有"
+      ],
+      "average_word_probability": 0.872,
+      "minimum_word_probability": 0.2852,
+      "avg_logprob": -0.09059085750154086,
+      "no_speech_prob": 0.00281274551525712,
+      "compression_ratio": 1.4339622641509433
+    },
+    {
+      "segment_id": 654,
+      "start_sec": 1488.44,
+      "end_sec": 1492.68,
+      "timestamp": "00:24:48.440 --> 00:24:52.680",
+      "text": "然後還有我們對PIS法規的管理的信心的提高",
+      "reasons": [
+        "低信心詞 2 個：P、IS"
+      ],
+      "low_confidence_words": [
+        "P",
+        "IS"
+      ],
+      "average_word_probability": 0.8697,
+      "minimum_word_probability": 0.295,
+      "avg_logprob": -0.09059085750154086,
+      "no_speech_prob": 0.00281274551525712,
+      "compression_ratio": 1.4339622641509433
+    },
+    {
+      "segment_id": 656,
+      "start_sec": 1494.88,
+      "end_sec": 1497.26,
+      "timestamp": "00:24:54.880 --> 00:24:57.260",
+      "text": "所以我們會先育流一部分廠房來應應你們的期待",
+      "reasons": [
+        "低信心詞 2 個：流、期"
+      ],
+      "low_confidence_words": [
+        "流",
+        "期"
+      ],
+      "average_word_probability": 0.7558,
+      "minimum_word_probability": 0.0043,
+      "avg_logprob": -0.09059085750154086,
+      "no_speech_prob": 0.00281274551525712,
+      "compression_ratio": 1.4339622641509433
+    },
+    {
+      "segment_id": 657,
+      "start_sec": 1497.28,
+      "end_sec": 1499.26,
+      "timestamp": "00:24:57.280 --> 00:24:59.260",
+      "text": "對於整體未來的一個發展的需要",
+      "reasons": [
+        "低信心詞 1 個：一個"
+      ],
+      "low_confidence_words": [
+        "一個"
+      ],
+      "average_word_probability": 0.8508,
+      "minimum_word_probability": 0.4185,
+      "avg_logprob": -0.14157276896257248,
+      "no_speech_prob": 0.0009944973280653358,
+      "compression_ratio": 1.287313432835821
+    },
+    {
+      "segment_id": 659,
+      "start_sec": 1501.1,
+      "end_sec": 1501.54,
+      "timestamp": "00:25:01.100 --> 00:25:01.540",
+      "text": "謝謝",
+      "reasons": [
+        "低信心詞 1 個：謝謝"
+      ],
+      "low_confidence_words": [
+        "謝謝"
+      ],
+      "average_word_probability": 0.4471,
+      "minimum_word_probability": 0.4471,
+      "avg_logprob": -0.14157276896257248,
+      "no_speech_prob": 0.0009944973280653358,
+      "compression_ratio": 1.287313432835821
+    },
+    {
+      "segment_id": 662,
+      "start_sec": 1505.84,
+      "end_sec": 1507.64,
+      "timestamp": "00:25:05.840 --> 00:25:07.640",
+      "text": "會不會有增加說明呢",
+      "reasons": [
+        "低信心詞 3 個：會、有、說"
+      ],
+      "low_confidence_words": [
+        "會",
+        "有",
+        "說"
+      ],
+      "average_word_probability": 0.7187,
+      "minimum_word_probability": 0.3599,
+      "avg_logprob": -0.14157276896257248,
+      "no_speech_prob": 0.0009944973280653358,
+      "compression_ratio": 1.287313432835821
+    },
+    {
+      "segment_id": 667,
+      "start_sec": 1522.06,
+      "end_sec": 1524.78,
+      "timestamp": "00:25:22.060 --> 00:25:24.780",
+      "text": "我們這個產品在日本同類市場",
+      "reasons": [
+        "低信心詞 1 個：市"
+      ],
+      "low_confidence_words": [
+        "市"
+      ],
+      "average_word_probability": 0.9313,
+      "minimum_word_probability": 0.4066,
+      "avg_logprob": -0.14157276896257248,
+      "no_speech_prob": 0.0009944973280653358,
+      "compression_ratio": 1.287313432835821
+    },
+    {
+      "segment_id": 668,
+      "start_sec": 1524.78,
+      "end_sec": 1527.02,
+      "timestamp": "00:25:24.780 --> 00:25:27.020",
+      "text": "長期名列最受歡迎品項",
+      "reasons": [
+        "低信心詞 1 個：長"
+      ],
+      "low_confidence_words": [
+        "長"
+      ],
+      "average_word_probability": 0.8253,
+      "minimum_word_probability": 0.0989,
+      "avg_logprob": -0.14157276896257248,
+      "no_speech_prob": 0.0009944973280653358,
+      "compression_ratio": 1.287313432835821
+    },
+    {
+      "segment_id": 669,
+      "start_sec": 1527.28,
+      "end_sec": 1529.22,
+      "timestamp": "00:25:27.280 --> 00:25:29.220",
+      "text": "那希望導到台灣之後",
+      "reasons": [
+        "低信心詞 2 個：那、導"
+      ],
+      "low_confidence_words": [
+        "那",
+        "導"
+      ],
+      "average_word_probability": 0.5775,
+      "minimum_word_probability": 0.0871,
+      "avg_logprob": -0.08763450918526484,
+      "no_speech_prob": 0.060521844774484634,
+      "compression_ratio": 1.337037037037037
+    },
+    {
+      "segment_id": 671,
+      "start_sec": 1532.28,
+      "end_sec": 1536.72,
+      "timestamp": "00:25:32.280 --> 00:25:36.720",
+      "text": "那進一步補強幸輝在消化系統用藥領域的產品完整性",
+      "reasons": [
+        "低信心詞 1 個：幸"
+      ],
+      "low_confidence_words": [
+        "幸"
+      ],
+      "average_word_probability": 0.9489,
+      "minimum_word_probability": 0.2991,
+      "avg_logprob": -0.08763450918526484,
+      "no_speech_prob": 0.060521844774484634,
+      "compression_ratio": 1.337037037037037
+    },
+    {
+      "segment_id": 674,
+      "start_sec": 1542.14,
+      "end_sec": 1543.86,
+      "timestamp": "00:25:42.140 --> 00:25:43.860",
+      "text": "那這剛剛有報告到",
+      "reasons": [
+        "低信心詞 1 個：這"
+      ],
+      "low_confidence_words": [
+        "這"
+      ],
+      "average_word_probability": 0.8527,
+      "minimum_word_probability": 0.204,
+      "avg_logprob": -0.08763450918526484,
+      "no_speech_prob": 0.060521844774484634,
+      "compression_ratio": 1.337037037037037
+    },
+    {
+      "segment_id": 679,
+      "start_sec": 1555.58,
+      "end_sec": 1558.28,
+      "timestamp": "00:25:55.580 --> 00:25:58.280",
+      "text": "月面用藥在健保用藥排名第三",
+      "reasons": [
+        "低信心詞 3 個：月、面、健"
+      ],
+      "low_confidence_words": [
+        "月",
+        "面",
+        "健"
+      ],
+      "average_word_probability": 0.6367,
+      "minimum_word_probability": 0.033,
+      "avg_logprob": -0.11607322870986536,
+      "no_speech_prob": 0.003062768606469035,
+      "compression_ratio": 1.246212121212121
+    },
+    {
+      "segment_id": 680,
+      "start_sec": 1559.64,
+      "end_sec": 1562.02,
+      "timestamp": "00:25:59.640 --> 00:26:02.020",
+      "text": "那國內的市場目前來看",
+      "reasons": [
+        "低信心詞 1 個：那"
+      ],
+      "low_confidence_words": [
+        "那"
+      ],
+      "average_word_probability": 0.8246,
+      "minimum_word_probability": 0.3193,
+      "avg_logprob": -0.11607322870986536,
+      "no_speech_prob": 0.003062768606469035,
+      "compression_ratio": 1.246212121212121
+    },
+    {
+      "segment_id": 683,
+      "start_sec": 1567.02,
+      "end_sec": 1568.22,
+      "timestamp": "00:26:07.020 --> 00:26:08.220",
+      "text": "可能是6到8",
+      "reasons": [
+        "低信心詞 1 個：到"
+      ],
+      "low_confidence_words": [
+        "到"
+      ],
+      "average_word_probability": 0.8228,
+      "minimum_word_probability": 0.4649,
+      "avg_logprob": -0.11607322870986536,
+      "no_speech_prob": 0.003062768606469035,
+      "compression_ratio": 1.246212121212121
+    },
+    {
+      "segment_id": 690,
+      "start_sec": 1584.76,
+      "end_sec": 1586.58,
+      "timestamp": "00:26:24.760 --> 00:26:26.580",
+      "text": "我們認為我們的合作",
+      "reasons": [
+        "低信心詞 1 個：我們"
+      ],
+      "low_confidence_words": [
+        "我們"
+      ],
+      "average_word_probability": 0.8697,
+      "minimum_word_probability": 0.4671,
+      "avg_logprob": -0.0749788532340074,
+      "no_speech_prob": 0.003981754183769226,
+      "compression_ratio": 1.4836363636363636
+    },
+    {
+      "segment_id": 694,
+      "start_sec": 1590.44,
+      "end_sec": 1592.5,
+      "timestamp": "00:26:30.440 --> 00:26:32.500",
+      "text": "我們也跟其他原本合作的",
+      "reasons": [
+        "低信心詞 1 個：原"
+      ],
+      "low_confidence_words": [
+        "原"
+      ],
+      "average_word_probability": 0.84,
+      "minimum_word_probability": 0.1529,
+      "avg_logprob": -0.0749788532340074,
+      "no_speech_prob": 0.003981754183769226,
+      "compression_ratio": 1.4836363636363636
+    },
+    {
+      "segment_id": 703,
+      "start_sec": 1612.92,
+      "end_sec": 1613.66,
+      "timestamp": "00:26:52.920 --> 00:26:53.660",
+      "text": "共同開發",
+      "reasons": [
+        "低信心詞 1 個：共"
+      ],
+      "low_confidence_words": [
+        "共"
+      ],
+      "average_word_probability": 0.826,
+      "minimum_word_probability": 0.4425,
+      "avg_logprob": -0.06279622122079512,
+      "no_speech_prob": 0.001192681142129004,
+      "compression_ratio": 1.3014705882352942
+    },
+    {
+      "segment_id": 704,
+      "start_sec": 1613.66,
+      "end_sec": 1614.9,
+      "timestamp": "00:26:53.660 --> 00:26:54.900",
+      "text": "還有技術授權",
+      "reasons": [
+        "低信心詞 1 個：還有"
+      ],
+      "low_confidence_words": [
+        "還有"
+      ],
+      "average_word_probability": 0.8598,
+      "minimum_word_probability": 0.3223,
+      "avg_logprob": -0.06279622122079512,
+      "no_speech_prob": 0.001192681142129004,
+      "compression_ratio": 1.3014705882352942
+    },
+    {
+      "segment_id": 708,
+      "start_sec": 1622.26,
+      "end_sec": 1624.02,
+      "timestamp": "00:27:02.260 --> 00:27:04.020",
+      "text": "消化系統代理",
+      "reasons": [
+        "低信心詞 1 個：代"
+      ],
+      "low_confidence_words": [
+        "代"
+      ],
+      "average_word_probability": 0.895,
+      "minimum_word_probability": 0.4687,
+      "avg_logprob": -0.06279622122079512,
+      "no_speech_prob": 0.001192681142129004,
+      "compression_ratio": 1.3014705882352942
+    },
+    {
+      "segment_id": 709,
+      "start_sec": 1624.02,
+      "end_sec": 1625.86,
+      "timestamp": "00:27:04.020 --> 00:27:05.860",
+      "text": "然後無菌製劑啊",
+      "reasons": [
+        "低信心詞 1 個：啊"
+      ],
+      "low_confidence_words": [
+        "啊"
+      ],
+      "average_word_probability": 0.7968,
+      "minimum_word_probability": 0.2588,
+      "avg_logprob": -0.06279622122079512,
+      "no_speech_prob": 0.001192681142129004,
+      "compression_ratio": 1.3014705882352942
+    },
+    {
+      "segment_id": 716,
+      "start_sec": 1639.14,
+      "end_sec": 1642.08,
+      "timestamp": "00:27:19.140 --> 00:27:22.080",
+      "text": "以我們自己本身的能量和資源",
+      "reasons": [
+        "低信心詞 2 個：自己、和"
+      ],
+      "low_confidence_words": [
+        "自己",
+        "和"
+      ],
+      "average_word_probability": 0.8583,
+      "minimum_word_probability": 0.3197,
+      "avg_logprob": -0.06279622122079512,
+      "no_speech_prob": 0.001192681142129004,
+      "compression_ratio": 1.3014705882352942
+    },
+    {
+      "segment_id": 724,
+      "start_sec": 1655.32,
+      "end_sec": 1660.92,
+      "timestamp": "00:27:35.320 --> 00:27:40.920",
+      "text": "那以上謝謝副總經濟的說明與分享",
+      "reasons": [
+        "低信心詞 2 個：那、經"
+      ],
+      "low_confidence_words": [
+        "那",
+        "經"
+      ],
+      "average_word_probability": 0.7912,
+      "minimum_word_probability": 0.0212,
+      "avg_logprob": -0.15011550341883012,
+      "no_speech_prob": 0.0003933086700271815,
+      "compression_ratio": 1.3436293436293436
+    },
+    {
+      "segment_id": 727,
+      "start_sec": 1666.38,
+      "end_sec": 1667.76,
+      "timestamp": "00:27:46.380 --> 00:27:47.760",
+      "text": "我們今天訪問會就到這邊",
+      "reasons": [
+        "低信心詞 2 個：問、會"
+      ],
+      "low_confidence_words": [
+        "問",
+        "會"
+      ],
+      "average_word_probability": 0.7442,
+      "minimum_word_probability": 0.368,
+      "avg_logprob": -0.15011550341883012,
+      "no_speech_prob": 0.0003933086700271815,
+      "compression_ratio": 1.3436293436293436
+    }
+  ]
+}
