@@ -3,6 +3,7 @@ import sys
 import json
 import wave
 import asyncio
+import logging
 
 import aiomysql
 import numpy as np
@@ -11,48 +12,33 @@ import torch
 from pathlib import Path
 from dotenv import load_dotenv
 from pyannote.audio import Pipeline
+from scripts.pipeline_common import fingerprint, cache_matches, save_cache, save_json
+logger = logging.getLogger(__name__)
 
+
+def debug_print(*values, **kwargs):
+    logger.debug("%s", " ".join(str(value) for value in values))
+
+
+DIARIZATION_MODEL = "pyannote/speaker-diarization-community-1"
 
 BASE_DIR = Path(__file__).resolve().parent
 
-load_dotenv(
-    BASE_DIR / ".env",
-    override=True
-)
+load_dotenv( BASE_DIR / ".env", override=False )
 
 HF_TOKEN = os.getenv("HF_TOKEN")
 
-
 def get_paths(call_id):
 
-    output_dir = (
-        BASE_DIR
-        / "output"
-        / call_id
-    )
+    output_dir = ( BASE_DIR / "output" / call_id )
 
-    audio_path = (
-        output_dir
-        / f"{call_id}.wav"
-    )
+    audio_path = ( output_dir / f"{call_id}.wav" )
 
-    diarization_path = (
-        output_dir
-        / f"{call_id}_diarization.json"
-    )
+    diarization_path = ( output_dir / f"{call_id}_diarization.json" )
 
-    matching_path = (
-        output_dir
-        / f"{call_id}_speaker_matching.json"
-    )
+    matching_path = ( output_dir / f"{call_id}_speaker_matching.json" )
 
-    return (
-        output_dir,
-        audio_path,
-        diarization_path,
-        matching_path
-    )
-
+    return ( output_dir, audio_path, diarization_path, matching_path )
 
 def load_wav(path):
 
@@ -62,25 +48,17 @@ def load_wav(path):
         channels = wav_file.getnchannels()
         sample_width = wav_file.getsampwidth()
 
-        frames = wav_file.readframes(
-            wav_file.getnframes()
-        )
+        frames = wav_file.readframes( wav_file.getnframes() )
 
     if sample_width == 2:
 
-        audio = np.frombuffer(
-            frames,
-            dtype=np.int16
-        ).astype(np.float32)
+        audio = np.frombuffer( frames, dtype=np.int16 ).astype(np.float32)
 
         audio /= 32768.0
 
     elif sample_width == 4:
 
-        audio = np.frombuffer(
-            frames,
-            dtype=np.int32
-        ).astype(np.float32)
+        audio = np.frombuffer( frames, dtype=np.int32 ).astype(np.float32)
 
         audio /= 2147483648.0
 
@@ -92,21 +70,13 @@ def load_wav(path):
 
     if channels > 1:
 
-        audio = audio.reshape(
-            -1,
-            channels
-        )
+        audio = audio.reshape( -1, channels )
 
         audio = audio.mean(axis=1)
 
-    waveform = (
-        torch
-        .from_numpy(audio)
-        .unsqueeze(0)
-    )
+    waveform = ( torch .from_numpy(audio) .unsqueeze(0) )
 
     return waveform, sample_rate
-
 
 async def get_segments(call_id):
 
@@ -141,10 +111,7 @@ async def get_segments(call_id):
                     ORDER BY start_time_sec
                 """
 
-                await cur.execute(
-                    sql,
-                    (call_id,)
-                )
+                await cur.execute( sql, (call_id,) )
 
                 rows = await cur.fetchall()
 
@@ -187,38 +154,19 @@ def run_diarization(
             f"找不到音檔：{audio_path}"
         )
 
-    print(
-        "音檔路徑：",
-        audio_path
-    )
+    debug_print( "音檔路徑：", audio_path )
 
-    waveform, sample_rate = (
-        load_wav(audio_path)
-    )
+    waveform, sample_rate = ( load_wav(audio_path) )
 
-    print(
-        "Sample rate：",
-        sample_rate
-    )
+    debug_print( "Sample rate：", sample_rate )
 
-    print(
-        "Waveform shape：",
-        waveform.shape
-    )
+    debug_print( "Waveform shape：", waveform.shape )
 
-    print(
-        "\n開始 Speaker Diarization..."
-    )
+    debug_print( "\n開始 Speaker Diarization..." )
 
-    pipeline = Pipeline.from_pretrained(
-        "pyannote/speaker-diarization-community-1",
-        token=HF_TOKEN
-    )
+    pipeline = Pipeline.from_pretrained( DIARIZATION_MODEL, token=HF_TOKEN )
 
-    output = pipeline({
-        "waveform": waveform,
-        "sample_rate": sample_rate
-    })
+    output = pipeline({ "waveform": waveform, "sample_rate": sample_rate })
 
     diarization_results = []
 
@@ -241,63 +189,18 @@ def run_diarization(
 
     return diarization_results
 
-
-def get_diarization_results(
-    output_dir,
-    audio_path,
-    diarization_path
-):
-
-    output_dir.mkdir(
-        parents=True,
-        exist_ok=True
-    )
-
-    if diarization_path.exists():
-
-        print(
-            "\n找到既有 diarization JSON"
-        )
-
-        print(
-            "直接讀取：",
-            diarization_path
-        )
-
-        with open(
-            diarization_path,
-            "r",
-            encoding="utf-8"
-        ) as file:
-
-            return json.load(file)
-
-    diarization_results = (
-        run_diarization(
-            audio_path
-        )
-    )
-
-    with open(
-        diarization_path,
-        "w",
-        encoding="utf-8"
-    ) as file:
-
-        json.dump(
-            diarization_results,
-            file,
-            ensure_ascii=False,
-            indent=2
-        )
-
-    print(
-        "\nDiarization 結果已存：",
-        diarization_path
-    )
-
-    return diarization_results
-
+def get_diarization_results(output_dir, audio_path, diarization_path, force=False):
+    output_dir.mkdir(parents=True, exist_ok=True)
+    inputs = {"audio_sha256": fingerprint(audio_path), "model": DIARIZATION_MODEL, "version": 1}
+    manifest = diarization_path.with_suffix(".cache.json")
+    if not force and cache_matches(diarization_path, manifest, inputs):
+        return json.loads(diarization_path.read_text(encoding="utf-8"))
+    results = run_diarization(audio_path)
+    if not results:
+        raise RuntimeError("講者辨識沒有任何結果")
+    save_json(diarization_path, results)
+    save_cache(diarization_path, manifest, inputs)
+    return results
 
 def get_overlap(
     start1,
@@ -306,12 +209,7 @@ def get_overlap(
     end2
 ):
 
-    return max(
-        0,
-        min(end1, end2)
-        - max(start1, start2)
-    )
-
+    return max( 0, min(end1, end2) - max(start1, start2) )
 
 def find_best_overlap_speaker(
     segment_start,
@@ -324,35 +222,18 @@ def find_best_overlap_speaker(
 
     for item in diarization_results:
 
-        overlap = get_overlap(
-            segment_start,
-            segment_end,
-            item["start"],
-            item["end"]
-        )
+        overlap = get_overlap( segment_start, segment_end, item["start"], item["end"] )
 
         if overlap > best_overlap:
 
             best_overlap = overlap
             best_speaker = item["speaker"]
 
-    duration = (
-        segment_end
-        - segment_start
-    )
+    duration = ( segment_end - segment_start )
 
-    overlap_ratio = (
-        best_overlap / duration
-        if duration > 0
-        else 0
-    )
+    overlap_ratio = ( best_overlap / duration if duration > 0 else 0 )
 
-    return (
-        best_speaker,
-        best_overlap,
-        overlap_ratio
-    )
-
+    return ( best_speaker, best_overlap, overlap_ratio )
 
 def find_speaker_by_midpoint(
     segment_start,
@@ -360,10 +241,7 @@ def find_speaker_by_midpoint(
     diarization_results
 ):
 
-    midpoint = (
-        segment_start
-        + segment_end
-    ) / 2
+    midpoint = ( segment_start + segment_end ) / 2
 
     for item in diarization_results:
 
@@ -377,19 +255,12 @@ def find_speaker_by_midpoint(
 
     return None
 
-
 def create_speaker_map(
     diarization_results,
     company_code
 ):
 
-    speakers = sorted(
-        {
-            item["speaker"]
-            for item
-            in diarization_results
-        }
-    )
+    speakers = sorted( { item["speaker"] for item in diarization_results } )
 
     speaker_map = {}
 
@@ -398,13 +269,9 @@ def create_speaker_map(
         start=1
     ):
 
-        speaker_map[speaker] = (
-            f"{company_code}_"
-            f"SPEAKER_{index:02d}"
-        )
+        speaker_map[speaker] = ( f"{company_code}_" f"SPEAKER_{index:02d}" )
 
     return speaker_map
-
 
 def match_segments(
     segments,
@@ -415,17 +282,11 @@ def match_segments(
 
     for segment in segments:
 
-        segment_id = (
-            segment["segment_id"]
-        )
+        segment_id = ( segment["segment_id"] )
 
-        segment_start = (
-            segment["start"]
-        )
+        segment_start = ( segment["start"] )
 
-        segment_end = (
-            segment["end"]
-        )
+        segment_end = ( segment["end"] )
 
         if (
             segment_start is None
@@ -461,13 +322,9 @@ def match_segments(
             and overlap_ratio >= 0.5
         ):
 
-            final_speaker = (
-                best_speaker
-            )
+            final_speaker = ( best_speaker )
 
-            match_method = (
-                "overlap"
-            )
+            match_method = ( "overlap" )
 
         else:
 
@@ -481,31 +338,21 @@ def match_segments(
 
             if midpoint_speaker is not None:
 
-                final_speaker = (
-                    midpoint_speaker
-                )
+                final_speaker = ( midpoint_speaker )
 
-                match_method = (
-                    "midpoint"
-                )
+                match_method = ( "midpoint" )
 
             elif best_speaker is not None:
 
-                final_speaker = (
-                    best_speaker
-                )
+                final_speaker = ( best_speaker )
 
-                match_method = (
-                    "fallback"
-                )
+                match_method = ( "fallback" )
 
             else:
 
                 final_speaker = None
 
-                match_method = (
-                    "unmatched"
-                )
+                match_method = ( "unmatched" )
 
         results.append({
             "segment_id": segment_id,
@@ -527,7 +374,6 @@ def match_segments(
 
     return results
 
-
 def smooth_speaker_results(
     results
 ):
@@ -541,17 +387,11 @@ def smooth_speaker_results(
         len(results) - 1
     ):
 
-        previous_speaker = (
-            results[i - 1]["speaker"]
-        )
+        previous_speaker = ( results[i - 1]["speaker"] )
 
-        current_speaker = (
-            results[i]["speaker"]
-        )
+        current_speaker = ( results[i]["speaker"] )
 
-        next_speaker = (
-            results[i + 1]["speaker"]
-        )
+        next_speaker = ( results[i + 1]["speaker"] )
 
         if (
             previous_speaker is not None
@@ -564,20 +404,13 @@ def smooth_speaker_results(
             ] < 0.5
         ):
 
-            results[i][
-                "original_speaker"
-            ] = current_speaker
+            results[i][ "original_speaker" ] = current_speaker
 
-            results[i][
-                "speaker"
-            ] = previous_speaker
+            results[i][ "speaker" ] = previous_speaker
 
-            results[i][
-                "match_method"
-            ] = "neighbor_smoothing"
+            results[i][ "match_method" ] = "neighbor_smoothing"
 
     return results
-
 
 def add_database_speaker_ids(
     results,
@@ -594,14 +427,9 @@ def add_database_speaker_ids(
 
         else:
 
-            item["speaker_id"] = (
-                speaker_map.get(
-                    speaker
-                )
-            )
+            item["speaker_id"] = ( speaker_map.get( speaker ) )
 
     return results
-
 
 def save_matching_json(
     results,
@@ -614,18 +442,9 @@ def save_matching_json(
         encoding="utf-8"
     ) as file:
 
-        json.dump(
-            results,
-            file,
-            ensure_ascii=False,
-            indent=2
-        )
+        json.dump( results, file, ensure_ascii=False, indent=2 )
 
-    print(
-        "\nMatching 結果已存：",
-        matching_path
-    )
-
+    debug_print( "\nMatching 結果已存：", matching_path )
 
 async def write_results_to_database(
     results,
@@ -667,9 +486,7 @@ async def write_results_to_database(
                 # 1. 建立 / 確認 speakers
                 # ==================================================
 
-                print(
-                    "\n=== 建立 / 確認 speakers ==="
-                )
+                debug_print( "\n=== 建立 / 確認 speakers ===" )
 
                 for speaker_id in speaker_ids:
 
@@ -683,27 +500,15 @@ async def write_results_to_database(
                             company_code = %s
                     """
 
-                    await cur.execute(
-                        sql,
-                        (
-                            speaker_id,
-                            company_code,
-                            company_code
-                        )
-                    )
+                    await cur.execute( sql, ( speaker_id, company_code, company_code ) )
 
-                    print(
-                        speaker_id,
-                        "已確認"
-                    )
+                    debug_print( speaker_id, "已確認" )
 
                 # ==================================================
                 # 2. 驗證 speakers
                 # ==================================================
 
-                print(
-                    "\n=== 驗證 speakers ==="
-                )
+                debug_print( "\n=== 驗證 speakers ===" )
 
                 for speaker_id in speaker_ids:
 
@@ -715,14 +520,9 @@ async def write_results_to_database(
                         WHERE speaker_id = %s
                     """
 
-                    await cur.execute(
-                        sql,
-                        (speaker_id,)
-                    )
+                    await cur.execute( sql, (speaker_id,) )
 
-                    row = (
-                        await cur.fetchone()
-                    )
+                    row = ( await cur.fetchone() )
 
                     if row is None:
 
@@ -731,33 +531,22 @@ async def write_results_to_database(
                             "沒有成功寫入 speakers"
                         )
 
-                    print(
-                        "確認存在：",
-                        row[0],
-                        "| company_code：",
-                        row[1]
-                    )
+                    debug_print( "確認存在：", row[0], "| company_code：", row[1] )
 
                 # ==================================================
                 # 3. 更新 transcript_segments
                 # ==================================================
 
-                print(
-                    "\n=== 更新 transcript_segments ==="
-                )
+                debug_print( "\n=== 更新 transcript_segments ===" )
 
                 updated_count = 0
                 skipped_count = 0
 
                 for item in results:
 
-                    segment_id = item.get(
-                        "segment_id"
-                    )
+                    segment_id = item.get( "segment_id" )
 
-                    speaker_id = item.get(
-                        "speaker_id"
-                    )
+                    speaker_id = item.get( "speaker_id" )
 
                     if (
                         segment_id is None
@@ -808,18 +597,11 @@ async def write_results_to_database(
                       AND speaker_id IS NOT NULL
                 """
 
-                await cur.execute(
-                    sql,
-                    (call_id,)
-                )
+                await cur.execute( sql, (call_id,) )
 
-                row = (
-                    await cur.fetchone()
-                )
+                row = ( await cur.fetchone() )
 
-                db_matched_count = (
-                    row[0]
-                )
+                db_matched_count = ( row[0] )
 
                 # ==================================================
                 # 5. 統計各 speaker 筆數
@@ -835,144 +617,77 @@ async def write_results_to_database(
                     ORDER BY speaker_id
                 """
 
-                await cur.execute(
-                    sql,
-                    (call_id,)
-                )
+                await cur.execute( sql, (call_id,) )
 
-                speaker_counts = (
-                    await cur.fetchall()
-                )
+                speaker_counts = ( await cur.fetchall() )
 
                 # ==================================================
                 # 6. 顯示結果
                 # ==================================================
 
-                print(
-                    "\n=== Database Summary ==="
-                )
+                debug_print( "\n=== Database Summary ===" )
 
-                print(
-                    "本次真正 UPDATE：",
-                    updated_count,
-                    "筆"
-                )
+                debug_print( "本次真正 UPDATE：", updated_count, "筆" )
 
-                print(
-                    "跳過：",
-                    skipped_count,
-                    "筆"
-                )
+                debug_print( "跳過：", skipped_count, "筆" )
 
-                print(
-                    "DB 中 speaker_id 非 NULL：",
-                    db_matched_count,
-                    "/",
-                    len(results)
-                )
+                debug_print( "DB 中 speaker_id 非 NULL：", db_matched_count, "/", len(results) )
 
-                print(
-                    "\n各 speaker 筆數："
-                )
+                debug_print( "\n各 speaker 筆數：" )
 
                 for row in speaker_counts:
 
-                    print(
-                        row[0],
-                        ":",
-                        row[1],
-                        "筆"
-                    )
+                    debug_print( row[0], ":", row[1], "筆" )
 
-                return (
-                    db_matched_count
-                )
+                return ( db_matched_count )
 
     finally:
 
         pool.close()
         await pool.wait_closed()
 
-
 async def process_speakers(
-    call_id
+    call_id, force=False
 ):
 
-    company_code = (
-        call_id.split("_")[0]
-    )
+    company_code = ( call_id.split("_")[0] )
 
-    (
-        output_dir,
-        audio_path,
-        diarization_path,
-        matching_path
-    ) = get_paths(
-        call_id
-    )
+    ( output_dir, audio_path, diarization_path, matching_path ) = get_paths( call_id )
 
-    print(
-        "===================================="
-    )
+    debug_print( "====================================" )
 
-    print(
-        "Speaker Processor"
-    )
+    debug_print( "Speaker Processor" )
 
-    print(
-        "CALL_ID：",
-        call_id
-    )
+    debug_print( "CALL_ID：", call_id )
 
-    print(
-        "===================================="
-    )
+    debug_print( "====================================" )
 
     diarization_results = (
         get_diarization_results(
             output_dir,
             audio_path,
-            diarization_path
+            diarization_path, force=force
         )
     )
 
-    print(
-        "\nDiarization 區段：",
-        len(diarization_results),
-        "筆"
-    )
+    debug_print( "\nDiarization 區段：", len(diarization_results), "筆" )
 
-    speaker_map = (
-        create_speaker_map(
-            diarization_results,
-            company_code
-        )
-    )
+    speaker_map = ( create_speaker_map( diarization_results, company_code ) )
 
-    print(
-        "\n=== Speaker Map ==="
-    )
+    debug_print( "\n=== Speaker Map ===" )
 
     for (
         pyannote_speaker,
         db_speaker
     ) in speaker_map.items():
 
-        print(
-            pyannote_speaker,
-            "→",
-            db_speaker
-        )
+        debug_print( pyannote_speaker, "→", db_speaker )
 
-    segments = await get_segments(
-        call_id
-    )
+    segments = await get_segments( call_id )
+    if not segments:
+        raise RuntimeError("資料庫沒有逐字稿片段，停止講者配對")
 
-    print(
-        "\ntranscript_segments：",
-        len(segments),
-        "筆"
-    )
+    debug_print( "\ntranscript_segments：", len(segments), "筆" )
 
     if not segments:
 
@@ -981,25 +696,11 @@ async def process_speakers(
             "的 speech_segments"
         )
 
-    matching_results = (
-        match_segments(
-            segments,
-            diarization_results
-        )
-    )
+    matching_results = ( match_segments( segments, diarization_results ) )
 
-    matching_results = (
-        smooth_speaker_results(
-            matching_results
-        )
-    )
+    matching_results = ( smooth_speaker_results( matching_results ) )
 
-    matching_results = (
-        add_database_speaker_ids(
-            matching_results,
-            speaker_map
-        )
-    )
+    matching_results = ( add_database_speaker_ids( matching_results, speaker_map ) )
 
     method_counts = {}
 
@@ -1007,27 +708,17 @@ async def process_speakers(
 
     for item in matching_results:
 
-        method = (
-            item["match_method"]
-        )
+        method = ( item["match_method"] )
 
-        method_counts[method] = (
-            method_counts.get(
-                method,
-                0
-            )
-            + 1
-        )
+        method_counts[method] = ( method_counts.get( method, 0 ) + 1 )
 
         if item["speaker_id"] is None:
 
             unmatched_count += 1
 
-    print(
-        "\n=== Matching Summary ==="
-    )
+    debug_print( "\n=== Matching Summary ===" )
 
-    print(
+    debug_print(
         "成功 Matching：",
         len(matching_results)
         - unmatched_count,
@@ -1035,87 +726,53 @@ async def process_speakers(
         len(matching_results)
     )
 
-    print(
-        "\n=== Match Method 統計 ==="
-    )
+    debug_print( "\n=== Match Method 統計 ===" )
 
     for (
         method,
         count
     ) in method_counts.items():
 
-        print(
-            method,
-            ":",
-            count,
-            "筆"
-        )
+        debug_print( method, ":", count, "筆" )
 
-    print(
-        "\n仍無法自動判斷：",
-        unmatched_count,
-        "筆"
-    )
+    debug_print( "\n仍無法自動判斷：", unmatched_count, "筆" )
 
-    save_matching_json(
-        matching_results,
-        matching_path
-    )
+    save_matching_json( matching_results, matching_path )
 
     if unmatched_count > 0:
 
-        print(
-            "\n⚠️ 有 segment 無法自動判斷，"
-            "目前不寫入資料庫"
-        )
+        debug_print( "\n⚠️ 有 segment 無法自動判斷，" "目前不寫入資料庫" )
 
         return False
 
-    db_count = await (
-        write_results_to_database(
-            matching_results,
-            company_code,
-            call_id
-        )
-    )
+    db_count = await ( write_results_to_database( matching_results, company_code, call_id ) )
 
     if db_count == len(
         matching_results
     ):
 
-        print(
-            "\n✅ Speaker Processor 全部完成"
-        )
+        debug_print( "\n✅ Speaker Processor 全部完成" )
 
         return True
 
-    print(
-        "\n⚠️ Matching 完成，"
-        "但 DB 筆數不一致"
-    )
+    debug_print( "\n⚠️ Matching 完成，" "但 DB 筆數不一致" )
 
     return False
 
-
 async def main():
-
-    if len(sys.argv) < 2:
-
-        raise ValueError(
-            "請輸入 call_id，例如："
-            "\npython speaker_processor.py "
-            "2454_20260311"
-        )
-
-    call_id = sys.argv[1]
-
-    await process_speakers(
-        call_id
-    )
-
+    import argparse
+    parser = argparse.ArgumentParser()
+    parser.add_argument("call_id")
+    parser.add_argument("--force", action="store_true")
+    parser.add_argument("--verbose", action="store_true")
+    args = parser.parse_args()
+    logging.basicConfig(level=logging.INFO, format="%(message)s")
+    logger.setLevel(logging.DEBUG if args.verbose or os.getenv("PIPELINE_VERBOSE") == "1" else logging.INFO)
+    succeeded = await process_speakers(args.call_id, force=args.force)
+    if not succeeded:
+        print("講者配對未完整完成，請檢查 speaker_matching.json。QA 尚未執行。")
+        return 2
+    return 0
 
 if __name__ == "__main__":
-
-    asyncio.run(
-        main()
-    )
+    raise SystemExit(asyncio.run(main()))

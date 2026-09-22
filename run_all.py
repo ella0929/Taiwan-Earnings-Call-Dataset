@@ -1,95 +1,142 @@
+"""完整流程：轉錄、清理、Metadata、QC、資料庫、講者與 QA。"""
+import argparse
+import importlib.util
+import os
+import re
+import shutil
 import subprocess
 import sys
-import re
+from datetime import datetime, timezone
 from pathlib import Path
-
-
-PROJECT_ROOT = Path(__file__).resolve().parent
-VIDEO_NAME_PATTERN = re.compile(r"^\d+_\d{8}\.(mp4|mov|mkv|avi|wav)$", re.IGNORECASE)
-
-
-def run_step(command, name):
-    print(f"\n{'=' * 60}\n{name}\n{'=' * 60}")
-    result = subprocess.run(command, cwd=PROJECT_ROOT)
-    if result.returncode != 0:
-        print(f"\n {name} 失敗，流程停止。")
-        raise SystemExit(result.returncode)
+from scripts.pipeline_common import ROOT, MEDIA_SUFFIXES, read_json, save_json
 
 
 def find_video():
-    raw_dir = PROJECT_ROOT / "data" / "raw"
-    videos = sorted(
-        path for path in raw_dir.iterdir()
-        if path.is_file() and VIDEO_NAME_PATTERN.match(path.name)
-    ) if raw_dir.exists() else []
+    candidates = sorted(p for p in (ROOT / "data/raw").glob("*")
+                        if p.is_file() and p.suffix.lower() in MEDIA_SUFFIXES
+                        and re.fullmatch(r"\d+_\d{8}", p.stem))
+    if len(candidates) != 1:
+        raise ValueError("請指定影片路徑；候選檔案：" + ", ".join(p.name for p in candidates))
+    return candidates[0]
 
-    if len(videos) == 1:
-        return videos[0]
 
-    if not videos:
-        print(" data/raw 找不到符合格式的影片：公司代號_日期.mp4")
-    else:
-        print(" data/raw 找到多部符合格式的影片，請指定要處理的檔案：")
-        for video in videos:
-            print(f"  - {video.name}")
-    print("例如：python run_all.py data/raw/2454_20260311.mp4")
-    raise SystemExit(1)
+def preflight():
+    missing = []
+    for name in ("dotenv", "aiomysql", "numpy", "torch", "pyannote.audio", "ctranslate2", "faster_whisper"):
+        try:
+            if importlib.util.find_spec(name) is None:
+                missing.append(name)
+        except (ModuleNotFoundError, ValueError):
+            missing.append(name)
+    if missing:
+        raise RuntimeError("缺少套件：" + ", ".join(missing) + "。請先 python -m pip install -r requirements.txt")
+    if not shutil.which("ffmpeg"):
+        raise RuntimeError("找不到 ffmpeg，請安裝並加入 PATH。")
+    from dotenv import load_dotenv
+    load_dotenv(ROOT / ".env")
+    missing = [key for key in ("DB_HOST", "DB_USER", "DB_PASSWORD", "DB_NAME", "HF_TOKEN") if not os.getenv(key)]
+    if missing:
+        raise RuntimeError(".env 缺少：" + ", ".join(missing))
+
+
+def build_steps(video, args):
+    folder = ROOT / "output" / video.stem
+    raw = folder / f"{video.stem}_raw.json"
+    clean = folder / f"{video.stem}_clean.json"
+    metadata = folder / f"{video.stem}_metadata.json"
+    extra = []
+    if args.source_url:
+        extra += ["--source-url", args.source_url]
+    if args.announcement:
+        extra += ["--announcement", str(args.announcement.resolve())]
+    if args.offline:
+        extra += ["--offline"]
+    force = ["--force"] if args.force else []
+    return [
+        ("轉錄", ["scripts/process_video.py", str(video), *force]),
+        ("清理逐字稿", ["scripts/clean_transcript.py", str(raw)]),
+        ("自動 Metadata", ["scripts/generate_metadata.py", str(video), *extra]),
+        ("逐字稿 QC", ["scripts/transcript_qc.py", str(raw), "--metadata", str(metadata)]),
+        ("匯入 MySQL", ["scripts/transcript_to_db.py", str(clean)]),
+        ("講者辨識與配對", ["speaker_processor.py", video.stem, *force]),
+        ("QA 分類", ["main.py", video.stem]),
+    ]
+
+
+def execute_steps(steps, status_path, runner=subprocess.run):
+    status = {"status": "running", "started_at": datetime.now(timezone.utc).isoformat(), "steps": []}
+    save_json(status_path, status)
+    for index, (name, command) in enumerate(steps, 1):
+        print(f"\n[{index}/{len(steps)}] {name}", flush=True)
+        item = {"name": name, "status": "running"}
+        status["steps"].append(item)
+        save_json(status_path, status)
+        try:
+            code = runner([sys.executable, *command], cwd=ROOT).returncode
+        except (OSError, KeyboardInterrupt) as error:
+            item.update(status="failed", error=str(error))
+            status["status"] = "failed"
+            save_json(status_path, status)
+            raise
+        item.update(status="completed" if code == 0 else "review_required" if code == 2 else "failed", exit_code=code)
+        save_json(status_path, status)
+        if code:
+            status["status"] = item["status"]
+            save_json(status_path, status)
+            print(f"流程停止：{name}，狀態 {item['status']}。詳見 {status_path}")
+            return code
+    status["status"] = "completed"
+    save_json(status_path, status)
+    return 0
 
 
 def main():
-    if len(sys.argv) > 2:
-        print("使用方法：python run_all.py [影片路徑]")
-        raise SystemExit(1)
-
-    video_path = Path(sys.argv[1]) if len(sys.argv) == 2 else find_video()
-    if not video_path.is_absolute():
-        video_path = (PROJECT_ROOT / video_path).resolve()
-
-    if not video_path.exists():
-        print(f" 找不到影片：{video_path}")
-        raise SystemExit(1)
-
-    call_id = video_path.stem
-    output_dir = PROJECT_ROOT / "output" / call_id
-    raw_json = output_dir / f"{call_id}_raw.json"
-    clean_json = output_dir / f"{call_id}_clean.json"
-    metadata_json = output_dir / f"{call_id}_metadata.json"
-
-    run_step(
-        [
-            sys.executable,
-            str(PROJECT_ROOT / "run_pipeline.py"),
-            str(video_path),
-        ],
-        "Step 1：完整轉錄、清理、資料庫與 Speaker 流程",
-    )
-
-    if not raw_json.exists() or not clean_json.exists() or not metadata_json.exists():
-        print(" Raw JSON、Clean JSON 或 Metadata 不存在，後續流程停止。")
-        raise SystemExit(1)
-
-    run_step(
-        [
-            sys.executable,
-            str(PROJECT_ROOT / "scripts" / "transcript_qc.py"),
-            str(raw_json),
-            "--metadata",
-            str(metadata_json),
-        ],
-        "Step 2：逐字稿品質檢查",
-    )
-
-    run_step(
-        [
-            sys.executable,
-            str(PROJECT_ROOT / "main.py"),
-            call_id,
-        ],
-        "Step 3：QA 分類流程",
-    )
-
-    print("\n 全部流程完成！")
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("video", nargs="?", type=Path)
+    parser.add_argument("--source-url")
+    parser.add_argument("--announcement", type=Path)
+    parser.add_argument("--force", action="store_true", help="重新轉錄、重新辨識講者")
+    parser.add_argument("--offline", action="store_true", help="Metadata 不連網，僅使用快取與本機資料")
+    parser.add_argument("--verbose", action="store_true", help="顯示講者配對明細")
+    args = parser.parse_args()
+    video = args.video or find_video()
+    if not video.is_absolute():
+        video = ROOT / video
+    if not video.is_file() or video.suffix.lower() not in MEDIA_SUFFIXES:
+        raise ValueError("找不到支援的影音檔案：" + str(video))
+    if not re.fullmatch(r"\d+_\d{8}", video.stem):
+        raise ValueError("檔名必須為 公司代號_YYYYMMDD")
+    datetime.strptime(video.stem.split("_")[1], "%Y%m%d")
+    if args.announcement and not args.announcement.is_file():
+        raise FileNotFoundError(args.announcement)
+    folder = ROOT / "output" / video.stem
+    status_path = folder / "pipeline_status.json"
+    try:
+        preflight()
+    except Exception as error:
+        save_json(status_path, {"status": "failed", "step": "preflight", "error": str(error),
+                                "started_at": datetime.now(timezone.utc).isoformat()})
+        raise
+    if args.verbose:
+        os.environ["PIPELINE_VERBOSE"] = "1"
+    code = execute_steps(build_steps(video, args), status_path)
+    if code:
+        return code
+    metadata = read_json(folder / f"{video.stem}_metadata.json")
+    qc = read_json(folder / f"{video.stem}_qc_report.json")
+    reasons = list(metadata.get("pending_fields", [])) + list(metadata.get("warnings", []))
+    if qc.get("summary", {}).get("review_segment_count", 0):
+        reasons.append("逐字稿 QC 有待核對片段")
+    status = read_json(status_path)
+    status.update(status="completed_with_review" if reasons else "completed", review_reasons=reasons)
+    save_json(status_path, status)
+    print("處理完成，仍有待確認項目：" + "; ".join(reasons) if reasons else "全部流程完成！")
+    return 0
 
 
 if __name__ == "__main__":
-    main()
+    try:
+        raise SystemExit(main())
+    except (ValueError, RuntimeError, OSError) as error:
+        print(f"執行失敗：{error}", file=sys.stderr)
+        raise SystemExit(1)

@@ -1,10 +1,11 @@
 import os
 import asyncio
 import aiomysql
+from pathlib import Path
 from dotenv import load_dotenv
 
 # 載入 .env 檔案中的隱藏變數
-load_dotenv()
+load_dotenv(Path(__file__).resolve().parent / ".env")
 
 async def test_connection():
     try:
@@ -38,4 +39,4 @@ async def test_connection():
 # 執行非同步測試
 if __name__ == "__main__":
     asyncio.run(test_connection())
-    
+

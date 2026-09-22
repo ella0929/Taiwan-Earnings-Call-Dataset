@@ -8,21 +8,11 @@ from pathlib import Path
 # 1. 贅詞設定
 # ============================================================
 
-FILLER_WORDS = {
-    "uh",
-    "um",
-    "erm",
-    "hmm",
-    "mm",
-    "mhm",
-}
+FILLER_WORDS = { "uh", "um", "erm", "hmm", "mm", "mhm", }
 
 
 # 多字型口語填充詞
-FILLER_PHRASES = [
-    "you know",
-    "you see",
-]
+FILLER_PHRASES = [ "you know", "you see", ]
 
 
 # ============================================================
@@ -52,12 +42,7 @@ def clean_text(text: str):
 
         pattern = rf"\b{re.escape(phrase)}\b"
 
-        cleaned = re.sub(
-            pattern,
-            "",
-            cleaned,
-            flags=re.IGNORECASE
-        )
+        cleaned = re.sub( pattern, "", cleaned, flags=re.IGNORECASE )
 
     # --------------------------------------------------------
     # 移除單字 filler
@@ -67,32 +52,19 @@ def clean_text(text: str):
 
         pattern = rf"\b{re.escape(word)}\b"
 
-        cleaned = re.sub(
-            pattern,
-            "",
-            cleaned,
-            flags=re.IGNORECASE
-        )
+        cleaned = re.sub( pattern, "", cleaned, flags=re.IGNORECASE )
 
     # --------------------------------------------------------
     # 清理多餘空白
     # --------------------------------------------------------
 
-    cleaned = re.sub(
-        r"\s+",
-        " ",
-        cleaned
-    )
+    cleaned = re.sub( r"\s+", " ", cleaned )
 
     # --------------------------------------------------------
     # 清理標點前空白
     # --------------------------------------------------------
 
-    cleaned = re.sub(
-        r"\s+([,.!?;:])",
-        r"\1",
-        cleaned
-    )
+    cleaned = re.sub( r"\s+([,.!?;:])", r"\1", cleaned )
 
     return cleaned.strip()
 
@@ -106,11 +78,7 @@ def is_filler_word(word: str):
     clean_word = word.strip().lower()
 
     # 移除標點
-    clean_word = re.sub(
-        r"^[^\w]+|[^\w]+$",
-        "",
-        clean_word
-    )
+    clean_word = re.sub( r"^[^\w]+|[^\w]+$", "", clean_word )
 
     return clean_word in FILLER_WORDS
 
@@ -121,15 +89,9 @@ def is_filler_word(word: str):
 
 def process_segment(segment):
 
-    original_text = segment.get(
-        "text",
-        ""
-    ).strip()
+    original_text = segment.get( "text", "" ).strip()
 
-    words = segment.get(
-        "words",
-        []
-    )
+    words = segment.get( "words", [] )
 
     # --------------------------------------------------------
     # 如果 Whisper 沒有 word timestamp
@@ -137,9 +99,7 @@ def process_segment(segment):
 
     if not words:
 
-        cleaned_text = clean_text(
-            original_text
-        )
+        cleaned_text = clean_text( original_text )
 
         new_segment = {
             "id": segment.get("id"),
@@ -160,10 +120,7 @@ def process_segment(segment):
 
     for word_info in words:
 
-        word = word_info.get(
-            "word",
-            ""
-        )
+        word = word_info.get( "word", "" )
 
         if not word:
             continue
@@ -182,19 +139,11 @@ def process_segment(segment):
     # 只使用沒有被刪除的 word 建立 Clean Text
     # --------------------------------------------------------
 
-    remaining_words = [
-        w["word"]
-        for w in cleaned_words
-        if not w["removed"]
-    ]
+    remaining_words = [ w["word"] for w in cleaned_words if not w["removed"] ]
 
-    cleaned_text = " ".join(
-        remaining_words
-    )
+    cleaned_text = " ".join( remaining_words )
 
-    cleaned_text = clean_text(
-        cleaned_text
-    )
+    cleaned_text = clean_text( cleaned_text )
 
     # --------------------------------------------------------
     # 建立新的 segment
@@ -243,14 +192,9 @@ def clean_transcript(input_path, output_path):
     # 取得 segments
     # --------------------------------------------------------
 
-    segments = data.get(
-        "segments",
-        []
-    )
+    segments = data.get( "segments", [] )
 
-    print(
-        f"🔍 找到 {len(segments)} 個 Whisper segments"
-    )
+    print( f"🔍 找到 {len(segments)} 個 Whisper segments" )
 
     # --------------------------------------------------------
     # 處理所有 segments
@@ -260,13 +204,9 @@ def clean_transcript(input_path, output_path):
 
     for segment in segments:
 
-        cleaned_segment = process_segment(
-            segment
-        )
+        cleaned_segment = process_segment( segment )
 
-        cleaned_segments.append(
-            cleaned_segment
-        )
+        cleaned_segments.append( cleaned_segment )
 
     # --------------------------------------------------------
     # 建立 Clean JSON
@@ -299,16 +239,9 @@ def clean_transcript(input_path, output_path):
         encoding="utf-8"
     ) as f:
 
-        json.dump(
-            clean_data,
-            f,
-            ensure_ascii=False,
-            indent=2
-        )
+        json.dump( clean_data, f, ensure_ascii=False, indent=2 )
 
-    print(
-        f"✅ Clean JSON 完成：{output_path}"
-    )
+    print( f"✅ Clean JSON 完成：{output_path}" )
 
 
 # ============================================================
@@ -336,32 +269,18 @@ def create_clean_txt(
 
         for segment in data["segments"]:
 
-            start = segment.get(
-                "start",
-                0
-            )
+            start = segment.get( "start", 0 )
 
-            end = segment.get(
-                "end",
-                0
-            )
+            end = segment.get( "end", 0 )
 
-            text = segment.get(
-                "clean_text",
-                ""
-            )
+            text = segment.get( "clean_text", "" )
 
             if not text:
                 continue
 
-            f.write(
-                f"[{start:.3f} --> {end:.3f}] "
-                f"{text}\n"
-            )
+            f.write( f"[{start:.3f} --> {end:.3f}] " f"{text}\n" )
 
-    print(
-        f"✅ Clean TXT 完成：{txt_output_path}"
-    )
+    print( f"✅ Clean TXT 完成：{txt_output_path}" )
 
 
 # ============================================================
@@ -372,26 +291,17 @@ def main():
 
     if len(sys.argv) < 2:
 
-        print(
-            "使用方法："
-        )
+        print( "使用方法：" )
 
-        print(
-            "python scripts/clean_transcript.py "
-            "output/2454_20260311/2454_20260311_raw.json"
-        )
+        print( "python scripts/clean_transcript.py " "output/2454_20260311/2454_20260311_raw.json" )
 
         return
 
-    input_path = Path(
-        sys.argv[1]
-    )
+    input_path = Path( sys.argv[1] )
 
     if not input_path.exists():
 
-        print(
-            f"❌ 找不到檔案：{input_path}"
-        )
+        print( f"❌ 找不到檔案：{input_path}" )
 
         return
 
@@ -401,34 +311,19 @@ def main():
 
     output_dir = input_path.parent
 
-    call_id = input_path.stem.replace(
-        "_raw",
-        ""
-    )
+    call_id = input_path.stem.replace( "_raw", "" )
 
-    clean_json_path = (
-        output_dir
-        / f"{call_id}_clean.json"
-    )
+    clean_json_path = ( output_dir / f"{call_id}_clean.json" )
 
-    clean_txt_path = (
-        output_dir
-        / f"{call_id}_clean.txt"
-    )
+    clean_txt_path = ( output_dir / f"{call_id}_clean.txt" )
 
     # --------------------------------------------------------
     # 執行
     # --------------------------------------------------------
 
-    clean_transcript(
-        input_path,
-        clean_json_path
-    )
+    clean_transcript( input_path, clean_json_path )
 
-    create_clean_txt(
-        clean_json_path,
-        clean_txt_path
-    )
+    create_clean_txt( clean_json_path, clean_txt_path )
 
     print()
     print("🎉 Clean Transcript 處理完成！")

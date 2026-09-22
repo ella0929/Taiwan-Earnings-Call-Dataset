@@ -5,3 +5,9 @@ __pycache__/
 # 原始影音檔案太大，不提交到一般 GitHub repository
 data/raw/*.mp4
 output/**/*.wav
+
+# Generated company profile cache
+data/cache/
+
+# Local Python environment
+.venv/

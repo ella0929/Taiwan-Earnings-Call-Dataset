@@ -7,8 +7,13 @@ from pathlib import Path
 import ctranslate2
 from faster_whisper import WhisperModel
 
-from transcript_qc import generate_qc_report
+from dotenv import load_dotenv
+try:
+    from .pipeline_common import ROOT, MEDIA_SUFFIXES, fingerprint, cache_matches, save_cache, save_json
+except ImportError:
+    from pipeline_common import ROOT, MEDIA_SUFFIXES, fingerprint, cache_matches, save_cache, save_json
 
+load_dotenv(ROOT / ".env")
 
 # =========================
 # 設定
@@ -24,17 +29,18 @@ BEAM_SIZE = int(os.getenv("WHISPER_BEAM_SIZE", "5"))
 SAMPLE_RATE = 16000
 CHANNELS = 1
 
-
 # =========================
 # MP4 → WAV
 # =========================
 
 def convert_to_wav(video_path: Path, wav_path: Path):
 
-    print("\n🎵 [1/4] MP4 → WAV")
+    print("\n🎵 影音 → WAV")
 
     command = [
         "ffmpeg",
+        "-hide_banner",
+        "-loglevel", "error",
         "-y",
         "-i",
         str(video_path),
@@ -42,13 +48,15 @@ def convert_to_wav(video_path: Path, wav_path: Path):
         str(SAMPLE_RATE),
         "-ac",
         str(CHANNELS),
-        str(wav_path)
+        "-vn",
+        "-c:a", "pcm_s16le",
+        str(wav_path.with_suffix(".tmp.wav"))
     ]
 
     subprocess.run(command, check=True)
+    wav_path.with_suffix(".tmp.wav").replace(wav_path)
 
     print(f"✅ WAV 完成：{wav_path}")
-
 
 # =========================
 # Faster-Whisper
@@ -65,23 +73,14 @@ def resolve_runtime():
     device = DEVICE
 
     if device == "auto":
-        device = (
-            "cuda"
-            if ctranslate2.get_cuda_device_count() > 0
-            else "cpu"
-        )
+        device = ( "cuda" if ctranslate2.get_cuda_device_count() > 0 else "cpu" )
 
     compute_type = COMPUTE_TYPE
 
     if compute_type == "auto":
-        compute_type = (
-            "int8"
-            if device == "cuda"
-            else "int8"
-        )
+        compute_type = "int8"
 
     return device, compute_type
-
 
 def build_transcription_config(device, compute_type):
     return {
@@ -97,20 +96,6 @@ def build_transcription_config(device, compute_type):
         "hotwords": HOTWORDS
     }
 
-
-def raw_json_matches_config(raw_json_path: Path, expected_config):
-    if not raw_json_path.exists():
-        return False
-
-    try:
-        with open(raw_json_path, "r", encoding="utf-8") as file:
-            data = json.load(file)
-    except (OSError, json.JSONDecodeError):
-        return False
-
-    return data.get("transcription_config") == expected_config
-
-
 def transcribe_audio(
     wav_path: Path,
     raw_json_path: Path,
@@ -118,17 +103,13 @@ def transcribe_audio(
     compute_type
 ):
 
-    print("\n🎤 [2/4] Faster-Whisper 自動轉錄")
+    print("\n🎤 Faster-Whisper 自動轉錄")
 
     print(f"模型：{MODEL_NAME}")
     print(f"裝置：{device}")
     print(f"運算精度：{compute_type}")
 
-    model = WhisperModel(
-        MODEL_NAME,
-        device=device,
-        compute_type=compute_type
-    )
+    model = WhisperModel( MODEL_NAME, device=device, compute_type=compute_type )
 
     segment_generator, info = model.transcribe(
         str(wav_path),
@@ -174,11 +155,7 @@ def transcribe_audio(
         segments.append(segment_data)
         text_parts.append(segment.text)
 
-        progress = (
-            min(segment.end / duration * 100, 100)
-            if duration > 0
-            else 0
-        )
+        progress = ( min(segment.end / duration * 100, 100) if duration > 0 else 0 )
 
         print(
             f"\r⏳ 轉錄進度：{progress:6.2f}% "
@@ -214,19 +191,13 @@ def transcribe_audio(
         encoding="utf-8"
     ) as f:
 
-        json.dump(
-            result,
-            f,
-            ensure_ascii=False,
-            indent=2
-        )
+        json.dump( result, f, ensure_ascii=False, indent=2 )
 
     temporary_path.replace(raw_json_path)
 
     print(f"✅ Raw JSON 完成：{raw_json_path}")
 
     return result
-
 
 # =========================
 # 建立 TXT
@@ -239,11 +210,7 @@ def format_timestamp(seconds: float) -> str:
     minutes, remainder = divmod(remainder, 60_000)
     secs, milliseconds = divmod(remainder, 1000)
 
-    return (
-        f"{hours:02d}:{minutes:02d}:"
-        f"{secs:02d}.{milliseconds:03d}"
-    )
-
+    return ( f"{hours:02d}:{minutes:02d}:" f"{secs:02d}.{milliseconds:03d}" )
 
 def save_raw_txt(result, txt_path: Path):
     segments = result.get("segments", [])
@@ -259,171 +226,50 @@ def save_raw_txt(result, txt_path: Path):
 
     print(f"✅ Raw TXT 完成：{txt_path}")
 
-
 # =========================
 # 主程式
 # =========================
 
-def process_video(video_file):
-
-    video_path = Path(video_file)
-
-    if not video_path.exists():
-
-        print(f"❌ 找不到影片：{video_path}")
-
-        return
-
-    if video_path.suffix.lower() != ".mp4":
-
-        print("❌ 目前只接受 MP4")
-
-        return
-
-    call_id = video_path.stem
-
-    output_dir = Path("output") / call_id
-
-    output_dir.mkdir(
-        parents=True,
-        exist_ok=True
-    )
-
-    wav_path = (
-        output_dir /
-        f"{call_id}.wav"
-    )
-
-    raw_json_path = (
-        output_dir /
-        f"{call_id}_raw.json"
-    )
-
-    raw_txt_path = (
-        output_dir /
-        f"{call_id}_raw.txt"
-    )
-
-    metadata_path = (
-        output_dir /
-        f"{call_id}_metadata.json"
-    )
-
+def process_video(video_file, force=False):
+    video_path = Path(video_file).resolve()
+    if not video_path.is_file():
+        raise FileNotFoundError(video_path)
+    if video_path.suffix.lower() not in MEDIA_SUFFIXES:
+        raise ValueError("支援格式：MP4、MOV、MKV、AVI、WAV")
+    output_dir = ROOT / "output" / video_path.stem
+    output_dir.mkdir(parents=True, exist_ok=True)
+    wav = output_dir / f"{video_path.stem}.wav"
+    raw = output_dir / f"{video_path.stem}_raw.json"
+    if wav.resolve() == video_path:
+        raise ValueError("請將來源音檔放在 data/raw，避免覆寫來源檔案")
+    wav_manifest = wav.with_suffix(".cache.json")
+    inputs = {"source_sha256": fingerprint(video_path), "sample_rate": SAMPLE_RATE,
+              "channels": CHANNELS, "codec": "pcm_s16le", "version": 1}
+    if force or not cache_matches(wav, wav_manifest, inputs):
+        convert_to_wav(video_path, wav)
+        save_cache(wav, wav_manifest, inputs)
+    else:
+        print("沿用已驗證來源的 WAV")
     device, compute_type = resolve_runtime()
-    expected_config = build_transcription_config(
-        device,
-        compute_type
-    )
-
-    # -------------------------
-    # Step 1
-    # -------------------------
-
-    if not wav_path.exists():
-
-        convert_to_wav(
-            video_path,
-            wav_path
-        )
-
+    config = build_transcription_config(device, compute_type)
+    raw_inputs = {"audio_sha256": fingerprint(wav), "config": config, "version": 1}
+    manifest = raw.with_suffix(".cache.json")
+    if force or not cache_matches(raw, manifest, raw_inputs):
+        result = transcribe_audio(wav, raw, device, compute_type)
+        result["source_sha256"] = inputs["source_sha256"]
+        save_json(raw, result)
+        save_cache(raw, manifest, raw_inputs)
     else:
-
-        print(
-            f"\n⏭️ WAV 已存在，跳過：{wav_path}"
-        )
-
-    # -------------------------
-    # Step 2
-    # -------------------------
-
-    if not raw_json_matches_config(
-        raw_json_path,
-        expected_config
-    ):
-
-        if raw_json_path.exists():
-            print(
-                "\n🔄 Raw JSON 的模型或參數不同，"
-                "將重新轉錄"
-            )
-
-        result = transcribe_audio(
-            wav_path,
-            raw_json_path,
-            device,
-            compute_type
-        )
-
-    else:
-
-        print(
-            f"\n⏭️ Raw JSON 已存在，直接讀取"
-        )
-
-        with open(
-            raw_json_path,
-            "r",
-            encoding="utf-8"
-        ) as f:
-
-            result = json.load(f)
-
-    # -------------------------
-    # Step 3
-    # -------------------------
-
-    save_raw_txt(
-        result,
-        raw_txt_path
-    )
-
-    # -------------------------
-    # Step 4：自動品質檢查
-    # -------------------------
-
-    print("\n🔎 [4/4] 產生逐字稿 QC report")
-
-    try:
-        qc_paths = generate_qc_report(
-            raw_json_path,
-            metadata_path if metadata_path.exists() else None
-        )
-        for qc_path in qc_paths.values():
-            print(f"✅ QC 輸出：{qc_path}")
-    except Exception as error:
-        # QC 失敗不應讓已完成的轉錄跟著失敗。
-        print(f"⚠️ QC report 產生失敗：{error}")
-
-    print("\n🎉 自動轉錄完成！")
-
-    print("\n輸出：")
-
-    for file in output_dir.iterdir():
-
-        print(
-            f"  - {file.name}"
-        )
-
-
-# =========================
-# Entry
-# =========================
+        result = json.loads(raw.read_text(encoding="utf-8"))
+        print("沿用已驗證音檔與設定的轉錄")
+    if not result.get("segments"):
+        raise RuntimeError("轉錄沒有任何片段，停止後續匯入")
+    save_raw_txt(result, output_dir / f"{video_path.stem}_raw.txt")
 
 if __name__ == "__main__":
-
-    if len(sys.argv) != 2:
-
-        print(
-            "\n使用方式："
-        )
-
-        print(
-            "python scripts/process_video.py "
-            "data/raw/2454_20260311.mp4"
-        )
-
-        sys.exit(1)
-
-    process_video(
-        sys.argv[1]
-    )
+    import argparse
+    parser = argparse.ArgumentParser()
+    parser.add_argument("video")
+    parser.add_argument("--force", action="store_true")
+    args = parser.parse_args()
+    process_video(args.video, args.force)

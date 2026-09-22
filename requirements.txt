@@ -1,4 +1,7 @@
-faster-whisper
-pandas
-aiomysql
-python-dotenv
+faster-whisper>=1.1,<2
+ctranslate2>=4.5,<5
+numpy>=1.26,<3
+torch>=2.8,<3
+pyannote.audio>=4,<5
+aiomysql>=0.2,<1
+python-dotenv>=1,<2

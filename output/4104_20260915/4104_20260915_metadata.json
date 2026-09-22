@@ -1,0 +1,33 @@
+{
+  "company_name": "佳醫健康事業股份有限公司",
+  "industry": "生技醫療業",
+  "industry_code": "22",
+  "call_id": "4104_20260915",
+  "company_code": "4104",
+  "call_date": "2026-09-15",
+  "company_data_source": "https://openapi.twse.com.tw/v1/opendata/t187ap03_L",
+  "company_data_fetched_at": "2026-09-22T17:41:11.886140+00:00",
+  "source_url": null,
+  "audio_url": null,
+  "transcript_url": null,
+  "language": "zh",
+  "audio_duration_sec": 797.056,
+  "fiscal_year": null,
+  "fiscal_quarter": null,
+  "fiscal_period_evidence": null,
+  "fiscal_period_source": null,
+  "fiscal_period_status": "pending",
+  "pending_fields": [
+    "fiscal_year",
+    "fiscal_quarter"
+  ],
+  "warnings": [],
+  "generated_fields": [
+    "company_name",
+    "fiscal_quarter",
+    "fiscal_year",
+    "industry",
+    "industry_code"
+  ],
+  "generated_at": "2026-09-22T17:46:07.287730+00:00"
+}

@@ -1,0 +1,2758 @@
+{
+  "report_type": "automatic_transcript_qc",
+  "important_note": "此報告只會找出疑似錯誤與高風險片段，不代表真實轉錄準確率；準確率需以人工校正樣本計算 CER/WER。",
+  "source_raw_json": "C:\\Ella\\專題\\Taiwan-Earnings-Call-Dataset\\output\\4104_20260915\\4104_20260915_raw.json",
+  "metadata_json": "C:\\Ella\\專題\\Taiwan-Earnings-Call-Dataset\\output\\4104_20260915\\4104_20260915_metadata.json",
+  "thresholds": {
+    "low_word_probability": 0.5,
+    "low_segment_avg_logprob": -1.0,
+    "high_no_speech_probability": 0.6,
+    "high_compression_ratio": 2.4,
+    "long_segment_seconds": 30.0
+  },
+  "summary": {
+    "language": "zh",
+    "duration_seconds": 797.056,
+    "segment_count": 290,
+    "word_count": 2601,
+    "average_word_probability": 0.854,
+    "low_probability_word_count": 271,
+    "low_probability_word_rate": 0.1042,
+    "missing_or_invalid_word_timestamp_count": 0,
+    "review_segment_count": 143,
+    "review_segment_rate": 0.4931,
+    "missing_reference_terms": [
+      "佳醫健康事業股份有限公司"
+    ],
+    "issue_counts": {
+      "低信心詞 2 個": 32,
+      "低信心詞 3 個": 18,
+      "低信心詞 5 個": 7,
+      "低信心詞 1 個": 76,
+      "低信心詞 4 個": 9,
+      "segment 平均 log probability 偏低": 15,
+      "低信心詞 6 個": 1,
+      "疑似無語音或背景噪音": 1
+    }
+  },
+  "review_segments": [
+    {
+      "segment_id": 1,
+      "start_sec": 0.0,
+      "end_sec": 13.38,
+      "timestamp": "00:00:00.000 --> 00:00:13.380",
+      "text": "请不吝点赞 订阅 转发 打赏支持明镜与点点栏目",
+      "reasons": [
+        "低信心詞 2 個：请、不"
+      ],
+      "low_confidence_words": [
+        "请",
+        "不"
+      ],
+      "average_word_probability": 0.9205,
+      "minimum_word_probability": 0.0122,
+      "avg_logprob": -0.14372659211649613,
+      "no_speech_prob": 0.569513738155365,
+      "compression_ratio": 0.8513513513513513
+    },
+    {
+      "segment_id": 2,
+      "start_sec": 30.44,
+      "end_sec": 33.02,
+      "timestamp": "00:00:30.440 --> 00:00:33.020",
+      "text": "一开始是公司的免责说明",
+      "reasons": [
+        "低信心詞 3 個：一、开始、是"
+      ],
+      "low_confidence_words": [
+        "一",
+        "开始",
+        "是"
+      ],
+      "average_word_probability": 0.7304,
+      "minimum_word_probability": 0.1762,
+      "avg_logprob": -0.1914204420366635,
+      "no_speech_prob": 0.01680424064397812,
+      "compression_ratio": 1.5144927536231885
+    },
+    {
+      "segment_id": 3,
+      "start_sec": 33.02,
+      "end_sec": 37.62,
+      "timestamp": "00:00:33.020 --> 00:00:37.620",
+      "text": "一切的简报内容是依据IFR还是编辑",
+      "reasons": [
+        "低信心詞 2 個：一、R"
+      ],
+      "low_confidence_words": [
+        "一",
+        "R"
+      ],
+      "average_word_probability": 0.7831,
+      "minimum_word_probability": 0.2781,
+      "avg_logprob": -0.1914204420366635,
+      "no_speech_prob": 0.01680424064397812,
+      "compression_ratio": 1.5144927536231885
+    },
+    {
+      "segment_id": 4,
+      "start_sec": 37.62,
+      "end_sec": 44.38,
+      "timestamp": "00:00:37.620 --> 00:00:44.380",
+      "text": "完整的内容和数据依照依据公开资讯关键站稍后报表为主",
+      "reasons": [
+        "低信心詞 5 個：完、和、关、稍、后"
+      ],
+      "low_confidence_words": [
+        "完",
+        "和",
+        "关",
+        "稍",
+        "后"
+      ],
+      "average_word_probability": 0.7998,
+      "minimum_word_probability": 0.1079,
+      "avg_logprob": -0.1914204420366635,
+      "no_speech_prob": 0.01680424064397812,
+      "compression_ratio": 1.5144927536231885
+    },
+    {
+      "segment_id": 5,
+      "start_sec": 45.36,
+      "end_sec": 48.58,
+      "timestamp": "00:00:45.360 --> 00:00:48.580",
+      "text": "加一集团的主要事业组分的三个部分",
+      "reasons": [
+        "低信心詞 1 個：的"
+      ],
+      "low_confidence_words": [
+        "的"
+      ],
+      "average_word_probability": 0.8132,
+      "minimum_word_probability": 0.2276,
+      "avg_logprob": -0.1914204420366635,
+      "no_speech_prob": 0.01680424064397812,
+      "compression_ratio": 1.5144927536231885
+    },
+    {
+      "segment_id": 7,
+      "start_sec": 52.72,
+      "end_sec": 55.88,
+      "timestamp": "00:00:52.720 --> 00:00:55.880",
+      "text": "贸易代理的话主要有透析产品 医学美",
+      "reasons": [
+        "低信心詞 1 個：透"
+      ],
+      "low_confidence_words": [
+        "透"
+      ],
+      "average_word_probability": 0.8967,
+      "minimum_word_probability": 0.3279,
+      "avg_logprob": -0.1914204420366635,
+      "no_speech_prob": 0.01680424064397812,
+      "compression_ratio": 1.5144927536231885
+    },
+    {
+      "segment_id": 9,
+      "start_sec": 59.62,
+      "end_sec": 59.98,
+      "timestamp": "00:00:59.620 --> 00:00:59.980",
+      "text": "那么贸易代理的话主要有透析产品 医学美",
+      "reasons": [
+        "低信心詞 1 個：那么"
+      ],
+      "low_confidence_words": [
+        "那么"
+      ],
+      "average_word_probability": 0.8599,
+      "minimum_word_probability": 0.0128,
+      "avg_logprob": -0.1914204420366635,
+      "no_speech_prob": 0.01680424064397812,
+      "compression_ratio": 1.5144927536231885
+    },
+    {
+      "segment_id": 10,
+      "start_sec": 59.98,
+      "end_sec": 64.2,
+      "timestamp": "00:00:59.980 --> 00:01:04.200",
+      "text": "医疗通路的部分的话有透析中心 医美诊所",
+      "reasons": [
+        "低信心詞 2 個：的、透"
+      ],
+      "low_confidence_words": [
+        "的",
+        "透"
+      ],
+      "average_word_probability": 0.7694,
+      "minimum_word_probability": 0.0317,
+      "avg_logprob": -0.17189406248372655,
+      "no_speech_prob": 0.024150626733899117,
+      "compression_ratio": 1.2569444444444444
+    },
+    {
+      "segment_id": 11,
+      "start_sec": 64.2,
+      "end_sec": 66.52,
+      "timestamp": "00:01:04.200 --> 00:01:06.520",
+      "text": "长期照顾 地区医院的健保房间",
+      "reasons": [
+        "低信心詞 3 個：长、地、房"
+      ],
+      "low_confidence_words": [
+        "长",
+        "地",
+        "房"
+      ],
+      "average_word_probability": 0.7802,
+      "minimum_word_probability": 0.0892,
+      "avg_logprob": -0.17189406248372655,
+      "no_speech_prob": 0.024150626733899117,
+      "compression_ratio": 1.2569444444444444
+    },
+    {
+      "segment_id": 12,
+      "start_sec": 66.52,
+      "end_sec": 70.16,
+      "timestamp": "00:01:06.520 --> 00:01:10.160",
+      "text": "医药物流的话主要是指向贸易这边的话",
+      "reasons": [
+        "低信心詞 4 個：指、向、贸、这"
+      ],
+      "low_confidence_words": [
+        "指",
+        "向",
+        "贸",
+        "这"
+      ],
+      "average_word_probability": 0.7513,
+      "minimum_word_probability": 0.1272,
+      "avg_logprob": -0.17189406248372655,
+      "no_speech_prob": 0.024150626733899117,
+      "compression_ratio": 1.2569444444444444
+    },
+    {
+      "segment_id": 15,
+      "start_sec": 76.08,
+      "end_sec": 78.52,
+      "timestamp": "00:01:16.080 --> 00:01:18.520",
+      "text": "GMP GTP ISO的取决",
+      "reasons": [
+        "低信心詞 2 個：G、G"
+      ],
+      "low_confidence_words": [
+        "G",
+        "G"
+      ],
+      "average_word_probability": 0.759,
+      "minimum_word_probability": 0.4737,
+      "avg_logprob": -0.17189406248372655,
+      "no_speech_prob": 0.024150626733899117,
+      "compression_ratio": 1.2569444444444444
+    },
+    {
+      "segment_id": 17,
+      "start_sec": 83.68,
+      "end_sec": 85.46,
+      "timestamp": "00:01:23.680 --> 00:01:25.460",
+      "text": "从营收干况来看的话",
+      "reasons": [
+        "低信心詞 1 個：干"
+      ],
+      "low_confidence_words": [
+        "干"
+      ],
+      "average_word_probability": 0.7978,
+      "minimum_word_probability": 0.2292,
+      "avg_logprob": -0.17189406248372655,
+      "no_speech_prob": 0.024150626733899117,
+      "compression_ratio": 1.2569444444444444
+    },
+    {
+      "segment_id": 19,
+      "start_sec": 88.26,
+      "end_sec": 89.56,
+      "timestamp": "00:01:28.260 --> 00:01:29.560",
+      "text": "那今年的",
+      "reasons": [
+        "低信心詞 1 個：那"
+      ],
+      "low_confidence_words": [
+        "那"
+      ],
+      "average_word_probability": 0.7342,
+      "minimum_word_probability": 0.2331,
+      "avg_logprob": -0.17189406248372655,
+      "no_speech_prob": 0.024150626733899117,
+      "compression_ratio": 1.2569444444444444
+    },
+    {
+      "segment_id": 20,
+      "start_sec": 89.56,
+      "end_sec": 92.48,
+      "timestamp": "00:01:29.560 --> 00:01:32.480",
+      "text": "Q2的话我们的营收大概是47亿",
+      "reasons": [
+        "低信心詞 2 個：Q、的话"
+      ],
+      "low_confidence_words": [
+        "Q",
+        "的话"
+      ],
+      "average_word_probability": 0.7707,
+      "minimum_word_probability": 0.103,
+      "avg_logprob": -0.21445867731983279,
+      "no_speech_prob": 0.0023320692125707865,
+      "compression_ratio": 1.5608856088560885
+    },
+    {
+      "segment_id": 22,
+      "start_sec": 96.74,
+      "end_sec": 99.92,
+      "timestamp": "00:01:36.740 --> 00:01:39.920",
+      "text": "那主要是加一的部分的话是有些微的增长",
+      "reasons": [
+        "低信心詞 2 個：那、一"
+      ],
+      "low_confidence_words": [
+        "那",
+        "一"
+      ],
+      "average_word_probability": 0.8425,
+      "minimum_word_probability": 0.2711,
+      "avg_logprob": -0.21445867731983279,
+      "no_speech_prob": 0.0023320692125707865,
+      "compression_ratio": 1.5608856088560885
+    },
+    {
+      "segment_id": 25,
+      "start_sec": 107.32,
+      "end_sec": 110.82,
+      "timestamp": "00:01:47.320 --> 00:01:50.820",
+      "text": "那再来就是我们今年在从5月底的时候",
+      "reasons": [
+        "低信心詞 1 個：在"
+      ],
+      "low_confidence_words": [
+        "在"
+      ],
+      "average_word_probability": 0.8715,
+      "minimum_word_probability": 0.4022,
+      "avg_logprob": -0.21445867731983279,
+      "no_speech_prob": 0.0023320692125707865,
+      "compression_ratio": 1.5608856088560885
+    },
+    {
+      "segment_id": 29,
+      "start_sec": 119.48,
+      "end_sec": 122.84,
+      "timestamp": "00:01:59.480 --> 00:02:02.840",
+      "text": "就是因为我们依据菲律宾的一个市场",
+      "reasons": [
+        "低信心詞 3 個：就是、因为、一个"
+      ],
+      "low_confidence_words": [
+        "就是",
+        "因为",
+        "一个"
+      ],
+      "average_word_probability": 0.7603,
+      "minimum_word_probability": 0.1186,
+      "avg_logprob": -0.20806744454152915,
+      "no_speech_prob": 0.00024381096591241658,
+      "compression_ratio": 2.3015873015873014
+    },
+    {
+      "segment_id": 30,
+      "start_sec": 122.84,
+      "end_sec": 125.96,
+      "timestamp": "00:02:02.840 --> 00:02:05.960",
+      "text": "然后因为受惠于他当地的一个健保政策",
+      "reasons": [
+        "低信心詞 1 個：他"
+      ],
+      "low_confidence_words": [
+        "他"
+      ],
+      "average_word_probability": 0.9128,
+      "minimum_word_probability": 0.3897,
+      "avg_logprob": -0.20806744454152915,
+      "no_speech_prob": 0.00024381096591241658,
+      "compression_ratio": 2.3015873015873014
+    },
+    {
+      "segment_id": 35,
+      "start_sec": 139.5,
+      "end_sec": 144.1,
+      "timestamp": "00:02:19.500 --> 00:02:24.100",
+      "text": "那营业净利率的话7.91是比较负的衰退一些",
+      "reasons": [
+        "低信心詞 2 個：比、负"
+      ],
+      "low_confidence_words": [
+        "比",
+        "负"
+      ],
+      "average_word_probability": 0.8805,
+      "minimum_word_probability": 0.1727,
+      "avg_logprob": -0.20806744454152915,
+      "no_speech_prob": 0.00024381096591241658,
+      "compression_ratio": 2.3015873015873014
+    },
+    {
+      "segment_id": 36,
+      "start_sec": 144.1,
+      "end_sec": 147.12,
+      "timestamp": "00:02:24.100 --> 00:02:27.120",
+      "text": "那我们营业净利是34300万",
+      "reasons": [
+        "低信心詞 1 個：34"
+      ],
+      "low_confidence_words": [
+        "34"
+      ],
+      "average_word_probability": 0.8644,
+      "minimum_word_probability": 0.4566,
+      "avg_logprob": -0.20806744454152915,
+      "no_speech_prob": 0.00024381096591241658,
+      "compression_ratio": 2.3015873015873014
+    },
+    {
+      "segment_id": 37,
+      "start_sec": 147.12,
+      "end_sec": 149.8,
+      "timestamp": "00:02:27.120 --> 00:02:29.800",
+      "text": "比去年的话3亿8100万是减少",
+      "reasons": [
+        "低信心詞 3 個：话、100、是"
+      ],
+      "low_confidence_words": [
+        "话",
+        "100",
+        "是"
+      ],
+      "average_word_probability": 0.7208,
+      "minimum_word_probability": 0.0297,
+      "avg_logprob": -0.18699808778998617,
+      "no_speech_prob": 0.0058341664262115955,
+      "compression_ratio": 1.480836236933798
+    },
+    {
+      "segment_id": 38,
+      "start_sec": 149.8,
+      "end_sec": 153.64,
+      "timestamp": "00:02:29.800 --> 00:02:33.640",
+      "text": "那减少原因的话主要是因为雪玉新成租一个仓库",
+      "reasons": [
+        "低信心詞 4 個：那、雪、成、一个"
+      ],
+      "low_confidence_words": [
+        "那",
+        "雪",
+        "成",
+        "一个"
+      ],
+      "average_word_probability": 0.7644,
+      "minimum_word_probability": 0.1696,
+      "avg_logprob": -0.18699808778998617,
+      "no_speech_prob": 0.0058341664262115955,
+      "compression_ratio": 1.480836236933798
+    },
+    {
+      "segment_id": 39,
+      "start_sec": 153.64,
+      "end_sec": 155.64,
+      "timestamp": "00:02:33.640 --> 00:02:35.640",
+      "text": "要取得GDP的认证",
+      "reasons": [
+        "低信心詞 1 個：DP"
+      ],
+      "low_confidence_words": [
+        "DP"
+      ],
+      "average_word_probability": 0.8721,
+      "minimum_word_probability": 0.3333,
+      "avg_logprob": -0.18699808778998617,
+      "no_speech_prob": 0.0058341664262115955,
+      "compression_ratio": 1.480836236933798
+    },
+    {
+      "segment_id": 42,
+      "start_sec": 160.06,
+      "end_sec": 161.9,
+      "timestamp": "00:02:40.060 --> 00:02:41.900",
+      "text": "肥胶肥养相对是会增加",
+      "reasons": [
+        "低信心詞 1 個：是"
+      ],
+      "low_confidence_words": [
+        "是"
+      ],
+      "average_word_probability": 0.7911,
+      "minimum_word_probability": 0.1782,
+      "avg_logprob": -0.18699808778998617,
+      "no_speech_prob": 0.0058341664262115955,
+      "compression_ratio": 1.480836236933798
+    },
+    {
+      "segment_id": 44,
+      "start_sec": 164.4,
+      "end_sec": 166.16,
+      "timestamp": "00:02:44.400 --> 00:02:46.160",
+      "text": "营业净利稍微减少一些",
+      "reasons": [
+        "低信心詞 3 個：净、利、稍"
+      ],
+      "low_confidence_words": [
+        "净",
+        "利",
+        "稍"
+      ],
+      "average_word_probability": 0.6135,
+      "minimum_word_probability": 0.0006,
+      "avg_logprob": -0.18699808778998617,
+      "no_speech_prob": 0.0058341664262115955,
+      "compression_ratio": 1.480836236933798
+    },
+    {
+      "segment_id": 48,
+      "start_sec": 177.12,
+      "end_sec": 178.16,
+      "timestamp": "00:02:57.120 --> 00:02:58.160",
+      "text": "9万的一个金额",
+      "reasons": [
+        "低信心詞 2 個：9、万"
+      ],
+      "low_confidence_words": [
+        "9",
+        "万"
+      ],
+      "average_word_probability": 0.6335,
+      "minimum_word_probability": 0.0635,
+      "avg_logprob": -0.1862743843298454,
+      "no_speech_prob": 0.0004228891048114747,
+      "compression_ratio": 1.249190938511327
+    },
+    {
+      "segment_id": 49,
+      "start_sec": 178.16,
+      "end_sec": 180.24,
+      "timestamp": "00:02:58.160 --> 00:03:00.240",
+      "text": "那增加的部分主要是FERS",
+      "reasons": [
+        "低信心詞 1 個：那"
+      ],
+      "low_confidence_words": [
+        "那"
+      ],
+      "average_word_probability": 0.8715,
+      "minimum_word_probability": 0.2838,
+      "avg_logprob": -0.1862743843298454,
+      "no_speech_prob": 0.0004228891048114747,
+      "compression_ratio": 1.249190938511327
+    },
+    {
+      "segment_id": 50,
+      "start_sec": 180.82,
+      "end_sec": 184.78,
+      "timestamp": "00:03:00.820 --> 00:03:04.780",
+      "text": "那ABH跟ABL4800万比去年同期稍微低一些",
+      "reasons": [
+        "低信心詞 2 個：那、48"
+      ],
+      "low_confidence_words": [
+        "那",
+        "48"
+      ],
+      "average_word_probability": 0.8557,
+      "minimum_word_probability": 0.4626,
+      "avg_logprob": -0.1862743843298454,
+      "no_speech_prob": 0.0004228891048114747,
+      "compression_ratio": 1.249190938511327
+    },
+    {
+      "segment_id": 52,
+      "start_sec": 188.76,
+      "end_sec": 190.96,
+      "timestamp": "00:03:08.760 --> 00:03:10.960",
+      "text": "那加一创造健康之后",
+      "reasons": [
+        "低信心詞 1 個：那"
+      ],
+      "low_confidence_words": [
+        "那"
+      ],
+      "average_word_probability": 0.867,
+      "minimum_word_probability": 0.2801,
+      "avg_logprob": -0.1862743843298454,
+      "no_speech_prob": 0.0004228891048114747,
+      "compression_ratio": 1.249190938511327
+    },
+    {
+      "segment_id": 53,
+      "start_sec": 190.96,
+      "end_sec": 194.86,
+      "timestamp": "00:03:10.960 --> 00:03:14.860",
+      "text": "我们过半数的知识是而堆取的控制力",
+      "reasons": [
+        "低信心詞 3 個：知、是、而"
+      ],
+      "low_confidence_words": [
+        "知",
+        "是",
+        "而"
+      ],
+      "average_word_probability": 0.7628,
+      "minimum_word_probability": 0.1079,
+      "avg_logprob": -0.1862743843298454,
+      "no_speech_prob": 0.0004228891048114747,
+      "compression_ratio": 1.249190938511327
+    },
+    {
+      "segment_id": 54,
+      "start_sec": 194.86,
+      "end_sec": 197.74,
+      "timestamp": "00:03:14.860 --> 00:03:17.740",
+      "text": "所以从5月底5月1开始纳入的并报表",
+      "reasons": [
+        "低信心詞 4 個：所以、5、1、的"
+      ],
+      "low_confidence_words": [
+        "所以",
+        "5",
+        "1",
+        "的"
+      ],
+      "average_word_probability": 0.7489,
+      "minimum_word_probability": 0.1537,
+      "avg_logprob": -0.1862743843298454,
+      "no_speech_prob": 0.0004228891048114747,
+      "compression_ratio": 1.249190938511327
+    },
+    {
+      "segment_id": 55,
+      "start_sec": 197.74,
+      "end_sec": 200.0,
+      "timestamp": "00:03:17.740 --> 00:03:20.000",
+      "text": "所以这部分的话在6月的时候",
+      "reasons": [
+        "低信心詞 1 個：所以"
+      ],
+      "low_confidence_words": [
+        "所以"
+      ],
+      "average_word_probability": 0.9192,
+      "minimum_word_probability": 0.4799,
+      "avg_logprob": -0.1862743843298454,
+      "no_speech_prob": 0.0004228891048114747,
+      "compression_ratio": 1.249190938511327
+    },
+    {
+      "segment_id": 56,
+      "start_sec": 200.0,
+      "end_sec": 203.1,
+      "timestamp": "00:03:20.000 --> 00:03:23.100",
+      "text": "它的投资收益就不会在这边显现出来",
+      "reasons": [
+        "低信心詞 1 個：它的"
+      ],
+      "low_confidence_words": [
+        "它的"
+      ],
+      "average_word_probability": 0.9369,
+      "minimum_word_probability": 0.2571,
+      "avg_logprob": -0.1862743843298454,
+      "no_speech_prob": 0.0004228891048114747,
+      "compression_ratio": 1.249190938511327
+    },
+    {
+      "segment_id": 58,
+      "start_sec": 205.76,
+      "end_sec": 207.34,
+      "timestamp": "00:03:25.760 --> 00:03:27.340",
+      "text": "比去年大概是一些些",
+      "reasons": [
+        "低信心詞 3 個：比、是、一些"
+      ],
+      "low_confidence_words": [
+        "比",
+        "是",
+        "一些"
+      ],
+      "average_word_probability": 0.6509,
+      "minimum_word_probability": 0.1229,
+      "avg_logprob": -0.11912427699336639,
+      "no_speech_prob": 0.001308651641011238,
+      "compression_ratio": 1.4339622641509433
+    },
+    {
+      "segment_id": 59,
+      "start_sec": 208.52,
+      "end_sec": 210.08,
+      "timestamp": "00:03:28.520 --> 00:03:30.080",
+      "text": "那随意概况的话",
+      "reasons": [
+        "低信心詞 2 個：那、随"
+      ],
+      "low_confidence_words": [
+        "那",
+        "随"
+      ],
+      "average_word_probability": 0.7755,
+      "minimum_word_probability": 0.4693,
+      "avg_logprob": -0.11912427699336639,
+      "no_speech_prob": 0.001308651641011238,
+      "compression_ratio": 1.4339622641509433
+    },
+    {
+      "segment_id": 60,
+      "start_sec": 210.08,
+      "end_sec": 213.12,
+      "timestamp": "00:03:30.080 --> 00:03:33.120",
+      "text": "我们今年的话2026年的Q2的话",
+      "reasons": [
+        "低信心詞 1 個：今"
+      ],
+      "low_confidence_words": [
+        "今"
+      ],
+      "average_word_probability": 0.8037,
+      "minimum_word_probability": 0.202,
+      "avg_logprob": -0.11912427699336639,
+      "no_speech_prob": 0.001308651641011238,
+      "compression_ratio": 1.4339622641509433
+    },
+    {
+      "segment_id": 65,
+      "start_sec": 223.02,
+      "end_sec": 225.3,
+      "timestamp": "00:03:43.020 --> 00:03:45.300",
+      "text": "今年并入了加一创造健康的话",
+      "reasons": [
+        "低信心詞 3 個：入、加、一"
+      ],
+      "low_confidence_words": [
+        "入",
+        "加",
+        "一"
+      ],
+      "average_word_probability": 0.7433,
+      "minimum_word_probability": 0.0927,
+      "avg_logprob": -0.11912427699336639,
+      "no_speech_prob": 0.001308651641011238,
+      "compression_ratio": 1.4339622641509433
+    },
+    {
+      "segment_id": 66,
+      "start_sec": 225.3,
+      "end_sec": 228.34,
+      "timestamp": "00:03:45.300 --> 00:03:48.340",
+      "text": "我们有一个改造IFRS规定",
+      "reasons": [
+        "低信心詞 1 個：RS"
+      ],
+      "low_confidence_words": [
+        "RS"
+      ],
+      "average_word_probability": 0.909,
+      "minimum_word_probability": 0.4309,
+      "avg_logprob": -0.11912427699336639,
+      "no_speech_prob": 0.001308651641011238,
+      "compression_ratio": 1.4339622641509433
+    },
+    {
+      "segment_id": 72,
+      "start_sec": 239.58,
+      "end_sec": 241.64,
+      "timestamp": "00:03:59.580 --> 00:04:01.640",
+      "text": "那就算扣掉这一个金额的话",
+      "reasons": [
+        "低信心詞 2 個：那就、这"
+      ],
+      "low_confidence_words": [
+        "那就",
+        "这"
+      ],
+      "average_word_probability": 0.863,
+      "minimum_word_probability": 0.3651,
+      "avg_logprob": -0.0759292567614466,
+      "no_speech_prob": 0.006267121061682701,
+      "compression_ratio": 1.4367816091954022
+    },
+    {
+      "segment_id": 80,
+      "start_sec": 259.68,
+      "end_sec": 262.62,
+      "timestamp": "00:04:19.680 --> 00:04:22.620",
+      "text": "合并的资产总计是211亿",
+      "reasons": [
+        "低信心詞 1 個：合"
+      ],
+      "low_confidence_words": [
+        "合"
+      ],
+      "average_word_probability": 0.8799,
+      "minimum_word_probability": 0.0666,
+      "avg_logprob": -0.0759292567614466,
+      "no_speech_prob": 0.006267121061682701,
+      "compression_ratio": 1.4367816091954022
+    },
+    {
+      "segment_id": 81,
+      "start_sec": 262.62,
+      "end_sec": 265.28,
+      "timestamp": "00:04:22.620 --> 00:04:25.280",
+      "text": "那这部分相较于部分的话就是因为APL",
+      "reasons": [
+        "低信心詞 1 個：部分"
+      ],
+      "low_confidence_words": [
+        "部分"
+      ],
+      "average_word_probability": 0.9061,
+      "minimum_word_probability": 0.4736,
+      "avg_logprob": -0.0759292567614466,
+      "no_speech_prob": 0.006267121061682701,
+      "compression_ratio": 1.4367816091954022
+    },
+    {
+      "segment_id": 82,
+      "start_sec": 265.76,
+      "end_sec": 267.46,
+      "timestamp": "00:04:25.760 --> 00:04:27.460",
+      "text": "健康这部分有并入",
+      "reasons": [
+        "低信心詞 2 個：健、这"
+      ],
+      "low_confidence_words": [
+        "健",
+        "这"
+      ],
+      "average_word_probability": 0.7245,
+      "minimum_word_probability": 0.0522,
+      "avg_logprob": -0.10629227224564711,
+      "no_speech_prob": 0.002322560641914606,
+      "compression_ratio": 1.3909465020576133
+    },
+    {
+      "segment_id": 84,
+      "start_sec": 268.72,
+      "end_sec": 270.28,
+      "timestamp": "00:04:28.720 --> 00:04:30.280",
+      "text": "5月底就并入了",
+      "reasons": [
+        "低信心詞 1 個：5"
+      ],
+      "low_confidence_words": [
+        "5"
+      ],
+      "average_word_probability": 0.8834,
+      "minimum_word_probability": 0.273,
+      "avg_logprob": -0.10629227224564711,
+      "no_speech_prob": 0.002322560641914606,
+      "compression_ratio": 1.3909465020576133
+    },
+    {
+      "segment_id": 89,
+      "start_sec": 280.76,
+      "end_sec": 282.32,
+      "timestamp": "00:04:40.760 --> 00:04:42.320",
+      "text": "那非流动的话大概是19亿",
+      "reasons": [
+        "低信心詞 1 個：的话"
+      ],
+      "low_confidence_words": [
+        "的话"
+      ],
+      "average_word_probability": 0.859,
+      "minimum_word_probability": 0.1676,
+      "avg_logprob": -0.10629227224564711,
+      "no_speech_prob": 0.002322560641914606,
+      "compression_ratio": 1.3909465020576133
+    },
+    {
+      "segment_id": 94,
+      "start_sec": 294.1,
+      "end_sec": 295.72,
+      "timestamp": "00:04:54.100 --> 00:04:55.720",
+      "text": "那现金流量表的话",
+      "reasons": [
+        "低信心詞 2 個：那、现"
+      ],
+      "low_confidence_words": [
+        "那",
+        "现"
+      ],
+      "average_word_probability": 0.8141,
+      "minimum_word_probability": 0.3759,
+      "avg_logprob": -0.10073976534126448,
+      "no_speech_prob": 0.001121229724958539,
+      "compression_ratio": 1.4190871369294606
+    },
+    {
+      "segment_id": 95,
+      "start_sec": 295.72,
+      "end_sec": 298.56,
+      "timestamp": "00:04:55.720 --> 00:04:58.560",
+      "text": "我们的营业活动的现金流入是",
+      "reasons": [
+        "低信心詞 1 個：现"
+      ],
+      "low_confidence_words": [
+        "现"
+      ],
+      "average_word_probability": 0.9259,
+      "minimum_word_probability": 0.4156,
+      "avg_logprob": -0.10073976534126448,
+      "no_speech_prob": 0.001121229724958539,
+      "compression_ratio": 1.4190871369294606
+    },
+    {
+      "segment_id": 97,
+      "start_sec": 301.0,
+      "end_sec": 303.9,
+      "timestamp": "00:05:01.000 --> 00:05:03.900",
+      "text": "那投资活动的话增加的话是",
+      "reasons": [
+        "低信心詞 1 個：是"
+      ],
+      "low_confidence_words": [
+        "是"
+      ],
+      "average_word_probability": 0.9014,
+      "minimum_word_probability": 0.4014,
+      "avg_logprob": -0.10073976534126448,
+      "no_speech_prob": 0.001121229724958539,
+      "compression_ratio": 1.4190871369294606
+    },
+    {
+      "segment_id": 101,
+      "start_sec": 311.76,
+      "end_sec": 314.64,
+      "timestamp": "00:05:11.760 --> 00:05:14.640",
+      "text": "对子公司之收购有一个5亿7",
+      "reasons": [
+        "低信心詞 1 個：之"
+      ],
+      "low_confidence_words": [
+        "之"
+      ],
+      "average_word_probability": 0.9021,
+      "minimum_word_probability": 0.2181,
+      "avg_logprob": -0.10073976534126448,
+      "no_speech_prob": 0.001121229724958539,
+      "compression_ratio": 1.4190871369294606
+    },
+    {
+      "segment_id": 102,
+      "start_sec": 314.64,
+      "end_sec": 316.64,
+      "timestamp": "00:05:14.640 --> 00:05:16.640",
+      "text": "就是我们在5月底并入APL的话",
+      "reasons": [
+        "低信心詞 2 個：入、AP"
+      ],
+      "low_confidence_words": [
+        "入",
+        "AP"
+      ],
+      "average_word_probability": 0.7846,
+      "minimum_word_probability": 0.0,
+      "avg_logprob": -0.10073976534126448,
+      "no_speech_prob": 0.001121229724958539,
+      "compression_ratio": 1.4190871369294606
+    },
+    {
+      "segment_id": 104,
+      "start_sec": 319.14,
+      "end_sec": 320.94,
+      "timestamp": "00:05:19.140 --> 00:05:20.940",
+      "text": "这边有一个5亿7的一个金额",
+      "reasons": [
+        "低信心詞 1 個：一个"
+      ],
+      "low_confidence_words": [
+        "一个"
+      ],
+      "average_word_probability": 0.8637,
+      "minimum_word_probability": 0.1434,
+      "avg_logprob": -0.10073976534126448,
+      "no_speech_prob": 0.001121229724958539,
+      "compression_ratio": 1.4190871369294606
+    },
+    {
+      "segment_id": 105,
+      "start_sec": 323.2,
+      "end_sec": 328.2,
+      "timestamp": "00:05:23.200 --> 00:05:28.200",
+      "text": "那投资活动的部分的现金流出是7亿2100万",
+      "reasons": [
+        "低信心詞 2 個：那、投"
+      ],
+      "low_confidence_words": [
+        "那",
+        "投"
+      ],
+      "average_word_probability": 0.7774,
+      "minimum_word_probability": 0.0005,
+      "avg_logprob": -0.13105735508470587,
+      "no_speech_prob": 0.0033311261795461178,
+      "compression_ratio": 1.5570469798657718
+    },
+    {
+      "segment_id": 115,
+      "start_sec": 344.36,
+      "end_sec": 346.5,
+      "timestamp": "00:05:44.360 --> 00:05:46.500",
+      "text": "所以转介的部分减少了7亿",
+      "reasons": [
+        "低信心詞 1 個：介"
+      ],
+      "low_confidence_words": [
+        "介"
+      ],
+      "average_word_probability": 0.8064,
+      "minimum_word_probability": 0.2242,
+      "avg_logprob": -0.13105735508470587,
+      "no_speech_prob": 0.0033311261795461178,
+      "compression_ratio": 1.5570469798657718
+    },
+    {
+      "segment_id": 116,
+      "start_sec": 346.5,
+      "end_sec": 349.3,
+      "timestamp": "00:05:46.500 --> 00:05:49.300",
+      "text": "那我们今年是发放现金鼓励4.3",
+      "reasons": [
+        "低信心詞 1 個：那"
+      ],
+      "low_confidence_words": [
+        "那"
+      ],
+      "average_word_probability": 0.8603,
+      "minimum_word_probability": 0.3275,
+      "avg_logprob": -0.13105735508470587,
+      "no_speech_prob": 0.0033311261795461178,
+      "compression_ratio": 1.5570469798657718
+    },
+    {
+      "segment_id": 117,
+      "start_sec": 349.3,
+      "end_sec": 352.96,
+      "timestamp": "00:05:49.300 --> 00:05:52.960",
+      "text": "大概发放现金鼓励的一个现金支出的话",
+      "reasons": [
+        "低信心詞 1 個：大概"
+      ],
+      "low_confidence_words": [
+        "大概"
+      ],
+      "average_word_probability": 0.862,
+      "minimum_word_probability": 0.088,
+      "avg_logprob": -0.13105735508470587,
+      "no_speech_prob": 0.0033311261795461178,
+      "compression_ratio": 1.5570469798657718
+    },
+    {
+      "segment_id": 118,
+      "start_sec": 353.2,
+      "end_sec": 354.58,
+      "timestamp": "00:05:53.200 --> 00:05:54.580",
+      "text": "还是来到了8亿元",
+      "reasons": [
+        "低信心詞 1 個：还是"
+      ],
+      "low_confidence_words": [
+        "还是"
+      ],
+      "average_word_probability": 0.7922,
+      "minimum_word_probability": 0.0571,
+      "avg_logprob": -0.18815791695133635,
+      "no_speech_prob": 0.0002149503561668098,
+      "compression_ratio": 1.3202846975088969
+    },
+    {
+      "segment_id": 119,
+      "start_sec": 354.58,
+      "end_sec": 358.06,
+      "timestamp": "00:05:54.580 --> 00:05:58.060",
+      "text": "所以投资活动之现金流出是付的一个7亿",
+      "reasons": [
+        "低信心詞 5 個：投、之、流、出、一个"
+      ],
+      "low_confidence_words": [
+        "投",
+        "之",
+        "流",
+        "出",
+        "一个"
+      ],
+      "average_word_probability": 0.6563,
+      "minimum_word_probability": 0.0519,
+      "avg_logprob": -0.18815791695133635,
+      "no_speech_prob": 0.0002149503561668098,
+      "compression_ratio": 1.3202846975088969
+    },
+    {
+      "segment_id": 120,
+      "start_sec": 358.06,
+      "end_sec": 359.3,
+      "timestamp": "00:05:58.060 --> 00:05:59.300",
+      "text": "那便宜百万",
+      "reasons": [
+        "低信心詞 2 個：那、便"
+      ],
+      "low_confidence_words": [
+        "那",
+        "便"
+      ],
+      "average_word_probability": 0.6289,
+      "minimum_word_probability": 0.0558,
+      "avg_logprob": -0.18815791695133635,
+      "no_speech_prob": 0.0002149503561668098,
+      "compression_ratio": 1.3202846975088969
+    },
+    {
+      "segment_id": 121,
+      "start_sec": 359.3,
+      "end_sec": 361.48,
+      "timestamp": "00:05:59.300 --> 00:06:01.480",
+      "text": "那期末资金大概是33亿",
+      "reasons": [
+        "低信心詞 1 個：那"
+      ],
+      "low_confidence_words": [
+        "那"
+      ],
+      "average_word_probability": 0.9017,
+      "minimum_word_probability": 0.3502,
+      "avg_logprob": -0.18815791695133635,
+      "no_speech_prob": 0.0002149503561668098,
+      "compression_ratio": 1.3202846975088969
+    },
+    {
+      "segment_id": 123,
+      "start_sec": 365.04,
+      "end_sec": 367.16,
+      "timestamp": "00:06:05.040 --> 00:06:07.160",
+      "text": "那我们在2026年的Q2里",
+      "reasons": [
+        "低信心詞 1 個：里"
+      ],
+      "low_confidence_words": [
+        "里"
+      ],
+      "average_word_probability": 0.8251,
+      "minimum_word_probability": 0.1596,
+      "avg_logprob": -0.18815791695133635,
+      "no_speech_prob": 0.0002149503561668098,
+      "compression_ratio": 1.3202846975088969
+    },
+    {
+      "segment_id": 124,
+      "start_sec": 367.16,
+      "end_sec": 369.48,
+      "timestamp": "00:06:07.160 --> 00:06:09.480",
+      "text": "那个公告也发布出去",
+      "reasons": [
+        "低信心詞 2 個：那个、出去"
+      ],
+      "low_confidence_words": [
+        "那个",
+        "出去"
+      ],
+      "average_word_probability": 0.7557,
+      "minimum_word_probability": 0.0724,
+      "avg_logprob": -0.18815791695133635,
+      "no_speech_prob": 0.0002149503561668098,
+      "compression_ratio": 1.3202846975088969
+    },
+    {
+      "segment_id": 125,
+      "start_sec": 369.48,
+      "end_sec": 371.4,
+      "timestamp": "00:06:09.480 --> 00:06:11.400",
+      "text": "那欢迎同志先进去看一下",
+      "reasons": [
+        "低信心詞 1 個：去"
+      ],
+      "low_confidence_words": [
+        "去"
+      ],
+      "average_word_probability": 0.8156,
+      "minimum_word_probability": 0.407,
+      "avg_logprob": -0.18815791695133635,
+      "no_speech_prob": 0.0002149503561668098,
+      "compression_ratio": 1.3202846975088969
+    },
+    {
+      "segment_id": 127,
+      "start_sec": 374.8,
+      "end_sec": 376.38,
+      "timestamp": "00:06:14.800 --> 00:06:16.380",
+      "text": "那114年的话",
+      "reasons": [
+        "低信心詞 1 個：那"
+      ],
+      "low_confidence_words": [
+        "那"
+      ],
+      "average_word_probability": 0.8276,
+      "minimum_word_probability": 0.4518,
+      "avg_logprob": -0.18815791695133635,
+      "no_speech_prob": 0.0002149503561668098,
+      "compression_ratio": 1.3202846975088969
+    },
+    {
+      "segment_id": 130,
+      "start_sec": 379.72,
+      "end_sec": 382.28,
+      "timestamp": "00:06:19.720 --> 00:06:22.280",
+      "text": "是我们那个提名的个图题嘛",
+      "reasons": [
+        "低信心詞 2 個：提、个"
+      ],
+      "low_confidence_words": [
+        "提",
+        "个"
+      ],
+      "average_word_probability": 0.7139,
+      "minimum_word_probability": 0.4208,
+      "avg_logprob": -0.18815791695133635,
+      "no_speech_prob": 0.0002149503561668098,
+      "compression_ratio": 1.3202846975088969
+    },
+    {
+      "segment_id": 131,
+      "start_sec": 382.28,
+      "end_sec": 383.38,
+      "timestamp": "00:06:22.280 --> 00:06:23.380",
+      "text": "所以主要的话",
+      "reasons": [
+        "低信心詞 1 個：的话"
+      ],
+      "low_confidence_words": [
+        "的话"
+      ],
+      "average_word_probability": 0.6081,
+      "minimum_word_probability": 0.1838,
+      "avg_logprob": -0.10444719813488147,
+      "no_speech_prob": 0.003010051092132926,
+      "compression_ratio": 1.3659305993690851
+    },
+    {
+      "segment_id": 134,
+      "start_sec": 386.28,
+      "end_sec": 387.56,
+      "timestamp": "00:06:26.280 --> 00:06:27.560",
+      "text": "客户的订单啊",
+      "reasons": [
+        "低信心詞 1 個：啊"
+      ],
+      "low_confidence_words": [
+        "啊"
+      ],
+      "average_word_probability": 0.8726,
+      "minimum_word_probability": 0.3038,
+      "avg_logprob": -0.10444719813488147,
+      "no_speech_prob": 0.003010051092132926,
+      "compression_ratio": 1.3659305993690851
+    },
+    {
+      "segment_id": 138,
+      "start_sec": 391.64,
+      "end_sec": 393.22,
+      "timestamp": "00:06:31.640 --> 00:06:33.220",
+      "text": "有五年次也改成三年次",
+      "reasons": [
+        "低信心詞 1 個：成"
+      ],
+      "low_confidence_words": [
+        "成"
+      ],
+      "average_word_probability": 0.8288,
+      "minimum_word_probability": 0.4145,
+      "avg_logprob": -0.10444719813488147,
+      "no_speech_prob": 0.003010051092132926,
+      "compression_ratio": 1.3659305993690851
+    },
+    {
+      "segment_id": 145,
+      "start_sec": 410.42,
+      "end_sec": 412.26,
+      "timestamp": "00:06:50.420 --> 00:06:52.260",
+      "text": "114年度的话",
+      "reasons": [
+        "低信心詞 1 個：的话"
+      ],
+      "low_confidence_words": [
+        "的话"
+      ],
+      "average_word_probability": 0.8417,
+      "minimum_word_probability": 0.3357,
+      "avg_logprob": -0.10444719813488147,
+      "no_speech_prob": 0.003010051092132926,
+      "compression_ratio": 1.3659305993690851
+    },
+    {
+      "segment_id": 146,
+      "start_sec": 412.28,
+      "end_sec": 413.96,
+      "timestamp": "00:06:52.280 --> 00:06:53.960",
+      "text": "我们也透过了加益基金会",
+      "reasons": [
+        "低信心詞 3 個：我们、了、加"
+      ],
+      "low_confidence_words": [
+        "我们",
+        "了",
+        "加"
+      ],
+      "average_word_probability": 0.6962,
+      "minimum_word_probability": 0.0192,
+      "avg_logprob": -0.1396731359343375,
+      "no_speech_prob": 0.001841196441091597,
+      "compression_ratio": 1.4183006535947713
+    },
+    {
+      "segment_id": 147,
+      "start_sec": 413.96,
+      "end_sec": 417.62,
+      "timestamp": "00:06:53.960 --> 00:06:57.620",
+      "text": "举办了一个国际14日的联合公益活动",
+      "reasons": [
+        "低信心詞 2 個：了、14"
+      ],
+      "low_confidence_words": [
+        "了",
+        "14"
+      ],
+      "average_word_probability": 0.8927,
+      "minimum_word_probability": 0.3364,
+      "avg_logprob": -0.1396731359343375,
+      "no_speech_prob": 0.001841196441091597,
+      "compression_ratio": 1.4183006535947713
+    },
+    {
+      "segment_id": 148,
+      "start_sec": 417.62,
+      "end_sec": 420.4,
+      "timestamp": "00:06:57.620 --> 00:07:00.400",
+      "text": "然后欢迎长期照顾的一些住民",
+      "reasons": [
+        "低信心詞 1 個：住"
+      ],
+      "low_confidence_words": [
+        "住"
+      ],
+      "average_word_probability": 0.91,
+      "minimum_word_probability": 0.4358,
+      "avg_logprob": -0.1396731359343375,
+      "no_speech_prob": 0.001841196441091597,
+      "compression_ratio": 1.4183006535947713
+    },
+    {
+      "segment_id": 149,
+      "start_sec": 420.4,
+      "end_sec": 422.38,
+      "timestamp": "00:07:00.400 --> 00:07:02.380",
+      "text": "能够采取这样的一个活动",
+      "reasons": [
+        "低信心詞 1 個：能"
+      ],
+      "low_confidence_words": [
+        "能"
+      ],
+      "average_word_probability": 0.8818,
+      "minimum_word_probability": 0.4698,
+      "avg_logprob": -0.1396731359343375,
+      "no_speech_prob": 0.001841196441091597,
+      "compression_ratio": 1.4183006535947713
+    },
+    {
+      "segment_id": 150,
+      "start_sec": 422.38,
+      "end_sec": 425.66,
+      "timestamp": "00:07:02.380 --> 00:07:05.660",
+      "text": "那再来我们也是每年都会持续进行",
+      "reasons": [
+        "低信心詞 2 個：那、再"
+      ],
+      "low_confidence_words": [
+        "那",
+        "再"
+      ],
+      "average_word_probability": 0.8807,
+      "minimum_word_probability": 0.1697,
+      "avg_logprob": -0.1396731359343375,
+      "no_speech_prob": 0.001841196441091597,
+      "compression_ratio": 1.4183006535947713
+    },
+    {
+      "segment_id": 153,
+      "start_sec": 429.06,
+      "end_sec": 431.4,
+      "timestamp": "00:07:09.060 --> 00:07:11.400",
+      "text": "还有支出一个经济弱势",
+      "reasons": [
+        "低信心詞 1 個：经"
+      ],
+      "low_confidence_words": [
+        "经"
+      ],
+      "average_word_probability": 0.8365,
+      "minimum_word_probability": 0.1656,
+      "avg_logprob": -0.1396731359343375,
+      "no_speech_prob": 0.001841196441091597,
+      "compression_ratio": 1.4183006535947713
+    },
+    {
+      "segment_id": 154,
+      "start_sec": 431.4,
+      "end_sec": 433.2,
+      "timestamp": "00:07:11.400 --> 00:07:13.200",
+      "text": "跟痛心病友的奖付援金",
+      "reasons": [
+        "低信心詞 1 個：付"
+      ],
+      "low_confidence_words": [
+        "付"
+      ],
+      "average_word_probability": 0.7352,
+      "minimum_word_probability": 0.1334,
+      "avg_logprob": -0.1396731359343375,
+      "no_speech_prob": 0.001841196441091597,
+      "compression_ratio": 1.4183006535947713
+    },
+    {
+      "segment_id": 157,
+      "start_sec": 437.36,
+      "end_sec": 440.18,
+      "timestamp": "00:07:17.360 --> 00:07:20.180",
+      "text": "进行一个捐选公益的活动",
+      "reasons": [
+        "低信心詞 1 個：进"
+      ],
+      "low_confidence_words": [
+        "进"
+      ],
+      "average_word_probability": 0.8419,
+      "minimum_word_probability": 0.0235,
+      "avg_logprob": -0.1396731359343375,
+      "no_speech_prob": 0.001841196441091597,
+      "compression_ratio": 1.4183006535947713
+    },
+    {
+      "segment_id": 159,
+      "start_sec": 442.28,
+      "end_sec": 444.6,
+      "timestamp": "00:07:22.280 --> 00:07:24.600",
+      "text": "为病患提供相关的一个医疗资源",
+      "reasons": [
+        "低信心詞 2 個：为、提"
+      ],
+      "low_confidence_words": [
+        "为",
+        "提"
+      ],
+      "average_word_probability": 0.8565,
+      "minimum_word_probability": 0.1837,
+      "avg_logprob": -0.143886309829566,
+      "no_speech_prob": 0.0011747308308258653,
+      "compression_ratio": 1.2875816993464053
+    },
+    {
+      "segment_id": 163,
+      "start_sec": 450.62,
+      "end_sec": 452.26,
+      "timestamp": "00:07:30.620 --> 00:07:32.260",
+      "text": "并促进团队邻居力",
+      "reasons": [
+        "低信心詞 1 個：力"
+      ],
+      "low_confidence_words": [
+        "力"
+      ],
+      "average_word_probability": 0.8714,
+      "minimum_word_probability": 0.3161,
+      "avg_logprob": -0.143886309829566,
+      "no_speech_prob": 0.0011747308308258653,
+      "compression_ratio": 1.2875816993464053
+    },
+    {
+      "segment_id": 167,
+      "start_sec": 458.66,
+      "end_sec": 459.82,
+      "timestamp": "00:07:38.660 --> 00:07:39.820",
+      "text": "ISO27001的",
+      "reasons": [
+        "低信心詞 1 個：IS"
+      ],
+      "low_confidence_words": [
+        "IS"
+      ],
+      "average_word_probability": 0.8337,
+      "minimum_word_probability": 0.4701,
+      "avg_logprob": -0.143886309829566,
+      "no_speech_prob": 0.0011747308308258653,
+      "compression_ratio": 1.2875816993464053
+    },
+    {
+      "segment_id": 168,
+      "start_sec": 459.82,
+      "end_sec": 463.28,
+      "timestamp": "00:07:39.820 --> 00:07:43.280",
+      "text": "等在114年度完成的序篇",
+      "reasons": [
+        "低信心詞 3 個：等、在、的"
+      ],
+      "low_confidence_words": [
+        "等",
+        "在",
+        "的"
+      ],
+      "average_word_probability": 0.6931,
+      "minimum_word_probability": 0.258,
+      "avg_logprob": -0.143886309829566,
+      "no_speech_prob": 0.0011747308308258653,
+      "compression_ratio": 1.2875816993464053
+    },
+    {
+      "segment_id": 169,
+      "start_sec": 463.28,
+      "end_sec": 465.88,
+      "timestamp": "00:07:43.280 --> 00:07:45.880",
+      "text": "那我们在公司治理评鉴",
+      "reasons": [
+        "低信心詞 1 個：公"
+      ],
+      "low_confidence_words": [
+        "公"
+      ],
+      "average_word_probability": 0.8254,
+      "minimum_word_probability": 0.2432,
+      "avg_logprob": -0.143886309829566,
+      "no_speech_prob": 0.0011747308308258653,
+      "compression_ratio": 1.2875816993464053
+    },
+    {
+      "segment_id": 172,
+      "start_sec": 469.74,
+      "end_sec": 471.86,
+      "timestamp": "00:07:49.740 --> 00:07:51.860",
+      "text": "然后提升公司的一个整体治理学",
+      "reasons": [
+        "低信心詞 1 個：学"
+      ],
+      "low_confidence_words": [
+        "学"
+      ],
+      "average_word_probability": 0.9164,
+      "minimum_word_probability": 0.2593,
+      "avg_logprob": -0.143886309829566,
+      "no_speech_prob": 0.0011747308308258653,
+      "compression_ratio": 1.2875816993464053
+    },
+    {
+      "segment_id": 173,
+      "start_sec": 473.78,
+      "end_sec": 475.6,
+      "timestamp": "00:07:53.780 --> 00:07:55.600",
+      "text": "那再来就是嘉义在长期",
+      "reasons": [
+        "低信心詞 3 個：那、再、来"
+      ],
+      "low_confidence_words": [
+        "那",
+        "再",
+        "来"
+      ],
+      "average_word_probability": 0.6406,
+      "minimum_word_probability": 0.0164,
+      "avg_logprob": -0.10316431071513739,
+      "no_speech_prob": 0.006571992766112089,
+      "compression_ratio": 1.3081570996978853
+    },
+    {
+      "segment_id": 174,
+      "start_sec": 475.6,
+      "end_sec": 477.38,
+      "timestamp": "00:07:55.600 --> 00:07:57.380",
+      "text": "那个30多年的经营下",
+      "reasons": [
+        "低信心詞 1 個：那个"
+      ],
+      "low_confidence_words": [
+        "那个"
+      ],
+      "average_word_probability": 0.8422,
+      "minimum_word_probability": 0.1739,
+      "avg_logprob": -0.10316431071513739,
+      "no_speech_prob": 0.006571992766112089,
+      "compression_ratio": 1.3081570996978853
+    },
+    {
+      "segment_id": 177,
+      "start_sec": 481.58,
+      "end_sec": 483.52,
+      "timestamp": "00:08:01.580 --> 00:08:03.520",
+      "text": "那个医疗的专业领域",
+      "reasons": [
+        "低信心詞 1 個：那个"
+      ],
+      "low_confidence_words": [
+        "那个"
+      ],
+      "average_word_probability": 0.9123,
+      "minimum_word_probability": 0.3546,
+      "avg_logprob": -0.10316431071513739,
+      "no_speech_prob": 0.006571992766112089,
+      "compression_ratio": 1.3081570996978853
+    },
+    {
+      "segment_id": 181,
+      "start_sec": 489.1,
+      "end_sec": 491.64,
+      "timestamp": "00:08:09.100 --> 00:08:11.640",
+      "text": "透过不断的跟合作伙伴呢",
+      "reasons": [
+        "低信心詞 1 個：呢"
+      ],
+      "low_confidence_words": [
+        "呢"
+      ],
+      "average_word_probability": 0.8995,
+      "minimum_word_probability": 0.1554,
+      "avg_logprob": -0.10316431071513739,
+      "no_speech_prob": 0.006571992766112089,
+      "compression_ratio": 1.3081570996978853
+    },
+    {
+      "segment_id": 191,
+      "start_sec": 555.94,
+      "end_sec": 557.68,
+      "timestamp": "00:09:15.940 --> 00:09:17.680",
+      "text": "谢谢大家",
+      "reasons": [
+        "低信心詞 1 個：谢谢"
+      ],
+      "low_confidence_words": [
+        "谢谢"
+      ],
+      "average_word_probability": 0.4274,
+      "minimum_word_probability": 0.0023,
+      "avg_logprob": -0.8567419052124023,
+      "no_speech_prob": 0.2856273055076599,
+      "compression_ratio": 0.5714285714285714
+    },
+    {
+      "segment_id": 192,
+      "start_sec": 582.82,
+      "end_sec": 583.22,
+      "timestamp": "00:09:42.820 --> 00:09:43.220",
+      "text": "谢谢大家",
+      "reasons": [
+        "低信心詞 2 個：谢谢、大家"
+      ],
+      "low_confidence_words": [
+        "谢谢",
+        "大家"
+      ],
+      "average_word_probability": 0.0827,
+      "minimum_word_probability": 0.0067,
+      "avg_logprob": -0.3201721577808775,
+      "no_speech_prob": 0.06746833026409149,
+      "compression_ratio": 1.205128205128205
+    },
+    {
+      "segment_id": 193,
+      "start_sec": 583.22,
+      "end_sec": 583.94,
+      "timestamp": "00:09:43.220 --> 00:09:43.940",
+      "text": "那感谢嘉宜",
+      "reasons": [
+        "低信心詞 2 個：那、感"
+      ],
+      "low_confidence_words": [
+        "那",
+        "感"
+      ],
+      "average_word_probability": 0.5795,
+      "minimum_word_probability": 0.1674,
+      "avg_logprob": -0.3201721577808775,
+      "no_speech_prob": 0.06746833026409149,
+      "compression_ratio": 1.205128205128205
+    },
+    {
+      "segment_id": 194,
+      "start_sec": 583.94,
+      "end_sec": 585.88,
+      "timestamp": "00:09:43.940 --> 00:09:45.880",
+      "text": "也感谢各位投资现金的参与",
+      "reasons": [
+        "低信心詞 1 個：现"
+      ],
+      "low_confidence_words": [
+        "现"
+      ],
+      "average_word_probability": 0.8325,
+      "minimum_word_probability": 0.0098,
+      "avg_logprob": -0.3201721577808775,
+      "no_speech_prob": 0.06746833026409149,
+      "compression_ratio": 1.205128205128205
+    },
+    {
+      "segment_id": 196,
+      "start_sec": 587.28,
+      "end_sec": 587.6,
+      "timestamp": "00:09:47.280 --> 00:09:47.600",
+      "text": "诶",
+      "reasons": [
+        "低信心詞 1 個：诶"
+      ],
+      "low_confidence_words": [
+        "诶"
+      ],
+      "average_word_probability": 0.1631,
+      "minimum_word_probability": 0.1631,
+      "avg_logprob": -0.3201721577808775,
+      "no_speech_prob": 0.06746833026409149,
+      "compression_ratio": 1.205128205128205
+    },
+    {
+      "segment_id": 199,
+      "start_sec": 593.52,
+      "end_sec": 596.0,
+      "timestamp": "00:09:53.520 --> 00:09:56.000",
+      "text": "目前东南亚洗肾市场的",
+      "reasons": [
+        "低信心詞 1 個：目前"
+      ],
+      "low_confidence_words": [
+        "目前"
+      ],
+      "average_word_probability": 0.8777,
+      "minimum_word_probability": 0.4924,
+      "avg_logprob": -0.2306729374509869,
+      "no_speech_prob": 0.08197508007287979,
+      "compression_ratio": 1.3
+    },
+    {
+      "segment_id": 200,
+      "start_sec": 596.0,
+      "end_sec": 596.3,
+      "timestamp": "00:09:56.000 --> 00:09:56.300",
+      "text": "报道",
+      "reasons": [
+        "低信心詞 2 個：报、道"
+      ],
+      "low_confidence_words": [
+        "报",
+        "道"
+      ],
+      "average_word_probability": 0.2661,
+      "minimum_word_probability": 0.1282,
+      "avg_logprob": -0.2306729374509869,
+      "no_speech_prob": 0.08197508007287979,
+      "compression_ratio": 1.3
+    },
+    {
+      "segment_id": 201,
+      "start_sec": 597.0,
+      "end_sec": 597.52,
+      "timestamp": "00:09:57.000 --> 00:09:57.520",
+      "text": "呃",
+      "reasons": [
+        "低信心詞 1 個：呃"
+      ],
+      "low_confidence_words": [
+        "呃"
+      ],
+      "average_word_probability": 0.0095,
+      "minimum_word_probability": 0.0095,
+      "avg_logprob": -0.2306729374509869,
+      "no_speech_prob": 0.08197508007287979,
+      "compression_ratio": 1.3
+    },
+    {
+      "segment_id": 205,
+      "start_sec": 607.48,
+      "end_sec": 608.2,
+      "timestamp": "00:10:07.480 --> 00:10:08.200",
+      "text": "像",
+      "reasons": [
+        "低信心詞 1 個：像"
+      ],
+      "low_confidence_words": [
+        "像"
+      ],
+      "average_word_probability": 0.3623,
+      "minimum_word_probability": 0.3623,
+      "avg_logprob": -0.2306729374509869,
+      "no_speech_prob": 0.08197508007287979,
+      "compression_ratio": 1.3
+    },
+    {
+      "segment_id": 209,
+      "start_sec": 616.58,
+      "end_sec": 617.68,
+      "timestamp": "00:10:16.580 --> 00:10:17.680",
+      "text": "这个疾病的这个",
+      "reasons": [
+        "低信心詞 2 個：这个、这个"
+      ],
+      "low_confidence_words": [
+        "这个",
+        "这个"
+      ],
+      "average_word_probability": 0.7533,
+      "minimum_word_probability": 0.4223,
+      "avg_logprob": -0.2306729374509869,
+      "no_speech_prob": 0.08197508007287979,
+      "compression_ratio": 1.3
+    },
+    {
+      "segment_id": 210,
+      "start_sec": 617.68,
+      "end_sec": 619.86,
+      "timestamp": "00:10:17.680 --> 00:10:19.860",
+      "text": "医保的几度还算偏低",
+      "reasons": [
+        "低信心詞 1 個：的"
+      ],
+      "low_confidence_words": [
+        "的"
+      ],
+      "average_word_probability": 0.8804,
+      "minimum_word_probability": 0.2707,
+      "avg_logprob": -0.2306729374509869,
+      "no_speech_prob": 0.08197508007287979,
+      "compression_ratio": 1.3
+    },
+    {
+      "segment_id": 211,
+      "start_sec": 620.66,
+      "end_sec": 621.78,
+      "timestamp": "00:10:20.660 --> 00:10:21.780",
+      "text": "所以虽然这个",
+      "reasons": [
+        "低信心詞 1 個：这个"
+      ],
+      "low_confidence_words": [
+        "这个"
+      ],
+      "average_word_probability": 0.6358,
+      "minimum_word_probability": 0.2801,
+      "avg_logprob": -0.1595200949245029,
+      "no_speech_prob": 0.002381057245656848,
+      "compression_ratio": 1.3424657534246576
+    },
+    {
+      "segment_id": 212,
+      "start_sec": 621.78,
+      "end_sec": 623.96,
+      "timestamp": "00:10:21.780 --> 00:10:23.960",
+      "text": "特别是印尼人口数很多",
+      "reasons": [
+        "低信心詞 2 個：印、数"
+      ],
+      "low_confidence_words": [
+        "印",
+        "数"
+      ],
+      "average_word_probability": 0.7518,
+      "minimum_word_probability": 0.0712,
+      "avg_logprob": -0.1595200949245029,
+      "no_speech_prob": 0.002381057245656848,
+      "compression_ratio": 1.3424657534246576
+    },
+    {
+      "segment_id": 213,
+      "start_sec": 623.96,
+      "end_sec": 625.38,
+      "timestamp": "00:10:23.960 --> 00:10:25.380",
+      "text": "但是几度偏低",
+      "reasons": [
+        "低信心詞 4 個：但是、度、偏、低"
+      ],
+      "low_confidence_words": [
+        "但是",
+        "度",
+        "偏",
+        "低"
+      ],
+      "average_word_probability": 0.3703,
+      "minimum_word_probability": 0.0907,
+      "avg_logprob": -0.1595200949245029,
+      "no_speech_prob": 0.002381057245656848,
+      "compression_ratio": 1.3424657534246576
+    },
+    {
+      "segment_id": 214,
+      "start_sec": 625.38,
+      "end_sec": 628.02,
+      "timestamp": "00:10:25.380 --> 00:10:28.020",
+      "text": "对于这个进入洗肾市场",
+      "reasons": [
+        "低信心詞 1 個：洗"
+      ],
+      "low_confidence_words": [
+        "洗"
+      ],
+      "average_word_probability": 0.8576,
+      "minimum_word_probability": 0.4827,
+      "avg_logprob": -0.1595200949245029,
+      "no_speech_prob": 0.002381057245656848,
+      "compression_ratio": 1.3424657534246576
+    },
+    {
+      "segment_id": 215,
+      "start_sec": 628.02,
+      "end_sec": 629.96,
+      "timestamp": "00:10:28.020 --> 00:10:29.960",
+      "text": "去经营的经营者来讲",
+      "reasons": [
+        "低信心詞 1 個：去"
+      ],
+      "low_confidence_words": [
+        "去"
+      ],
+      "average_word_probability": 0.8715,
+      "minimum_word_probability": 0.1159,
+      "avg_logprob": -0.1595200949245029,
+      "no_speech_prob": 0.002381057245656848,
+      "compression_ratio": 1.3424657534246576
+    },
+    {
+      "segment_id": 218,
+      "start_sec": 636.74,
+      "end_sec": 640.64,
+      "timestamp": "00:10:36.740 --> 00:10:40.640",
+      "text": "因为嘉宜经常在菲律宾市场有布局",
+      "reasons": [
+        "低信心詞 2 個：嘉、宜"
+      ],
+      "low_confidence_words": [
+        "嘉",
+        "宜"
+      ],
+      "average_word_probability": 0.7934,
+      "minimum_word_probability": 0.0029,
+      "avg_logprob": -0.1595200949245029,
+      "no_speech_prob": 0.002381057245656848,
+      "compression_ratio": 1.3424657534246576
+    },
+    {
+      "segment_id": 220,
+      "start_sec": 643.02,
+      "end_sec": 645.38,
+      "timestamp": "00:10:43.020 --> 00:10:45.380",
+      "text": "政府医保对于洗肾",
+      "reasons": [
+        "低信心詞 1 個：洗"
+      ],
+      "low_confidence_words": [
+        "洗"
+      ],
+      "average_word_probability": 0.8402,
+      "minimum_word_probability": 0.0048,
+      "avg_logprob": -0.1595200949245029,
+      "no_speech_prob": 0.002381057245656848,
+      "compression_ratio": 1.3424657534246576
+    },
+    {
+      "segment_id": 221,
+      "start_sec": 645.38,
+      "end_sec": 646.98,
+      "timestamp": "00:10:45.380 --> 00:10:46.980",
+      "text": "肾脏病的这个几度呢",
+      "reasons": [
+        "低信心詞 1 個：肾"
+      ],
+      "low_confidence_words": [
+        "肾"
+      ],
+      "average_word_probability": 0.7287,
+      "minimum_word_probability": 0.2217,
+      "avg_logprob": -0.1595200949245029,
+      "no_speech_prob": 0.002381057245656848,
+      "compression_ratio": 1.3424657534246576
+    },
+    {
+      "segment_id": 223,
+      "start_sec": 648.7,
+      "end_sec": 651.96,
+      "timestamp": "00:10:48.700 --> 00:10:51.960",
+      "text": "所以菲律宾的洗肾市场在快速成长中",
+      "reasons": [
+        "低信心詞 3 個：所以、洗、肾"
+      ],
+      "low_confidence_words": [
+        "所以",
+        "洗",
+        "肾"
+      ],
+      "average_word_probability": 0.7403,
+      "minimum_word_probability": 0.025,
+      "avg_logprob": -0.11491630721266252,
+      "no_speech_prob": 0.0007446152158081532,
+      "compression_ratio": 1.3836206896551724
+    },
+    {
+      "segment_id": 224,
+      "start_sec": 652.72,
+      "end_sec": 655.44,
+      "timestamp": "00:10:52.720 --> 00:10:55.440",
+      "text": "那因为我们嘉宜已经在菲律宾",
+      "reasons": [
+        "低信心詞 3 個：那、嘉、宜"
+      ],
+      "low_confidence_words": [
+        "那",
+        "嘉",
+        "宜"
+      ],
+      "average_word_probability": 0.7808,
+      "minimum_word_probability": 0.2714,
+      "avg_logprob": -0.11491630721266252,
+      "no_speech_prob": 0.0007446152158081532,
+      "compression_ratio": 1.3836206896551724
+    },
+    {
+      "segment_id": 225,
+      "start_sec": 655.44,
+      "end_sec": 656.58,
+      "timestamp": "00:10:55.440 --> 00:10:56.580",
+      "text": "已经布局二十几年",
+      "reasons": [
+        "低信心詞 3 個：已经、布、二"
+      ],
+      "low_confidence_words": [
+        "已经",
+        "布",
+        "二"
+      ],
+      "average_word_probability": 0.6408,
+      "minimum_word_probability": 0.0191,
+      "avg_logprob": -0.11491630721266252,
+      "no_speech_prob": 0.0007446152158081532,
+      "compression_ratio": 1.3836206896551724
+    },
+    {
+      "segment_id": 229,
+      "start_sec": 666.32,
+      "end_sec": 669.26,
+      "timestamp": "00:11:06.320 --> 00:11:09.260",
+      "text": "一到一亿两千万人左右",
+      "reasons": [
+        "低信心詞 1 個：一"
+      ],
+      "low_confidence_words": [
+        "一"
+      ],
+      "average_word_probability": 0.8928,
+      "minimum_word_probability": 0.3621,
+      "avg_logprob": -0.11491630721266252,
+      "no_speech_prob": 0.0007446152158081532,
+      "compression_ratio": 1.3836206896551724
+    },
+    {
+      "segment_id": 234,
+      "start_sec": 677.98,
+      "end_sec": 680.66,
+      "timestamp": "00:11:17.980 --> 00:11:20.660",
+      "text": "这样肾脏病的益育只是还不到",
+      "reasons": [
+        "低信心詞 5 個：这样、病、的、益、还"
+      ],
+      "low_confidence_words": [
+        "这样",
+        "病",
+        "的",
+        "益",
+        "还"
+      ],
+      "average_word_probability": 0.4478,
+      "minimum_word_probability": 0.0185,
+      "avg_logprob": -0.2047617817045869,
+      "no_speech_prob": 0.0014583613956347108,
+      "compression_ratio": 1.3703703703703705
+    },
+    {
+      "segment_id": 236,
+      "start_sec": 682.94,
+      "end_sec": 684.54,
+      "timestamp": "00:11:22.940 --> 00:11:24.540",
+      "text": "以东南亚的市场来讲",
+      "reasons": [
+        "低信心詞 1 個：以"
+      ],
+      "low_confidence_words": [
+        "以"
+      ],
+      "average_word_probability": 0.8425,
+      "minimum_word_probability": 0.2559,
+      "avg_logprob": -0.2047617817045869,
+      "no_speech_prob": 0.0014583613956347108,
+      "compression_ratio": 1.3703703703703705
+    },
+    {
+      "segment_id": 237,
+      "start_sec": 684.54,
+      "end_sec": 687.24,
+      "timestamp": "00:11:24.540 --> 00:11:27.240",
+      "text": "菲律宾市场是在近这几年",
+      "reasons": [
+        "低信心詞 2 個：近、这"
+      ],
+      "low_confidence_words": [
+        "近",
+        "这"
+      ],
+      "average_word_probability": 0.8258,
+      "minimum_word_probability": 0.1707,
+      "avg_logprob": -0.2047617817045869,
+      "no_speech_prob": 0.0014583613956347108,
+      "compression_ratio": 1.3703703703703705
+    },
+    {
+      "segment_id": 239,
+      "start_sec": 690.14,
+      "end_sec": 691.32,
+      "timestamp": "00:11:30.140 --> 00:11:31.320",
+      "text": "那另外在",
+      "reasons": [
+        "低信心詞 1 個：那"
+      ],
+      "low_confidence_words": [
+        "那"
+      ],
+      "average_word_probability": 0.784,
+      "minimum_word_probability": 0.3602,
+      "avg_logprob": -0.2047617817045869,
+      "no_speech_prob": 0.0014583613956347108,
+      "compression_ratio": 1.3703703703703705
+    },
+    {
+      "segment_id": 241,
+      "start_sec": 692.72,
+      "end_sec": 693.88,
+      "timestamp": "00:11:32.720 --> 00:11:33.880",
+      "text": "事实上也不错",
+      "reasons": [
+        "低信心詞 1 個：事"
+      ],
+      "low_confidence_words": [
+        "事"
+      ],
+      "average_word_probability": 0.8252,
+      "minimum_word_probability": 0.2169,
+      "avg_logprob": -0.2047617817045869,
+      "no_speech_prob": 0.0014583613956347108,
+      "compression_ratio": 1.3703703703703705
+    },
+    {
+      "segment_id": 242,
+      "start_sec": 693.88,
+      "end_sec": 695.04,
+      "timestamp": "00:11:33.880 --> 00:11:35.040",
+      "text": "但是越南的市场",
+      "reasons": [
+        "低信心詞 1 個：的"
+      ],
+      "low_confidence_words": [
+        "的"
+      ],
+      "average_word_probability": 0.887,
+      "minimum_word_probability": 0.4014,
+      "avg_logprob": -0.2047617817045869,
+      "no_speech_prob": 0.0014583613956347108,
+      "compression_ratio": 1.3703703703703705
+    },
+    {
+      "segment_id": 243,
+      "start_sec": 695.04,
+      "end_sec": 696.48,
+      "timestamp": "00:11:35.040 --> 00:11:36.480",
+      "text": "其实高度很高度竞争",
+      "reasons": [
+        "低信心詞 2 個：其实、很"
+      ],
+      "low_confidence_words": [
+        "其实",
+        "很"
+      ],
+      "average_word_probability": 0.7771,
+      "minimum_word_probability": 0.1463,
+      "avg_logprob": -0.2047617817045869,
+      "no_speech_prob": 0.0014583613956347108,
+      "compression_ratio": 1.3703703703703705
+    },
+    {
+      "segment_id": 246,
+      "start_sec": 702.6,
+      "end_sec": 704.54,
+      "timestamp": "00:11:42.600 --> 00:11:44.540",
+      "text": "地方的死肾市场都有",
+      "reasons": [
+        "低信心詞 1 個：死"
+      ],
+      "low_confidence_words": [
+        "死"
+      ],
+      "average_word_probability": 0.8396,
+      "minimum_word_probability": 0.2314,
+      "avg_logprob": -0.2047617817045869,
+      "no_speech_prob": 0.0014583613956347108,
+      "compression_ratio": 1.3703703703703705
+    },
+    {
+      "segment_id": 249,
+      "start_sec": 707.98,
+      "end_sec": 709.0,
+      "timestamp": "00:11:47.980 --> 00:11:49.000",
+      "text": "制造厂的投入",
+      "reasons": [
+        "低信心詞 1 個：制"
+      ],
+      "low_confidence_words": [
+        "制"
+      ],
+      "average_word_probability": 0.7667,
+      "minimum_word_probability": 0.0277,
+      "avg_logprob": -0.16009651379634257,
+      "no_speech_prob": 0.001922544208355248,
+      "compression_ratio": 1.4223107569721116
+    },
+    {
+      "segment_id": 250,
+      "start_sec": 709.0,
+      "end_sec": 711.44,
+      "timestamp": "00:11:49.000 --> 00:11:51.440",
+      "text": "那也有当地的制造商在",
+      "reasons": [
+        "低信心詞 1 個：那"
+      ],
+      "low_confidence_words": [
+        "那"
+      ],
+      "average_word_probability": 0.8673,
+      "minimum_word_probability": 0.1951,
+      "avg_logprob": -0.16009651379634257,
+      "no_speech_prob": 0.001922544208355248,
+      "compression_ratio": 1.4223107569721116
+    },
+    {
+      "segment_id": 251,
+      "start_sec": 711.44,
+      "end_sec": 714.38,
+      "timestamp": "00:11:51.440 --> 00:11:54.380",
+      "text": "制造相关的这个产品跟耗产",
+      "reasons": [
+        "低信心詞 1 個：这个"
+      ],
+      "low_confidence_words": [
+        "这个"
+      ],
+      "average_word_probability": 0.8927,
+      "minimum_word_probability": 0.272,
+      "avg_logprob": -0.16009651379634257,
+      "no_speech_prob": 0.001922544208355248,
+      "compression_ratio": 1.4223107569721116
+    },
+    {
+      "segment_id": 253,
+      "start_sec": 716.64,
+      "end_sec": 718.16,
+      "timestamp": "00:11:56.640 --> 00:11:58.160",
+      "text": "洗肾中心的开立",
+      "reasons": [
+        "低信心詞 2 個：洗、肾"
+      ],
+      "low_confidence_words": [
+        "洗",
+        "肾"
+      ],
+      "average_word_probability": 0.789,
+      "minimum_word_probability": 0.128,
+      "avg_logprob": -0.16009651379634257,
+      "no_speech_prob": 0.001922544208355248,
+      "compression_ratio": 1.4223107569721116
+    },
+    {
+      "segment_id": 258,
+      "start_sec": 725.32,
+      "end_sec": 727.38,
+      "timestamp": "00:12:05.320 --> 00:12:07.380",
+      "text": "的国家来讲的话",
+      "reasons": [
+        "低信心詞 1 個：的"
+      ],
+      "low_confidence_words": [
+        "的"
+      ],
+      "average_word_probability": 0.855,
+      "minimum_word_probability": 0.1388,
+      "avg_logprob": -0.16009651379634257,
+      "no_speech_prob": 0.001922544208355248,
+      "compression_ratio": 1.4223107569721116
+    },
+    {
+      "segment_id": 259,
+      "start_sec": 727.38,
+      "end_sec": 729.4,
+      "timestamp": "00:12:07.380 --> 00:12:09.400",
+      "text": "我们有几十个国家在推运",
+      "reasons": [
+        "低信心詞 3 個：有、十、个"
+      ],
+      "low_confidence_words": [
+        "有",
+        "十",
+        "个"
+      ],
+      "average_word_probability": 0.6146,
+      "minimum_word_probability": 0.1167,
+      "avg_logprob": -0.16009651379634257,
+      "no_speech_prob": 0.001922544208355248,
+      "compression_ratio": 1.4223107569721116
+    },
+    {
+      "segment_id": 262,
+      "start_sec": 734.82,
+      "end_sec": 737.24,
+      "timestamp": "00:12:14.820 --> 00:12:17.240",
+      "text": "来做的也是洗肾相关的产品",
+      "reasons": [
+        "低信心詞 2 個：来、相"
+      ],
+      "low_confidence_words": [
+        "来",
+        "相"
+      ],
+      "average_word_probability": 0.8857,
+      "minimum_word_probability": 0.423,
+      "avg_logprob": -0.16009651379634257,
+      "no_speech_prob": 0.001922544208355248,
+      "compression_ratio": 1.4223107569721116
+    },
+    {
+      "segment_id": 263,
+      "start_sec": 737.24,
+      "end_sec": 741.4,
+      "timestamp": "00:12:17.240 --> 00:12:21.400",
+      "text": "那我们的销售的概念就是",
+      "reasons": [
+        "低信心詞 1 個：那"
+      ],
+      "low_confidence_words": [
+        "那"
+      ],
+      "average_word_probability": 0.7973,
+      "minimum_word_probability": 0.0704,
+      "avg_logprob": -0.1511997249844956,
+      "no_speech_prob": 5.328930274117738e-05,
+      "compression_ratio": 1.3373493975903614
+    },
+    {
+      "segment_id": 268,
+      "start_sec": 750.8,
+      "end_sec": 752.94,
+      "timestamp": "00:12:30.800 --> 00:12:32.940",
+      "text": "然后我们有个竞销商在运营",
+      "reasons": [
+        "低信心詞 1 個：然后"
+      ],
+      "low_confidence_words": [
+        "然后"
+      ],
+      "average_word_probability": 0.8618,
+      "minimum_word_probability": 0.4176,
+      "avg_logprob": -0.1511997249844956,
+      "no_speech_prob": 5.328930274117738e-05,
+      "compression_ratio": 1.3373493975903614
+    },
+    {
+      "segment_id": 270,
+      "start_sec": 756.04,
+      "end_sec": 758.12,
+      "timestamp": "00:12:36.040 --> 00:12:38.120",
+      "text": "可能在寻找泰国或是越南",
+      "reasons": [
+        "低信心詞 1 個：越"
+      ],
+      "low_confidence_words": [
+        "越"
+      ],
+      "average_word_probability": 0.8044,
+      "minimum_word_probability": 0.176,
+      "avg_logprob": -0.1511997249844956,
+      "no_speech_prob": 5.328930274117738e-05,
+      "compression_ratio": 1.3373493975903614
+    },
+    {
+      "segment_id": 272,
+      "start_sec": 759.44,
+      "end_sec": 760.56,
+      "timestamp": "00:12:39.440 --> 00:12:40.560",
+      "text": "可能是下一步",
+      "reasons": [
+        "低信心詞 1 個：可能"
+      ],
+      "low_confidence_words": [
+        "可能"
+      ],
+      "average_word_probability": 0.833,
+      "minimum_word_probability": 0.4791,
+      "avg_logprob": -0.1511997249844956,
+      "no_speech_prob": 5.328930274117738e-05,
+      "compression_ratio": 1.3373493975903614
+    },
+    {
+      "segment_id": 275,
+      "start_sec": 786.26,
+      "end_sec": 787.16,
+      "timestamp": "00:13:06.260 --> 00:13:07.160",
+      "text": "就是医疗早期设计",
+      "reasons": [
+        "低信心詞 5 個：就是、医、早、期、设",
+        "segment 平均 log probability 偏低"
+      ],
+      "low_confidence_words": [
+        "就是",
+        "医",
+        "早",
+        "期",
+        "设"
+      ],
+      "average_word_probability": 0.2677,
+      "minimum_word_probability": 0.0,
+      "avg_logprob": -2.0970010582460175,
+      "no_speech_prob": 0.0035268040373921394,
+      "compression_ratio": 1.496875
+    },
+    {
+      "segment_id": 276,
+      "start_sec": 787.16,
+      "end_sec": 788.52,
+      "timestamp": "00:13:07.160 --> 00:13:08.520",
+      "text": "帮助到达旧军",
+      "reasons": [
+        "低信心詞 5 個：帮、到、达、旧、军",
+        "segment 平均 log probability 偏低"
+      ],
+      "low_confidence_words": [
+        "帮",
+        "到",
+        "达",
+        "旧",
+        "军"
+      ],
+      "average_word_probability": 0.3284,
+      "minimum_word_probability": 0.0306,
+      "avg_logprob": -2.0970010582460175,
+      "no_speech_prob": 0.0035268040373921394,
+      "compression_ratio": 1.496875
+    },
+    {
+      "segment_id": 277,
+      "start_sec": 788.52,
+      "end_sec": 788.98,
+      "timestamp": "00:13:08.520 --> 00:13:08.980",
+      "text": "然后再研究设计",
+      "reasons": [
+        "低信心詞 4 個：然后、再、研、设",
+        "segment 平均 log probability 偏低"
+      ],
+      "low_confidence_words": [
+        "然后",
+        "再",
+        "研",
+        "设"
+      ],
+      "average_word_probability": 0.4101,
+      "minimum_word_probability": 0.0002,
+      "avg_logprob": -2.0970010582460175,
+      "no_speech_prob": 0.0035268040373921394,
+      "compression_ratio": 1.496875
+    },
+    {
+      "segment_id": 278,
+      "start_sec": 788.98,
+      "end_sec": 790.46,
+      "timestamp": "00:13:08.980 --> 00:13:10.460",
+      "text": "那现在也有很多事情",
+      "reasons": [
+        "低信心詞 6 個：那、现在、也、有、很多、事情",
+        "segment 平均 log probability 偏低"
+      ],
+      "low_confidence_words": [
+        "那",
+        "现在",
+        "也",
+        "有",
+        "很多",
+        "事情"
+      ],
+      "average_word_probability": 0.0433,
+      "minimum_word_probability": 0.0056,
+      "avg_logprob": -2.0970010582460175,
+      "no_speech_prob": 0.0035268040373921394,
+      "compression_ratio": 1.496875
+    },
+    {
+      "segment_id": 279,
+      "start_sec": 790.46,
+      "end_sec": 790.8,
+      "timestamp": "00:13:10.460 --> 00:13:10.800",
+      "text": "有更多的关键的",
+      "reasons": [
+        "低信心詞 4 個：有、更、关、的",
+        "segment 平均 log probability 偏低"
+      ],
+      "low_confidence_words": [
+        "有",
+        "更",
+        "关",
+        "的"
+      ],
+      "average_word_probability": 0.3069,
+      "minimum_word_probability": 0.0047,
+      "avg_logprob": -2.0970010582460175,
+      "no_speech_prob": 0.0035268040373921394,
+      "compression_ratio": 1.496875
+    },
+    {
+      "segment_id": 280,
+      "start_sec": 790.8,
+      "end_sec": 791.3,
+      "timestamp": "00:13:10.800 --> 00:13:11.300",
+      "text": "voodoo 或用工作",
+      "reasons": [
+        "低信心詞 4 個：vo、或、用、工作",
+        "segment 平均 log probability 偏低"
+      ],
+      "low_confidence_words": [
+        "vo",
+        "或",
+        "用",
+        "工作"
+      ],
+      "average_word_probability": 0.2696,
+      "minimum_word_probability": 0.0,
+      "avg_logprob": -2.0970010582460175,
+      "no_speech_prob": 0.0035268040373921394,
+      "compression_ratio": 1.496875
+    },
+    {
+      "segment_id": 281,
+      "start_sec": 791.3,
+      "end_sec": 791.52,
+      "timestamp": "00:13:11.300 --> 00:13:11.520",
+      "text": "可以帮助到达旧军",
+      "reasons": [
+        "低信心詞 2 個：可以、到",
+        "segment 平均 log probability 偏低"
+      ],
+      "low_confidence_words": [
+        "可以",
+        "到"
+      ],
+      "average_word_probability": 0.5818,
+      "minimum_word_probability": 0.0112,
+      "avg_logprob": -2.0970010582460175,
+      "no_speech_prob": 0.0035268040373921394,
+      "compression_ratio": 1.496875
+    },
+    {
+      "segment_id": 282,
+      "start_sec": 791.52,
+      "end_sec": 791.58,
+      "timestamp": "00:13:11.520 --> 00:13:11.580",
+      "text": "还可以考虑到达旧军",
+      "reasons": [
+        "低信心詞 4 個：还、可以、考、到",
+        "segment 平均 log probability 偏低"
+      ],
+      "low_confidence_words": [
+        "还",
+        "可以",
+        "考",
+        "到"
+      ],
+      "average_word_probability": 0.5307,
+      "minimum_word_probability": 0.0028,
+      "avg_logprob": -2.0970010582460175,
+      "no_speech_prob": 0.0035268040373921394,
+      "compression_ratio": 1.496875
+    },
+    {
+      "segment_id": 283,
+      "start_sec": 791.58,
+      "end_sec": 791.6,
+      "timestamp": "00:13:11.580 --> 00:13:11.600",
+      "text": "或者做得更加好",
+      "reasons": [
+        "低信心詞 5 個：或者、做、得、加、好",
+        "segment 平均 log probability 偏低"
+      ],
+      "low_confidence_words": [
+        "或者",
+        "做",
+        "得",
+        "加",
+        "好"
+      ],
+      "average_word_probability": 0.1132,
+      "minimum_word_probability": 0.0011,
+      "avg_logprob": -2.0970010582460175,
+      "no_speech_prob": 0.0035268040373921394,
+      "compression_ratio": 1.496875
+    },
+    {
+      "segment_id": 284,
+      "start_sec": 791.6,
+      "end_sec": 791.76,
+      "timestamp": "00:13:11.600 --> 00:13:11.760",
+      "text": "都已经是那些",
+      "reasons": [
+        "低信心詞 5 個：都、已经、是、那、些",
+        "segment 平均 log probability 偏低"
+      ],
+      "low_confidence_words": [
+        "都",
+        "已经",
+        "是",
+        "那",
+        "些"
+      ],
+      "average_word_probability": 0.0255,
+      "minimum_word_probability": 0.002,
+      "avg_logprob": -2.0970010582460175,
+      "no_speech_prob": 0.0035268040373921394,
+      "compression_ratio": 1.496875
+    },
+    {
+      "segment_id": 285,
+      "start_sec": 791.76,
+      "end_sec": 791.92,
+      "timestamp": "00:13:11.760 --> 00:13:11.920",
+      "text": "非常有能力的",
+      "reasons": [
+        "低信心詞 3 個：非常、有、能",
+        "segment 平均 log probability 偏低"
+      ],
+      "low_confidence_words": [
+        "非常",
+        "有",
+        "能"
+      ],
+      "average_word_probability": 0.3234,
+      "minimum_word_probability": 0.0087,
+      "avg_logprob": -2.0970010582460175,
+      "no_speech_prob": 0.0035268040373921394,
+      "compression_ratio": 1.496875
+    },
+    {
+      "segment_id": 286,
+      "start_sec": 791.92,
+      "end_sec": 792.34,
+      "timestamp": "00:13:11.920 --> 00:13:12.340",
+      "text": "可以帮助到达旧军",
+      "reasons": [
+        "低信心詞 1 個：可以",
+        "segment 平均 log probability 偏低"
+      ],
+      "low_confidence_words": [
+        "可以"
+      ],
+      "average_word_probability": 0.7554,
+      "minimum_word_probability": 0.0058,
+      "avg_logprob": -2.0970010582460175,
+      "no_speech_prob": 0.0035268040373921394,
+      "compression_ratio": 1.496875
+    },
+    {
+      "segment_id": 287,
+      "start_sec": 792.34,
+      "end_sec": 792.68,
+      "timestamp": "00:13:12.340 --> 00:13:12.680",
+      "text": "甚至可以能够",
+      "reasons": [
+        "低信心詞 3 個：甚、可以、能",
+        "segment 平均 log probability 偏低"
+      ],
+      "low_confidence_words": [
+        "甚",
+        "可以",
+        "能"
+      ],
+      "average_word_probability": 0.3516,
+      "minimum_word_probability": 0.0012,
+      "avg_logprob": -2.0970010582460175,
+      "no_speech_prob": 0.0035268040373921394,
+      "compression_ratio": 1.496875
+    },
+    {
+      "segment_id": 288,
+      "start_sec": 792.68,
+      "end_sec": 795.34,
+      "timestamp": "00:13:12.680 --> 00:13:15.340",
+      "text": "因为我们在这里",
+      "reasons": [
+        "低信心詞 4 個：因为、我们、在、这里",
+        "segment 平均 log probability 偏低"
+      ],
+      "low_confidence_words": [
+        "因为",
+        "我们",
+        "在",
+        "这里"
+      ],
+      "average_word_probability": 0.0393,
+      "minimum_word_probability": 0.0008,
+      "avg_logprob": -2.0970010582460175,
+      "no_speech_prob": 0.0035268040373921394,
+      "compression_ratio": 1.496875
+    },
+    {
+      "segment_id": 289,
+      "start_sec": 795.34,
+      "end_sec": 796.7,
+      "timestamp": "00:13:15.340 --> 00:13:16.700",
+      "text": "有的职业",
+      "reasons": [
+        "低信心詞 3 個：有、的、职",
+        "segment 平均 log probability 偏低"
+      ],
+      "low_confidence_words": [
+        "有",
+        "的",
+        "职"
+      ],
+      "average_word_probability": 0.2992,
+      "minimum_word_probability": 0.004,
+      "avg_logprob": -2.0970010582460175,
+      "no_speech_prob": 0.0035268040373921394,
+      "compression_ratio": 1.496875
+    },
+    {
+      "segment_id": 290,
+      "start_sec": 796.7,
+      "end_sec": 797.02,
+      "timestamp": "00:13:16.700 --> 00:13:17.020",
+      "text": "明镜需要您的支持 欢迎订阅明镜",
+      "reasons": [
+        "低信心詞 1 個：明",
+        "疑似無語音或背景噪音"
+      ],
+      "low_confidence_words": [
+        "明"
+      ],
+      "average_word_probability": 0.8647,
+      "minimum_word_probability": 0.0061,
+      "avg_logprob": -0.3098029479384422,
+      "no_speech_prob": 0.869996964931488,
+      "compression_ratio": 0.8431372549019608
+    }
+  ]
+}
