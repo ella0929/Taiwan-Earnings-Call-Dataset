@@ -75,7 +75,7 @@ def resolve_runtime():
 
     if compute_type == "auto":
         compute_type = (
-            "float16"
+            "int8"
             if device == "cuda"
             else "int8"
         )

@@ -3,12 +3,8 @@ import re
 import asyncio
 import aiomysql
 from dotenv import load_dotenv
-from google import genai
-from google.genai import types
 
 load_dotenv()
-
-client = genai.Client(api_key=os.getenv("GEMINI_API_KEY"))
 
 DB_CONFIG = {
     'host': os.getenv('DB_HOST'),          # 從 .env 讀取，沒有預設值（安全）
@@ -19,60 +15,46 @@ DB_CONFIG = {
     'autocommit': True
 }
 
-async def classify_segment_with_gemini(text: str) -> str:
-    prompt = f"""
-你是一位嚴格的法說會文本分類器。請分析以下段落，判斷是屬於【簡報/司儀宣告 PRESENTATION】還是【分析師第一個實質提問 QA_START】。
+def classify_segment_with_keywords(text: str) -> str:
+    question_keywords = [
+        "想請教",
+        "請教",
+        "想詢問",
+        "想了解",
+        "請幫我們說明",
+        "能否分享",
+        "我的問題是",
+        "策略是為何",
+        "狀況為何",
+        "展望為何",
+        "could you",
+        "can you",
+        "give us more",
+        "share a little bit",
+        "my question is",
+        "can you talk about",
+        "wondering if you",
+        "?",
+    ]
 
-【第一階段：強制排除條款（一律輸出 PRESENTATION）】
-若段落屬於以下狀況，無論裡面出現什麼字詞，【一律強制輸出 PRESENTATION】：
-1. 司儀/主持人/高管在做階段切換、感謝簡報、或宣告開放提問（例如："謝謝簡報"、"現在進行 Q&A"、"開放提問"、"有問題的法人可以提出問題"、"請線上分析師發問"）。
-2. 純背景介紹、純公司財務數據宣讀，且【完全沒有分析師開口發問】。
+    presentation_keywords = [
+        "現在進行 q&a",
+        "開放提問",
+        "有問題的法人可以提出問題",
+        "請線上分析師發問",
+        "open the floor",
+        "turn the call over",
+    ]
 
-【第二階段：實質提問判定（滿足才可輸出 QA_START）】
-必須是【分析師/法人/提問者】本人親自開口，提出具體的經營、財務或市場問題（逐字稿可能由語音轉文字生成，可能完全沒有問號或標點符號）：
-- 中文關鍵語氣：如 "想請教"、"想詢問"、"請幫我們說明"、"能否分享"、"我的問題是"、"想了解"、"策略是為何"、"狀況為何"。
-- 英文關鍵語氣：如 "could you"、"can you"、"give us more"、"share a little bit"、"my question is"、"?"。
+    normalized_text = text.lower()
 
-【經典對比範例】
-❌ 司儀純宣告/開放提問（無人發問，非分析師）：
-"以上謝謝副總詳盡的簡報說明，那我們現在進行 Q&A，有問題的法人可以提出問題。"
--> 判定：PRESENTATION
-
-❌ 主持人請法人發問（非分析師發問）：
-"接下來我們開放線上法人提問，第一位請發問。"
--> 判定：PRESENTATION
-
-✅ 分析師實質提問（無標點符號/STT真實案例）：
-"那台灣近期出現的資金緊縮現象 結構性的資金短缺已經促使 市場利率實質走升 想請教 在當前資本市場與利率環境波動下 信輝手握近15億豐沛現金的 實際配置策略是為何"
--> 判定：QA_START
-
-✅ 分析師實質提問（簡短發問）：
-"謝謝長官，想請教一下關於第三季毛利率的展望？"
--> 判定：QA_START
-
-【待分析文字】
-"{text}"
-
-【輸出格式要求】
-請嚴格只輸出標籤名稱：PRESENTATION 或 QA_START。不要輸出任何其他文字。
-"""
-    # 呼叫 Gemini 的邏輯...
-    try:
-        response = await client.aio.models.generate_content(
-            model='gemini-3.6-flash',
-            contents=prompt,
-            config=types.GenerateContentConfig(
-                temperature=0.0,
-                max_output_tokens=50,
-                tools=[]
-            )
-        )
-        if response and response.text:
-            return response.text.strip().upper()
+    if any(keyword in normalized_text for keyword in presentation_keywords):
         return "PRESENTATION"
-    except Exception as e:
-        print(f"Gemini API 呼叫失敗: {e}")
-        return "PRESENTATION"
+
+    if any(keyword in normalized_text for keyword in question_keywords):
+        return "QA_START"
+
+    return "PRESENTATION"
 
 async def process_qa_pipeline(call_id: str):
     conn = await aiomysql.connect(**DB_CONFIG)
@@ -142,14 +124,14 @@ async def process_qa_pipeline(call_id: str):
             for group in merged_segments:
                 full_text = " ".join(group['texts'])
 
-                #  第一階段：利用 Gemini 尋找第一個問答開端 (Q1)
+                #  第一階段：利用關鍵字尋找第一個問答開端 (Q1)
                 if not found_qa_start:
                   
                     if group['start_time_sec'] > 300 and any(kw in full_text.lower() for kw in qa_keywords):
-                        print(f"在 {group['start_time_sec']} 秒處發現關鍵字，呼叫 Gemini 驗證 Q1 開端...")
-                        llm_label = await classify_segment_with_gemini(full_text[:400])
-                        clean_label = llm_label.strip().upper()
-                        print(f"Gemini 判定結果: '{clean_label}'")        
+                        print(f"在 {group['start_time_sec']} 秒處發現關鍵字，使用關鍵字判斷 Q1 開端...")
+                        keyword_label = classify_segment_with_keywords(full_text[:400])
+                        clean_label = keyword_label.strip().upper()
+                        print(f"關鍵字判定結果: '{clean_label}'")        
                        
                         if "QA_" in clean_label:
                             current_section = "qa"
