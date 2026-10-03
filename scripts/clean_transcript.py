@@ -2,6 +2,7 @@ import json
 import re
 import sys
 from pathlib import Path
+from opencc import OpenCC
 
 
 # ============================================================
@@ -9,7 +10,7 @@ from pathlib import Path
 # ============================================================
 
 FILLER_WORDS = { "uh", "um", "erm", "hmm", "mm", "mhm", }
-
+cc = OpenCC("s2t")
 
 # 多字型口語填充詞
 FILLER_PHRASES = [ "you know", "you see", ]
@@ -20,55 +21,28 @@ FILLER_PHRASES = [ "you know", "you see", ]
 # ============================================================
 
 def clean_text(text: str):
-    """
-    清理 Whisper 原始文字。
-
-    原則：
-    1. 移除明顯口語填充詞
-    2. 保留具有語意或情緒意義的詞
-    3. 不進行激進的句子重寫
-    """
 
     if not text:
         return ""
 
     cleaned = text
 
-    # --------------------------------------------------------
-    # 移除多字型 filler
-    # --------------------------------------------------------
-
     for phrase in FILLER_PHRASES:
-
         pattern = rf"\b{re.escape(phrase)}\b"
-
-        cleaned = re.sub( pattern, "", cleaned, flags=re.IGNORECASE )
-
-    # --------------------------------------------------------
-    # 移除單字 filler
-    # --------------------------------------------------------
+        cleaned = re.sub(pattern, "", cleaned, flags=re.IGNORECASE)
 
     for word in FILLER_WORDS:
-
         pattern = rf"\b{re.escape(word)}\b"
+        cleaned = re.sub(pattern, "", cleaned, flags=re.IGNORECASE)
 
-        cleaned = re.sub( pattern, "", cleaned, flags=re.IGNORECASE )
+    cleaned = re.sub(r"\s+", " ", cleaned)
 
-    # --------------------------------------------------------
-    # 清理多餘空白
-    # --------------------------------------------------------
+    cleaned = re.sub(r"\s+([,.!?;:])", r"\1", cleaned)
 
-    cleaned = re.sub( r"\s+", " ", cleaned )
-
-    # --------------------------------------------------------
-    # 清理標點前空白
-    # --------------------------------------------------------
-
-    cleaned = re.sub( r"\s+([,.!?;:])", r"\1", cleaned )
+    # 簡體轉繁體
+    cleaned = cc.convert(cleaned)
 
     return cleaned.strip()
-
-
 # ============================================================
 # 3. 判斷某個 word 是否為 filler
 # ============================================================
